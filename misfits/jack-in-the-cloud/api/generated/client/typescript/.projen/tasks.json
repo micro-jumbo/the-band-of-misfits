@@ -1,0 +1,156 @@
+{
+  "tasks": {
+    "build": {
+      "name": "build",
+      "description": "Full release build",
+      "steps": [
+        {
+          "spawn": "pre-compile"
+        },
+        {
+          "spawn": "compile"
+        },
+        {
+          "spawn": "post-compile"
+        },
+        {
+          "spawn": "test"
+        },
+        {
+          "spawn": "package"
+        }
+      ]
+    },
+    "compile": {
+      "name": "compile",
+      "description": "Only compile",
+      "steps": [
+        {
+          "exec": "tsc --build"
+        }
+      ]
+    },
+    "default": {
+      "name": "default",
+      "description": "Synthesize project files",
+      "steps": [
+        {
+          "exec": "npx projen default",
+          "cwd": "../../../../../.."
+        }
+      ]
+    },
+    "install": {
+      "name": "install",
+      "description": "Install project dependencies and update lockfile (non-frozen)",
+      "steps": [
+        {
+          "exec": "pnpm i --no-frozen-lockfile"
+        }
+      ]
+    },
+    "install:ci": {
+      "name": "install:ci",
+      "description": "Install project dependencies using frozen lockfile",
+      "steps": [
+        {
+          "exec": "pnpm i --frozen-lockfile"
+        }
+      ]
+    },
+    "package": {
+      "name": "package",
+      "description": "Creates the distribution package",
+      "steps": [
+        {
+          "exec": "mkdir -p dist/js"
+        },
+        {
+          "exec": "mv $(pnpm pack) dist/js/"
+        }
+      ]
+    },
+    "post-compile": {
+      "name": "post-compile",
+      "description": "Runs after successful compilation"
+    },
+    "post-upgrade": {
+      "name": "post-upgrade",
+      "description": "Runs after upgrading dependencies"
+    },
+    "pre-compile": {
+      "name": "pre-compile",
+      "description": "Prepare the project for compilation",
+      "steps": [
+        {
+          "exec": "rm -rf src/*"
+        },
+        {
+          "exec": "mkdir -p src && touch src/.gitkeep"
+        },
+        {
+          "exec": "cp -r ../../../model/build/smithyprojections/@the-band-of-misfits-jack-in-the-cloud-api-model/ts-client/typescript-codegen/src/* src/"
+        },
+        {
+          "exec": "pdk install @smithy/types"
+        }
+      ]
+    },
+    "test": {
+      "name": "test",
+      "description": "Run tests",
+      "steps": [
+        {
+          "exec": "jest --passWithNoTests --updateSnapshot",
+          "receiveArgs": true
+        }
+      ]
+    },
+    "test:watch": {
+      "name": "test:watch",
+      "description": "Run jest in watch mode",
+      "steps": [
+        {
+          "exec": "jest --watch"
+        }
+      ]
+    },
+    "upgrade": {
+      "name": "upgrade",
+      "description": "upgrade dependencies",
+      "env": {
+        "CI": "0"
+      },
+      "steps": [
+        {
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,jest,projen,ts-jest,typescript,@aws-crypto/sha256-browser,@aws-crypto/sha256-js,@aws-sdk/client-sts,@aws-sdk/core,@aws-sdk/credential-provider-node,@aws-sdk/middleware-host-header,@aws-sdk/middleware-logger,@aws-sdk/middleware-recursion-detection,@aws-sdk/middleware-signing,@aws-sdk/middleware-user-agent,@aws-sdk/region-config-resolver,@aws-sdk/types,@aws-sdk/util-user-agent-browser,@aws-sdk/util-user-agent-node,@smithy/config-resolver,@smithy/fetch-http-handler,@smithy/hash-node,@smithy/invalid-dependency,@smithy/middleware-content-length,@smithy/middleware-retry,@smithy/middleware-serde,@smithy/middleware-stack,@smithy/node-config-provider,@smithy/node-http-handler,@smithy/protocol-http,@smithy/smithy-client,@smithy/types,@smithy/url-parser,@smithy/util-base64,@smithy/util-body-length-browser,@smithy/util-body-length-node,@smithy/util-defaults-mode-browser,@smithy/util-defaults-mode-node,@smithy/util-retry,@smithy/util-utf8,tslib"
+        },
+        {
+          "exec": "pnpm i --no-frozen-lockfile"
+        },
+        {
+          "exec": "pnpm update @types/jest @types/node constructs jest jest-junit projen ts-jest typescript @aws-crypto/sha256-browser @aws-crypto/sha256-js @aws-sdk/client-sts @aws-sdk/core @aws-sdk/credential-provider-node @aws-sdk/middleware-host-header @aws-sdk/middleware-logger @aws-sdk/middleware-recursion-detection @aws-sdk/middleware-signing @aws-sdk/middleware-user-agent @aws-sdk/region-config-resolver @aws-sdk/types @aws-sdk/util-user-agent-browser @aws-sdk/util-user-agent-node @smithy/config-resolver @smithy/fetch-http-handler @smithy/hash-node @smithy/invalid-dependency @smithy/middleware-content-length @smithy/middleware-retry @smithy/middleware-serde @smithy/middleware-stack @smithy/node-config-provider @smithy/node-http-handler @smithy/protocol-http @smithy/smithy-client @smithy/types @smithy/url-parser @smithy/util-base64 @smithy/util-body-length-browser @smithy/util-body-length-node @smithy/util-defaults-mode-browser @smithy/util-defaults-mode-node @smithy/util-retry @smithy/util-utf8 tslib"
+        },
+        {
+          "exec": "npx projen"
+        },
+        {
+          "spawn": "post-upgrade"
+        }
+      ]
+    },
+    "watch": {
+      "name": "watch",
+      "description": "Watch & compile in the background",
+      "steps": [
+        {
+          "exec": "tsc --build -w"
+        }
+      ]
+    }
+  },
+  "env": {
+    "PATH": "$(pnpm -c exec \"node --print process.env.PATH\")"
+  },
+  "//": "~~ Generated by projen. To modify, edit .projenrc.js and run \"npx projen\"."
+}
