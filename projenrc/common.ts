@@ -71,6 +71,7 @@ function createSmithyClientProject(
     ...clientDefaults,
     parent: apiProject,
     outdir,
+    entrypoint: "lib/index",
     sampleCode: false,
     eslint: false,
     deps: [
@@ -120,9 +121,11 @@ function createSmithyClientProject(
       },
     },
   });
-
   // Make sure smithy client builds after model
   monorepoProject.addImplicitDependency(smithyClient, apiProject.model);
+  monorepoProject.addWorkspacePackages(
+    path.relative(monorepoProject.outdir, smithyClient.outdir),
+  );
   smithyClient.preCompileTask.exec("rm -rf src/*");
   const generatedDir = path.join(
     path.relative(smithyClient.outdir, apiProject.model.outdir),
@@ -191,10 +194,11 @@ export function createTheMisfit(
   const example = new awscdk.AwsCdkTypeScriptApp({
     ...projectDefaults(root, misfitName, "examples"),
     cdkVersion: depVersions.cdkVersion,
-    deps: [infra.name],
+    deps: [infra.name, smithyClient.name],
     tsconfig: {
       compilerOptions: {
         skipLibCheck: true,
+        noUnusedLocals: false,
       },
     },
   });
