@@ -3,35 +3,37 @@
 $version: "2"
 
 metadata validators = [
+    
     {
-        id: "SupportedLanguage"
-        name: "EmitEachSelector"
-        configuration: {
-            bindToTrait: eu.micro_jumbo.the_band_of_misfits#handler
-            selector: """
-                :not([@trait|eu.micro_jumbo.the_band_of_misfits#handler: @{language} = typescript, java, python])
-            """
-            messageTemplate: """
-                @{trait|eu.micro_jumbo.the_band_of_misfits#handler|language} is not supported by type-safe-api.
-                Supported languages are "typescript", "java" and "python".
-            """
-        }
+      id: "SupportedLanguage_handler"
+      name: "EmitEachSelector"
+      configuration: {
+          bindToTrait: eu.micro_jumbo.the_band_of_misfits#handler
+          selector: """
+              :not([@trait|eu.micro_jumbo.the_band_of_misfits#handler: @{language} = typescript, java, python])
+          """
+          messageTemplate: """
+              @{trait|eu.micro_jumbo.the_band_of_misfits#handler|language} is not supported by type-safe-api.
+              Supported languages are "typescript", "java" and "python".
+          """
+      }
     }
+    
     {
-        id: "ConfiguredHandlerProject"
-        name: "EmitEachSelector"
-        configuration: {
-            bindToTrait: eu.micro_jumbo.the_band_of_misfits#handler
-            selector: """
-                [@trait|eu.micro_jumbo.the_band_of_misfits#handler: @{language} = typescript, java, python]
-                :not([@trait|eu.micro_jumbo.the_band_of_misfits#handler: @{language} = typescript])
-            """
-            messageTemplate: """
-                @@handler language @{trait|eu.micro_jumbo.the_band_of_misfits#handler|language} cannot be referenced unless a handler project is configured for this language.
-                Configured handler project languages are: typescript.
-                You can add this language by configuring TypeSafeApiProject in your .projenrc
-            """
-        }
+      id: "ConfiguredHandlerProject_handler"
+      name: "EmitEachSelector"
+      configuration: {
+          bindToTrait: eu.micro_jumbo.the_band_of_misfits#handler
+          selector: """
+              [@trait|eu.micro_jumbo.the_band_of_misfits#handler: @{language} = typescript, java, python]
+              :not([@trait|eu.micro_jumbo.the_band_of_misfits#handler: @{language} = typescript])
+          """
+          messageTemplate: """
+              @@handler language @{trait|eu.micro_jumbo.the_band_of_misfits#handler|language} cannot be referenced unless a handler project is configured for this language.
+              Configured handler project languages are: typescript.
+              You can add this language by configuring TypeSafeApiProject in your .projenrc
+          """
+      }
     }
 ]
 
