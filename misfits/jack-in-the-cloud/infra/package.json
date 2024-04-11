@@ -46,6 +46,7 @@
     "@the-band-of-misfits/jack-in-the-cloud-api-typescript-infra": "0.0.0",
     "@the-band-of-misfits/jack-in-the-cloud-service": "^0.0.0",
     "aws-cdk-lib": "^2.132.1",
+    "cdk-nag": "^2.28.86",
     "constructs": "^10.0.5"
   },
   "main": "src/index",
