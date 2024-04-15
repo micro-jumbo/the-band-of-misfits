@@ -50,7 +50,7 @@
   "dependencies": {
     "@aws-cdk/aws-cognito-identitypool-alpha": "latest",
     "aws-cdk-lib": "2.137.0",
-    "cdk-nag": "2.28.87"
+    "cdk-nag": "2.28.89"
   },
   "pnpm": {
     "overrides": {
