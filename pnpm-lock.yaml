@@ -20,12 +20,12 @@ importers:
         specifier: 2.137.0
         version: 2.137.0(constructs@10.3.0)
       cdk-nag:
-        specifier: 2.28.89
-        version: 2.28.89(aws-cdk-lib@2.137.0)(constructs@10.3.0)
+        specifier: 2.28.90
+        version: 2.28.90(aws-cdk-lib@2.137.0)(constructs@10.3.0)
     devDependencies:
       '@aws/pdk':
         specifier: 0.23.19
-        version: 0.23.19(@aws-cdk/aws-cognito-identitypool-alpha@2.137.0-alpha.0)(aws-cdk-lib@2.137.0)(cdk-nag@2.28.89)(constructs@10.3.0)(projen@0.79.27)
+        version: 0.23.19(@aws-cdk/aws-cognito-identitypool-alpha@2.137.0-alpha.0)(aws-cdk-lib@2.137.0)(cdk-nag@2.28.90)(constructs@10.3.0)(projen@0.79.27)
       '@types/jest':
         specifier: 29.5.12
         version: 29.5.12
@@ -1198,7 +1198,7 @@ packages:
       - ts-node
       - word-wrap
 
-  /@aws/pdk@0.23.19(@aws-cdk/aws-cognito-identitypool-alpha@2.137.0-alpha.0)(aws-cdk-lib@2.137.0)(cdk-nag@2.28.89)(constructs@10.3.0)(projen@0.79.27):
+  /@aws/pdk@0.23.19(@aws-cdk/aws-cognito-identitypool-alpha@2.137.0-alpha.0)(aws-cdk-lib@2.137.0)(cdk-nag@2.28.90)(constructs@10.3.0)(projen@0.79.27):
     resolution: {integrity: sha512-uvZOzFJiIKofKaRpp790O5mcACAPV/Y4jMjOgjhSZKcaOq9uQdVaiGtt4Anh2eR/YV0bFNVmoBf9tKqz7zpNcw==}
     hasBin: true
     peerDependencies:
@@ -1210,7 +1210,7 @@ packages:
     dependencies:
       '@aws-cdk/aws-cognito-identitypool-alpha': 2.137.0-alpha.0(aws-cdk-lib@2.137.0)(constructs@10.3.0)
       aws-cdk-lib: 2.137.0(constructs@10.3.0)
-      cdk-nag: 2.28.89(aws-cdk-lib@2.137.0)(constructs@10.3.0)
+      cdk-nag: 2.28.90(aws-cdk-lib@2.137.0)(constructs@10.3.0)
       constructs: 10.3.0
       projen: 0.79.27(constructs@10.3.0)
     dev: true
@@ -3847,8 +3847,8 @@ packages:
       constructs: 10.3.0
     dev: false
 
-  /cdk-nag@2.28.89(aws-cdk-lib@2.137.0)(constructs@10.3.0):
-    resolution: {integrity: sha512-0K9roRBQNItmeGvwfZlP8DnETZaytmRFXxIva9hiKpdQOVN8HAfbNrVRQkqG/l30m9RFySf/pJHhOU0p/S5H7Q==}
+  /cdk-nag@2.28.90(aws-cdk-lib@2.137.0)(constructs@10.3.0):
+    resolution: {integrity: sha512-FCLw003032YGVoxn+IKU+ONMZ0bA//jYE+ssn2FPtfhbndobahrWtV8wwKwAyLx+kFaO9xmueDnVfYpbOAr3qg==}
     peerDependencies:
       aws-cdk-lib: ^2.116.0
       constructs: ^10.0.5
