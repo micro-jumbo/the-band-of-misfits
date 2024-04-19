@@ -25,7 +25,7 @@
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
-    "aws-cdk": "^2.132.1",
+    "aws-cdk": "^2.137.0",
     "esbuild": "0.20.2",
     "eslint": "^8",
     "eslint-import-resolver-typescript": "3.6.1",
@@ -35,12 +35,12 @@
     "projen": "^0.79.24",
     "ts-jest": "29.1.2",
     "ts-node": "10.9.2",
-    "typescript": "5.4.3"
+    "typescript": "5.4.5"
   },
   "dependencies": {
-    "@the-band-of-misfits/jack-in-the-cloud-api-client": "^0.0.0",
-    "@the-band-of-misfits/jack-in-the-cloud-infra": "^0.0.0",
-    "aws-cdk-lib": "^2.132.1",
+    "@the-band-of-misfits/jack-in-the-cloud-api-client": "0.0.0",
+    "@the-band-of-misfits/jack-in-the-cloud-infra": "0.0.0",
+    "aws-cdk-lib": "^2.137.0",
     "constructs": "^10.0.5"
   },
   "main": "src/index",

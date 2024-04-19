@@ -4,8 +4,8 @@ import { DepsProperties } from "./projenrc/common";
 import { jackInTheCloud } from "./projenrc/jack-in-the-cloud";
 
 const depVersions: DepsProperties = {
-  cdkVersion: "2.132.1",
-  pdkVersion: "0.23.19",
+  cdkVersion: "2.137.0",
+  pdkVersion: "0.23.37",
 };
 
 const root = new monorepo.MonorepoTsProject({
