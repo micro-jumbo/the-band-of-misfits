@@ -29,10 +29,10 @@
     "jest-junit": "^15",
     "projen": "^0.79.24",
     "ts-jest": "29.1.2",
-    "typescript": "5.4.3"
+    "typescript": "5.4.5"
   },
   "dependencies": {
-    "@aws-sdk/client-sfn": "3.535.0",
+    "@aws-sdk/client-sfn": "3.556.0",
     "fast-xml-parser": "4.3.6",
     "iso-datestring-validator": "2.2.2"
   },

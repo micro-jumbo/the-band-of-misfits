@@ -17,7 +17,7 @@
     "watch": "npx projen watch"
   },
   "devDependencies": {
-    "@types/aws-lambda": "8.10.136",
+    "@types/aws-lambda": "8.10.137",
     "@types/jest": "29.5.12",
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^6",
@@ -31,11 +31,11 @@
     "jest-junit": "^15",
     "projen": "^0.79.24",
     "ts-jest": "29.1.2",
-    "typescript": "5.4.3"
+    "typescript": "5.4.5"
   },
   "dependencies": {
     "@the-band-of-misfits/jack-in-the-cloud-api-typescript-runtime": "0.0.0",
-    "@the-band-of-misfits/jack-in-the-cloud-service": "^0.0.0"
+    "@the-band-of-misfits/jack-in-the-cloud-service": "0.0.0"
   },
   "main": "lib/index.js",
   "license": "Apache-2.0",
