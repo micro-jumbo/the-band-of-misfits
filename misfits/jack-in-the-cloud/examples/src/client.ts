@@ -1,5 +1,4 @@
 import {
-  CancelTimerCommand,
   CreateTimerCommand,
   JackInTheCloudClient,
   UpdateTimerCommand,
