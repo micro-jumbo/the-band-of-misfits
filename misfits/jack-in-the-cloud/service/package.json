@@ -15,6 +15,7 @@
     "watch": "npx projen watch"
   },
   "devDependencies": {
+    "@aws/pdk": "0.23.38",
     "@types/jest": "29.5.12",
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^6",
@@ -32,9 +33,11 @@
     "typescript": "5.4.5"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "3.556.0",
     "@aws-sdk/client-sfn": "3.556.0",
-    "fast-xml-parser": "4.3.6",
-    "iso-datestring-validator": "2.2.2"
+    "@aws-sdk/lib-dynamodb": "3.556.0",
+    "@the-band-of-misfits/jimmy-the-deckhand-utils": "^0.0.0",
+    "fast-xml-parser": "4.3.6"
   },
   "main": "src/index",
   "license": "Apache-2.0",

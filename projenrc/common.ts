@@ -6,6 +6,22 @@ import { awscdk, typescript } from "projen";
 export interface DepsProperties {
   cdkVersion: string;
   pdkVersion: string;
+  sdkVersion: string;
+}
+
+export function getDep(
+  versions: DepsProperties,
+  type: "CDK" | "PDK" | "SDK",
+  subtype?: string,
+) {
+  switch (type) {
+    case "CDK":
+      return `aws-cdk-lib@${versions.cdkVersion}`;
+    case "PDK":
+      return `@aws/pdk@${versions.pdkVersion}`;
+    case "SDK":
+      return `@aws-sdk/${subtype}@${versions.sdkVersion}`;
+  }
 }
 
 export function projectDefaults(
@@ -143,12 +159,24 @@ function createSmithyClientProject(
   return smithyClient;
 }
 
+export interface Misfit {
+  service: typescript.TypeScriptProject;
+  infra: infrastructure.InfrastructureTsProject;
+  smithyClient: typescript.TypeScriptProject;
+  example: awscdk.AwsCdkTypeScriptApp;
+}
+
+export function allProjects(misfit: Misfit): typescript.TypeScriptProject[] {
+  return [misfit.service, misfit.infra, misfit.smithyClient, misfit.example];
+}
+
 export function createTheMisfit(
   root: monorepo.MonorepoTsProject,
   depVersions: DepsProperties,
   misfitName: string,
   service: typescript.TypeScriptProject,
-) {
+  dependencies?: { example?: string[]; handlers?: string[]; infra?: string[] },
+): Misfit {
   const apiDefaults = projectDefaults(root, misfitName, "api");
   const clientDefaults = projectDefaults(root, misfitName, "api-client");
   const smithyBuildOptions: type_safe_api.SmithyBuildOptions =
@@ -176,7 +204,7 @@ export function createTheMisfit(
       languages: [type_safe_api.Language.TYPESCRIPT],
       options: {
         typescript: {
-          deps: [service.name],
+          deps: [service.name, ...(dependencies?.handlers ?? [])],
         },
       },
     },
@@ -185,7 +213,7 @@ export function createTheMisfit(
   const smithyClient = createSmithyClientProject(root, api, clientDefaults);
   const infra = new infrastructure.InfrastructureTsProject({
     ...projectDefaults(root, misfitName, "infra"),
-    deps: [service.name],
+    deps: [service.name, ...(dependencies?.infra ?? [])],
     stackName: misfitName,
     typeSafeApis: [api],
     cdkVersion: depVersions.cdkVersion,
@@ -194,7 +222,7 @@ export function createTheMisfit(
   const example = new awscdk.AwsCdkTypeScriptApp({
     ...projectDefaults(root, misfitName, "examples"),
     cdkVersion: depVersions.cdkVersion,
-    deps: [infra.name, smithyClient.name],
+    deps: [infra.name, smithyClient.name, ...(dependencies?.example ?? [])],
     tsconfig: {
       compilerOptions: {
         skipLibCheck: true,
@@ -203,5 +231,5 @@ export function createTheMisfit(
     },
   });
 
-  return [service, ...infra.subprojects, smithyClient, example];
+  return { service, infra, smithyClient, example };
 }

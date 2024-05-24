@@ -10,8 +10,8 @@ import {
 } from '@the-band-of-misfits/jack-in-the-cloud-service';
 
 const timerService = new TimerService(
-  process.env.JACK_MACHINE_ARN!,
-  process.env.AWS_REGION!,
+  process.env.MACHINE_ARN!,
+  process.env.TABLE_NAME!,
 );
 
 /**

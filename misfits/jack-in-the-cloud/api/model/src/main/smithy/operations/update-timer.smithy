@@ -1,7 +1,8 @@
 $version: "2"
 namespace eu.micro_jumbo.the_band_of_misfits
 
-structure CreateTimerInputPayload {
+structure UpdateTimerInputPayload {
+    @required
     id: String
     @required
     fireAt: DateTime
@@ -10,20 +11,20 @@ structure CreateTimerInputPayload {
     type: String
 }
 
-structure CreateTimerInput {
+structure UpdateTimerInput {
     @httpPayload
-    payload: CreateTimerInputPayload
+    payload: UpdateTimerInputPayload
 }
 
-structure CreateTimerOutput {
+structure UpdateTimerOutput {
     @required
     id: String
 }
 
-@http(method: "POST", uri: "/create-timer")
+@http(method: "POST", uri: "/update-timer")
 @handler(language: "typescript")
-operation CreateTimer {
-    input: CreateTimerInput
-    output: CreateTimerOutput
+operation UpdateTimer {
+    input: UpdateTimerInput
+    output: UpdateTimerOutput
     errors: [BadRequestError, InternalFailureError]
 }

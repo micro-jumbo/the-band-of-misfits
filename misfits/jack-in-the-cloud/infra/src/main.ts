@@ -1,5 +1,6 @@
 import { CdkGraph, FilterPreset, Filters } from "@aws/pdk/cdk-graph";
 import { CdkGraphDiagramPlugin } from "@aws/pdk/cdk-graph-plugin-diagram";
+import { CdkGraphThreatComposerPlugin } from "@aws/pdk/cdk-graph-plugin-threat-composer";
 import { AwsPrototypingChecks, PDKNag } from "@aws/pdk/pdk-nag";
 import { ApplicationStack as JackInTheCloudStack } from "./stacks/application-stack";
 
@@ -25,6 +26,11 @@ const devEnv = {
             preset: FilterPreset.COMPACT,
             filters: [{ store: Filters.pruneCustomResources() }],
           },
+        },
+      }),
+      new CdkGraphThreatComposerPlugin({
+        applicationDetails: {
+          name: "Jack in the Cloud",
         },
       }),
     ],

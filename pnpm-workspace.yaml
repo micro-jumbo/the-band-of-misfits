@@ -5,6 +5,7 @@ packages:
   - misfits/jack-in-the-cloud/api/generated/infrastructure/typescript
   - misfits/jack-in-the-cloud/api/generated/runtime/typescript
   - misfits/jack-in-the-cloud/service
+  - misfits/jimmy-the-deckhand/utils
   - misfits/jack-in-the-cloud/api/generated/client/typescript
   - misfits/jack-in-the-cloud/examples
   - misfits/jack-in-the-cloud/infra

@@ -10,10 +10,11 @@ import {
   CreateTimerInput,
   TimerService,
 } from '@the-band-of-misfits/jack-in-the-cloud-service';
+import { ISO8601 } from '@the-band-of-misfits/jimmy-the-deckhand-utils';
 
 const timerService = new TimerService(
-  process.env.JACK_MACHINE_ARN!,
-  process.env.AWS_REGION!,
+  process.env.MACHINE_ARN!,
+  process.env.TABLE_NAME!,
 );
 
 /**
@@ -29,13 +30,14 @@ export const createTimer: CreateTimerChainedHandlerFunction = async (
   } = request;
 
   const createTimerInput: CreateTimerInput = {
+    id: body.id,
     type: body.type || 'DEFAULT',
-    fireAt: body.fireAt.toISOString(),
+    fireAt: ISO8601.fromDate(body.fireAt),
     payload: body.payload,
   };
 
   const result = await timerService.createTimer(createTimerInput);
-  return { statusCode: 200, body: { id: result.id } };
+  return { statusCode: 200, body: result };
 };
 
 /**
