@@ -1,9 +1,10 @@
 import {
+  CancelTimerCommand,
   CreateTimerCommand,
   JackInTheCloudClient,
   UpdateTimerCommand,
-} from '@the-band-of-misfits/jack-in-the-cloud-api-client';
-import { ISO8601 } from '@the-band-of-misfits/jimmy-the-deckhand-utils';
+} from "@the-band-of-misfits/jack-in-the-cloud-api-client";
+import { ISO8601 } from "@the-band-of-misfits/jimmy-the-deckhand-utils";
 
 async function createTimer() {
   const client = new JackInTheCloudClient({
@@ -12,9 +13,9 @@ async function createTimer() {
   const createResult = await client.send(
     new CreateTimerCommand({
       payload: {
-        fireAt: ISO8601.toDate(ISO8601.add(ISO8601.now(), 60, 'seconds')),
-        payload: 'blablaba',
-        type: 'normalka',
+        fireAt: ISO8601.toDate(ISO8601.add(ISO8601.now(), 60, "seconds")),
+        payload: "blablaba",
+        type: "normalka",
       },
     }),
   );
@@ -23,9 +24,9 @@ async function createTimer() {
     new UpdateTimerCommand({
       payload: {
         id: createResult.id,
-        fireAt: ISO8601.toDate(ISO8601.add(ISO8601.now(), 120, 'seconds')),
-        payload: 'updated',
-        type: 'normalka',
+        fireAt: ISO8601.toDate(ISO8601.add(ISO8601.now(), 120, "seconds")),
+        payload: "updated",
+        type: "normalka",
       },
     }),
   );
