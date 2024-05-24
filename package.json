@@ -22,8 +22,8 @@
     "synth-workspace": "pnpm exec projen"
   },
   "devDependencies": {
-    "@aws/pdk": "0.23.37",
-    "@types/jest": "29.5.12",
+    "@aws/pdk": "0.23.38",
+    "@types/jest": "^29.5.12",
     "@types/node": "^20",
     "@typescript-eslint/eslint-plugin": "^6",
     "@typescript-eslint/parser": "^6",
@@ -40,7 +40,6 @@
     "prettier": "3.2.5",
     "projen": "^0.79.24",
     "syncpack": "^12",
-    "ts-jest": "29.1.2",
     "ts-node": "10.9.2",
     "typescript": "5.4.5"
   },
@@ -74,6 +73,7 @@
       "misfits/jack-in-the-cloud/api/generated/infrastructure/typescript",
       "misfits/jack-in-the-cloud/api/generated/runtime/typescript",
       "misfits/jack-in-the-cloud/service",
+      "misfits/jimmy-the-deckhand/utils",
       "misfits/jack-in-the-cloud/api/generated/client/typescript",
       "misfits/jack-in-the-cloud/examples",
       "misfits/jack-in-the-cloud/infra"

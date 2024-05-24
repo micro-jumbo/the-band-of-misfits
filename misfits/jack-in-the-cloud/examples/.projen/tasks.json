@@ -159,13 +159,13 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,esbuild,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest,ts-node,typescript,@the-band-of-misfits/jack-in-the-cloud-api-client,@the-band-of-misfits/jack-in-the-cloud-infra"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@aws/pdk,@types/jest,esbuild,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest,ts-node,typescript,@the-band-of-misfits/jack-in-the-cloud-api-client,@the-band-of-misfits/jack-in-the-cloud-infra,@the-band-of-misfits/jimmy-the-deckhand-utils"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk esbuild eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit projen ts-jest ts-node typescript @the-band-of-misfits/jack-in-the-cloud-api-client @the-band-of-misfits/jack-in-the-cloud-infra aws-cdk-lib constructs"
+          "exec": "pnpm update @aws/pdk @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-cdk esbuild eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit projen ts-jest ts-node typescript @the-band-of-misfits/jack-in-the-cloud-api-client @the-band-of-misfits/jack-in-the-cloud-infra @the-band-of-misfits/jimmy-the-deckhand-utils aws-cdk-lib constructs"
         },
         {
           "exec": "npx projen"

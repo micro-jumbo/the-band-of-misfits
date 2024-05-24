@@ -9,7 +9,7 @@ use smithy.framework#ValidationException
 @restJson1
 service JackInTheCloud {
     version: "1.0"
-    operations: [CreateTimer, CancelTimer]
+    operations: [CreateTimer, CancelTimer, UpdateTimer]
     errors: [
       BadRequestError
       NotAuthorizedError

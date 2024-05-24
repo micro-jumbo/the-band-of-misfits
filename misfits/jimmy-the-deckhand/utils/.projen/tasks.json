@@ -32,11 +32,15 @@
     },
     "default": {
       "name": "default",
-      "description": "Synthesize project files",
+      "description": "Synthesize project files"
+    },
+    "eslint": {
+      "name": "eslint",
+      "description": "Runs eslint against the codebase",
       "steps": [
         {
-          "exec": "npx projen default",
-          "cwd": "../../../../../.."
+          "exec": "eslint --ext .ts,.tsx --fix --no-error-on-unmatched-pattern $@ src test build-tools",
+          "receiveArgs": true
         }
       ]
     },
@@ -80,21 +84,7 @@
     },
     "pre-compile": {
       "name": "pre-compile",
-      "description": "Prepare the project for compilation",
-      "steps": [
-        {
-          "exec": "rm -rf src/*"
-        },
-        {
-          "exec": "mkdir -p src && touch src/.gitkeep"
-        },
-        {
-          "exec": "cp -r ../../../model/build/smithyprojections/@the-band-of-misfits-jack-in-the-cloud-api-model/ts-client/typescript-codegen/src/* src/"
-        },
-        {
-          "exec": "pdk install @smithy/types"
-        }
-      ]
+      "description": "Prepare the project for compilation"
     },
     "test": {
       "name": "test",
@@ -103,6 +93,9 @@
         {
           "exec": "jest --passWithNoTests --updateSnapshot",
           "receiveArgs": true
+        },
+        {
+          "spawn": "eslint"
         }
       ]
     },
@@ -123,13 +116,13 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@aws/pdk,@types/jest,jest,projen,ts-jest,typescript,@aws-crypto/sha256-browser,@aws-crypto/sha256-js,@aws-sdk/client-sts,@aws-sdk/core,@aws-sdk/credential-provider-node,@aws-sdk/middleware-host-header,@aws-sdk/middleware-logger,@aws-sdk/middleware-recursion-detection,@aws-sdk/middleware-signing,@aws-sdk/middleware-user-agent,@aws-sdk/region-config-resolver,@aws-sdk/types,@aws-sdk/util-user-agent-browser,@aws-sdk/util-user-agent-node,@smithy/config-resolver,@smithy/fetch-http-handler,@smithy/hash-node,@smithy/invalid-dependency,@smithy/middleware-content-length,@smithy/middleware-retry,@smithy/middleware-serde,@smithy/middleware-stack,@smithy/node-config-provider,@smithy/node-http-handler,@smithy/protocol-http,@smithy/smithy-client,@smithy/types,@smithy/url-parser,@smithy/util-base64,@smithy/util-body-length-browser,@smithy/util-body-length-node,@smithy/util-defaults-mode-browser,@smithy/util-defaults-mode-node,@smithy/util-retry,@smithy/util-utf8,tslib"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest,typescript,iso-datestring-validator"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update @aws/pdk @types/jest @types/node constructs jest jest-junit projen ts-jest typescript @aws-crypto/sha256-browser @aws-crypto/sha256-js @aws-sdk/client-sts @aws-sdk/core @aws-sdk/credential-provider-node @aws-sdk/middleware-host-header @aws-sdk/middleware-logger @aws-sdk/middleware-recursion-detection @aws-sdk/middleware-signing @aws-sdk/middleware-user-agent @aws-sdk/region-config-resolver @aws-sdk/types @aws-sdk/util-user-agent-browser @aws-sdk/util-user-agent-node @smithy/config-resolver @smithy/fetch-http-handler @smithy/hash-node @smithy/invalid-dependency @smithy/middleware-content-length @smithy/middleware-retry @smithy/middleware-serde @smithy/middleware-stack @smithy/node-config-provider @smithy/node-http-handler @smithy/protocol-http @smithy/smithy-client @smithy/types @smithy/url-parser @smithy/util-base64 @smithy/util-body-length-browser @smithy/util-body-length-node @smithy/util-defaults-mode-browser @smithy/util-defaults-mode-node @smithy/util-retry @smithy/util-utf8 tslib"
+          "exec": "pnpm update @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser constructs eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit projen ts-jest typescript iso-datestring-validator"
         },
         {
           "exec": "npx projen"

@@ -9,6 +9,7 @@ import {
 } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { ApiConstruct } from "../constructs/api";
+import { DynamoTable } from "../constructs/dynamo-table";
 import { RunTimerStateMachine } from "../constructs/state-machine";
 
 export type Subscriber = aws_sqs.Queue | aws_lambda.Function;
@@ -38,7 +39,9 @@ export class ApplicationStack extends Stack {
       },
     );
 
-    new ApiConstruct(this, "JackOfTheCloudApi", { stateMachine });
+    const dynamoTable = new DynamoTable(this, "JackOfTheCloudTable");
+
+    new ApiConstruct(this, "JackOfTheCloudApi", { stateMachine, dynamoTable });
 
     this.exportValue(this.topic.topicArn, {
       name: `${this.stackName}-topic-arn`,

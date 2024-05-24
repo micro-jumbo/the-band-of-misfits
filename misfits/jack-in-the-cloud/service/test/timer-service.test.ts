@@ -1,31 +1,34 @@
-// import { randomUUID } from 'crypto';
 import {
   SFNClient,
   StartExecutionCommand,
   StopExecutionCommand,
 } from '@aws-sdk/client-sfn';
+import 'aws-sdk-client-mock-jest';
+import 'jest';
+import {
+  DeleteCommand,
+  DynamoDBDocumentClient,
+  GetCommand,
+  PutCommand,
+} from '@aws-sdk/lib-dynamodb';
+import { ISO8601 } from '@the-band-of-misfits/jimmy-the-deckhand-utils';
 import { mockClient } from 'aws-sdk-client-mock';
 import {
   CancelTimerInput,
   CreateTimerInput,
+  DbTimerProps,
   TimerService,
-} from '../src/timer-service';
-
-import 'aws-sdk-client-mock-jest';
-import 'jest';
-
-jest.mock('crypto', () => ({
-  randomUUID: jest.fn().mockReturnValue('test-id'),
-}));
+} from '../src';
 
 describe('TimerService', () => {
   let timerService: TimerService;
   const machineArn = 'test-arn';
-  const region = 'test-region';
+  const tableName = 'test-table';
   const stepFunctionsMock = mockClient(SFNClient);
+  const dynamoDbMock = mockClient(DynamoDBDocumentClient);
 
   beforeEach(() => {
-    timerService = new TimerService(machineArn, region);
+    timerService = new TimerService(machineArn, tableName);
   });
 
   afterEach(() => {
@@ -34,39 +37,42 @@ describe('TimerService', () => {
 
   it('should create a timer and return the timer ID', async () => {
     // Arrange
+    const fireAt = ISO8601.add(ISO8601.now(), 5, 'minutes');
     const input: CreateTimerInput = {
+      id: 'test-id',
       type: 'test-type',
-      fireAt: '2023-01-01T00:00:00Z',
+      fireAt,
       payload: JSON.stringify({ test: 'payload' }),
     };
 
-    const expectedId = 'test-id';
     stepFunctionsMock.on(StartExecutionCommand).resolves({});
+    dynamoDbMock.on(PutCommand).resolves({});
 
     // Act
     const result = await timerService.createTimer(input);
 
     // Assert
+    const timer = {
+      ...input,
+      executionId: expect.any(String),
+      ttl: ISO8601.toDate(fireAt).getTime(),
+    };
     expect(stepFunctionsMock).toHaveReceivedCommandWith(StartExecutionCommand, {
       stateMachineArn: machineArn,
-      name: expectedId,
-      input: JSON.stringify({
-        ...input,
-        id: expectedId,
-      }),
+      name: expect.any(String),
+      input: JSON.stringify(result),
     });
-    expect(result).toEqual({ id: expectedId });
-  });
+    expect(dynamoDbMock).toHaveReceivedCommandWith(PutCommand, {
+      TableName: tableName,
+      Item: timer,
+      ConditionExpression: 'attribute_not_exists(id)',
+    });
 
-  it('should throw an error if the fireAt is not a valid ISO date string', async () => {
-    const input: CreateTimerInput = {
-      fireAt: 'invalid-date',
-      payload: '{}',
-      type: 'test',
-    };
-    await expect(timerService.createTimer(input)).rejects.toThrow(
-      'fireAt not a valid date - [invalid-date]',
-    );
+    expect(result).toEqual({
+      ...input,
+      executionId: expect.any(String),
+      ttl: ISO8601.toDate(fireAt).getTime(),
+    });
   });
 
   it('should cancel a timer', async () => {
@@ -74,18 +80,35 @@ describe('TimerService', () => {
     const input: CancelTimerInput = {
       id: 'test-id',
     };
+    const fireAt = ISO8601.add(ISO8601.now(), 5, 'minutes');
+    const timer: DbTimerProps = {
+      id: input.id,
+      type: 'test-type',
+      fireAt,
+      payload: JSON.stringify({ test: 'payload' }),
+      executionId: 'test-execution-id',
+      ttl: ISO8601.toDate(fireAt).getTime(),
+    };
 
-    const executionArn = `${machineArn.replace(':stateMachine:', ':execution:')}:${input.id}`;
-
+    dynamoDbMock.on(GetCommand).resolves({ Item: timer });
     stepFunctionsMock.on(StopExecutionCommand).resolves({});
+    dynamoDbMock.on(DeleteCommand).resolves({});
 
     // Act
     await timerService.cancelTimer(input);
 
     // Assert
+    expect(dynamoDbMock).toHaveReceivedCommandWith(GetCommand, {
+      TableName: tableName,
+      Key: { id: input.id },
+    });
     expect(stepFunctionsMock).toHaveReceivedCommandWith(StopExecutionCommand, {
-      executionArn,
+      executionArn: `${machineArn.replace(':stateMachine:', ':execution:')}:${timer.executionId}`,
       cause: 'Cancelled by API',
+    });
+    expect(dynamoDbMock).toHaveReceivedCommandWith(DeleteCommand, {
+      TableName: tableName,
+      Key: { id: input.id },
     });
   });
 });

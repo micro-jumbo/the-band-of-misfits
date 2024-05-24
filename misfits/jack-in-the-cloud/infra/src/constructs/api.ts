@@ -1,9 +1,9 @@
-import { UserIdentity } from "@aws/pdk/identity";
 import { Authorizers, Integrations } from "@aws/pdk/type-safe-api";
 import {
   Api,
   CancelTimerFunction,
   CreateTimerFunction,
+  UpdateTimerFunction,
 } from "@the-band-of-misfits/jack-in-the-cloud-api-typescript-infra";
 import { Stack } from "aws-cdk-lib";
 import { Cors } from "aws-cdk-lib/aws-apigateway";
@@ -16,17 +16,15 @@ import {
 } from "aws-cdk-lib/aws-iam";
 import { Architecture, FunctionProps, Runtime } from "aws-cdk-lib/aws-lambda";
 import { Construct } from "constructs";
+import { DynamoTable } from "./dynamo-table";
 import { RunTimerStateMachine } from "./state-machine";
 
 /**
  * Api construct props.
  */
 export interface ApiConstructProps {
-  /**
-   * Instance of the UserIdentity.
-   */
-  readonly userIdentity?: UserIdentity;
   readonly stateMachine: RunTimerStateMachine;
+  readonly dynamoTable: DynamoTable;
 }
 
 /**
@@ -44,7 +42,8 @@ export class ApiConstruct extends Construct {
     const lambdaProps: Partial<FunctionProps> = {
       architecture: Architecture.ARM_64,
       environment: {
-        JACK_MACHINE_ARN: props.stateMachine.stateMachineArn,
+        MACHINE_ARN: props.stateMachine.stateMachineArn,
+        TABLE_NAME: props.dynamoTable.tableName,
       },
       runtime: Runtime.NODEJS_20_X,
     };
@@ -54,6 +53,7 @@ export class ApiConstruct extends Construct {
       "CreateTimer",
       lambdaProps,
     );
+    props.dynamoTable.grantWriteData(createTimerFunction);
     props.stateMachine.grantStartExecution(createTimerFunction);
 
     const cancelTimerFunction = new CancelTimerFunction(
@@ -61,7 +61,18 @@ export class ApiConstruct extends Construct {
       "CancelTimer",
       lambdaProps,
     );
+    props.dynamoTable.grantWriteData(cancelTimerFunction);
     props.stateMachine.grantStopExecution(cancelTimerFunction);
+
+    const updateTimerFunction = new UpdateTimerFunction(
+      this,
+      "UpdateTimer",
+      lambdaProps,
+    );
+    props.dynamoTable.grantReadData(updateTimerFunction);
+    props.dynamoTable.grantWriteData(updateTimerFunction);
+    props.stateMachine.grantStartExecution(updateTimerFunction);
+    props.stateMachine.grantStopExecution(updateTimerFunction);
 
     this.api = new Api(this, id, {
       webAclOptions: {
@@ -78,6 +89,9 @@ export class ApiConstruct extends Construct {
         },
         cancelTimer: {
           integration: Integrations.lambda(cancelTimerFunction),
+        },
+        updateTimer: {
+          integration: Integrations.lambda(updateTimerFunction),
         },
       },
       policy: new PolicyDocument({
@@ -103,14 +117,5 @@ export class ApiConstruct extends Construct {
         ],
       }),
     });
-
-    // Grant authenticated users access to invoke the api
-    // props?.userIdentity.identityPool.authenticatedRole.addToPrincipalPolicy(
-    //   new PolicyStatement({
-    //     effect: Effect.ALLOW,
-    //     actions: ["execute-api:Invoke"],
-    //     resources: [this.api.api.arnForExecuteApi("*", "/*", "*")],
-    //   }),
-    // );
   }
 }
