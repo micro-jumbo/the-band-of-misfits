@@ -40,7 +40,6 @@ export class TimerService {
 
   async createTimer(input: CreateTimerInput): Promise<CreateTimerOutput> {
     console.log('Creating timer', input);
-    console.log('with config', this.machineArn, this.tableName);
     this.validate(input);
 
     const timer: DbTimerProps = {
