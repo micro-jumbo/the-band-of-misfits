@@ -15,7 +15,7 @@
     "projen": "npx projen"
   },
   "devDependencies": {
-    "@aws/pdk": "0.23.38",
+    "@aws/pdk": "0.23.40",
     "@types/jest": "29.5.12",
     "@types/node": "^18",
     "constructs": "^10.0.0",

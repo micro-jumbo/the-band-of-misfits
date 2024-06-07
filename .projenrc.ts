@@ -1,12 +1,12 @@
 import { monorepo } from "@aws/pdk";
-import { DependencyType, javascript, JsonPatch } from "projen";
+import { DependencyType, javascript } from "projen";
 import { allProjects, DepsProperties, getDep } from "./projenrc/common";
 import { jackInTheCloud } from "./projenrc/jack-in-the-cloud";
 import { jimmyTheDeckhand } from "./projenrc/jimmy-the-deckhand";
 
 const depVersions: DepsProperties = {
-  cdkVersion: "2.137.0",
-  pdkVersion: "0.23.38",
+  cdkVersion: "2.144.0",
+  pdkVersion: "0.23.40",
   sdkVersion: "3.556.0",
 };
 
@@ -21,6 +21,7 @@ const root = new monorepo.MonorepoTsProject({
     "@types/jest",
   ],
   github: true,
+  workflowContainerImage: "timbru31/java-node:17-20",
   publishDryRun: true,
   pnpmVersion: "8",
   minNodeVersion: "20.0.0",
@@ -28,16 +29,6 @@ const root = new monorepo.MonorepoTsProject({
 root.addTask("clean", {
   exec: "git clean -X -d -f",
 });
-root.github?.tryFindWorkflow("build")?.file?.patch(
-  JsonPatch.add("/jobs/build/steps/3", {
-    name: "setup java",
-    uses: "actions/setup-java@v4",
-    with: {
-      distribution: "corretto",
-      "java-version": "17",
-    },
-  }),
-);
 
 const jimmy = jimmyTheDeckhand(root, depVersions);
 
