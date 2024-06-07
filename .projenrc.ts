@@ -1,5 +1,5 @@
 import { monorepo } from "@aws/pdk";
-import { DependencyType, javascript, JsonPatch } from "projen";
+import { DependencyType, javascript } from "projen";
 import { allProjects, DepsProperties, getDep } from "./projenrc/common";
 import { jackInTheCloud } from "./projenrc/jack-in-the-cloud";
 import { jimmyTheDeckhand } from "./projenrc/jimmy-the-deckhand";
