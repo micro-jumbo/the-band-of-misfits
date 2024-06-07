@@ -29,16 +29,16 @@ const root = new monorepo.MonorepoTsProject({
 root.addTask("clean", {
   exec: "git clean -X -d -f",
 });
-root.github?.tryFindWorkflow("build")?.file?.patch(
-  JsonPatch.add("/jobs/build/steps/3", {
-    name: "setup java",
-    uses: "actions/setup-java@v4",
-    with: {
-      distribution: "corretto",
-      "java-version": "17",
-    },
-  }),
-);
+// root.github?.tryFindWorkflow("build")?.file?.patch(
+//   JsonPatch.add("/jobs/build/steps/3", {
+//     name: "setup java",
+//     uses: "actions/setup-java@v4",
+//     with: {
+//       distribution: "corretto",
+//       "java-version": "17",
+//     },
+//   }),
+// );
 
 const jimmy = jimmyTheDeckhand(root, depVersions);
 
