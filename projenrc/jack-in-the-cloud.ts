@@ -29,7 +29,7 @@ export function jackInTheCloud(
 
   return createTheMisfit(root, depVersions, jackName, service, {
     example: [jimmy.name],
-    handlers: [jimmy.name],
+    handlers: [jimmy.name, "@aws-lambda-powertools/metrics"],
     infra: [
       "aws-lambda",
       "@types/aws-lambda",

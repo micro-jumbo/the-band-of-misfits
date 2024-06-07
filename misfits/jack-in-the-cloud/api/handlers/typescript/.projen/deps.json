@@ -68,6 +68,10 @@
       "type": "build"
     },
     {
+      "name": "@aws-lambda-powertools/metrics",
+      "type": "runtime"
+    },
+    {
       "name": "@the-band-of-misfits/jack-in-the-cloud-api-typescript-runtime",
       "version": "0.0.0",
       "type": "runtime"

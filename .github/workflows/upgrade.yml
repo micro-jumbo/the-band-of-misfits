@@ -40,6 +40,8 @@ jobs:
           name: .repo.patch
           path: .repo.patch
           overwrite: true
+    container:
+      image: timbru31/java-node:17-20
   pr:
     name: Create Pull Request
     needs: upgrade

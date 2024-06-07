@@ -34,6 +34,7 @@
     "typescript": "5.4.5"
   },
   "dependencies": {
+    "@aws-lambda-powertools/metrics": "^1.18.1",
     "@the-band-of-misfits/jack-in-the-cloud-api-typescript-runtime": "0.0.0",
     "@the-band-of-misfits/jack-in-the-cloud-service": "0.0.0",
     "@the-band-of-misfits/jimmy-the-deckhand-utils": "^0.0.0"

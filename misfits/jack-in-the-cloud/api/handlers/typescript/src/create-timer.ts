@@ -1,3 +1,4 @@
+import { MetricUnits } from '@aws-lambda-powertools/metrics';
 import {
   CreateTimerChainedHandlerFunction,
   CreateTimerChainedRequestInput,
@@ -5,6 +6,7 @@ import {
   CreateTimerOperationResponses,
   INTERCEPTORS,
   LoggingInterceptor,
+  MetricsInterceptor,
 } from '@the-band-of-misfits/jack-in-the-cloud-api-typescript-runtime';
 import {
   CreateTimerInput,
@@ -24,7 +26,7 @@ export const createTimer: CreateTimerChainedHandlerFunction = async (
   request: CreateTimerChainedRequestInput,
 ): Promise<CreateTimerOperationResponses> => {
   LoggingInterceptor.getLogger(request).info('Start CreateTimer Operation');
-
+  const start = new Date().getTime();
   const {
     input: { body },
   } = request;
@@ -37,6 +39,18 @@ export const createTimer: CreateTimerChainedHandlerFunction = async (
   };
 
   const result = await timerService.createTimer(createTimerInput);
+
+  const end = new Date().getTime();
+  MetricsInterceptor.getMetrics(request).addMetric(
+    'duration',
+    MetricUnits.Milliseconds,
+    end - start,
+  );
+  console.log(
+    `Metrics: ${JSON.stringify(MetricsInterceptor.getMetrics(request))}`,
+  ); // eslint-disable-line no-console
+  // MetricsInterceptor.getMetrics(request).publishStoredMetrics();
+  // console.log(`Metrics: ${MetricsInterceptor.getMetrics(request).getMetrics(request)}
   return { statusCode: 200, body: result };
 };
 

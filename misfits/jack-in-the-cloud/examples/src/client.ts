@@ -1,4 +1,5 @@
 import {
+  CancelTimerCommand,
   CreateTimerCommand,
   JackInTheCloudClient,
   UpdateTimerCommand,
@@ -30,8 +31,8 @@ async function createTimer() {
     }),
   );
   console.log(`Updated timer with id [${updateResult.id}]`);
-  // await client.send(new CancelTimerCommand({ id: createResult.id }));
-  // console.log(`Cancelled timer with id [${createResult.id}]`);
+  await client.send(new CancelTimerCommand({ id: createResult.id }));
+  console.log(`Cancelled timer with id [${createResult.id}]`);
 }
 
 createTimer().catch((err) => {

@@ -360,6 +360,8 @@ exports[`Snapshot 1`] = `
             "MACHINE_ARN": {
               "Ref": "JackOfTheCloudMachineStateMachineC6DCCDE1",
             },
+            "POWERTOOLS_METRICS_NAMESPACE": "TheBandOfMisfits",
+            "POWERTOOLS_SERVICE_NAME": "JackInTheCloud",
             "TABLE_NAME": {
               "Ref": "JackOfTheCloudTableE206ED70",
             },
@@ -422,6 +424,30 @@ exports[`Snapshot 1`] = `
               ],
               "Effect": "Allow",
               "Resource": "*",
+            },
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:ConditionCheckItem",
+                "dynamodb:DescribeTable",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "JackOfTheCloudTableE206ED70",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Ref": "AWS::NoValue",
+                },
+              ],
             },
             {
               "Action": [
@@ -619,13 +645,15 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "5ff90f4f8bd74a1ac54557f4d04a46a669652628d5bca818e23cf2587b692389.zip",
+          "S3Key": "760caacdce2646c840b298da21ef39f6c2e62ba0d7135ded84972614ddaa43ea.zip",
         },
         "Environment": {
           "Variables": {
             "MACHINE_ARN": {
               "Ref": "JackOfTheCloudMachineStateMachineC6DCCDE1",
             },
+            "POWERTOOLS_METRICS_NAMESPACE": "TheBandOfMisfits",
+            "POWERTOOLS_SERVICE_NAME": "JackInTheCloud",
             "TABLE_NAME": {
               "Ref": "JackOfTheCloudTableE206ED70",
             },
@@ -1780,6 +1808,8 @@ exports[`Snapshot 1`] = `
             "MACHINE_ARN": {
               "Ref": "JackOfTheCloudMachineStateMachineC6DCCDE1",
             },
+            "POWERTOOLS_METRICS_NAMESPACE": "TheBandOfMisfits",
+            "POWERTOOLS_SERVICE_NAME": "JackInTheCloud",
             "TABLE_NAME": {
               "Ref": "JackOfTheCloudTableE206ED70",
             },

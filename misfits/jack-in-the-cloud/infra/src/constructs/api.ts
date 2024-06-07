@@ -44,6 +44,8 @@ export class ApiConstruct extends Construct {
       environment: {
         MACHINE_ARN: props.stateMachine.stateMachineArn,
         TABLE_NAME: props.dynamoTable.tableName,
+        POWERTOOLS_METRICS_NAMESPACE: "TheBandOfMisfits",
+        POWERTOOLS_SERVICE_NAME: "JackInTheCloud",
       },
       runtime: Runtime.NODEJS_20_X,
     };
@@ -61,6 +63,7 @@ export class ApiConstruct extends Construct {
       "CancelTimer",
       lambdaProps,
     );
+    props.dynamoTable.grantReadData(cancelTimerFunction);
     props.dynamoTable.grantWriteData(cancelTimerFunction);
     props.stateMachine.grantStopExecution(cancelTimerFunction);
 

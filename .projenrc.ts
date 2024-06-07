@@ -21,6 +21,7 @@ const root = new monorepo.MonorepoTsProject({
     "@types/jest",
   ],
   github: true,
+  workflowContainerImage: "timbru31/java-node:17-20",
   publishDryRun: true,
   pnpmVersion: "8",
   minNodeVersion: "20.0.0",
