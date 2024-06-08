@@ -15,17 +15,17 @@ importers:
     dependencies:
       '@aws-cdk/aws-cognito-identitypool-alpha':
         specifier: latest
-        version: 2.144.0-alpha.0(aws-cdk-lib@2.144.0)(constructs@10.3.0)
+        version: 2.145.0-alpha.0(aws-cdk-lib@2.145.0)(constructs@10.3.0)
       aws-cdk-lib:
-        specifier: 2.144.0
-        version: 2.144.0(constructs@10.3.0)
+        specifier: 2.145.0
+        version: 2.145.0(constructs@10.3.0)
       cdk-nag:
-        specifier: 2.28.135
-        version: 2.28.135(aws-cdk-lib@2.144.0)(constructs@10.3.0)
+        specifier: 2.28.136
+        version: 2.28.136(aws-cdk-lib@2.145.0)(constructs@10.3.0)
     devDependencies:
       '@aws/pdk':
         specifier: 0.23.38
-        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.144.0-alpha.0)(aws-cdk-lib@2.144.0)(cdk-nag@2.28.135)(constructs@10.3.0)(projen@0.79.27)
+        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.145.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.136)(constructs@10.3.0)(projen@0.79.27)
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.12
@@ -197,7 +197,7 @@ importers:
     devDependencies:
       '@aws/pdk':
         specifier: 0.23.38
-        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.144.0)(cdk-nag@2.28.135)(constructs@10.3.0)(projen@0.79.27)
+        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.136)(constructs@10.3.0)(projen@0.79.27)
       '@types/jest':
         specifier: 29.5.12
         version: 29.5.12
@@ -360,7 +360,7 @@ importers:
     devDependencies:
       '@aws/pdk':
         specifier: 0.23.38
-        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.138.0)(cdk-nag@2.28.135)(constructs@10.3.0)(projen@0.79.27)
+        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.138.0)(cdk-nag@2.28.136)(constructs@10.3.0)(projen@0.79.27)
       '@types/jest':
         specifier: 29.5.12
         version: 29.5.12
@@ -512,7 +512,7 @@ importers:
     devDependencies:
       '@aws/pdk':
         specifier: 0.23.38
-        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.144.0)(cdk-nag@2.28.135)(constructs@10.3.0)(projen@0.79.27)
+        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.136)(constructs@10.3.0)(projen@0.79.27)
       '@types/jest':
         specifier: 29.5.12
         version: 29.5.12
@@ -639,25 +639,25 @@ packages:
       aws-cdk-lib: 2.138.0(constructs@10.3.0)
       constructs: 10.3.0
 
-  /@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0(aws-cdk-lib@2.144.0)(constructs@10.3.0):
+  /@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0(aws-cdk-lib@2.145.0)(constructs@10.3.0):
     resolution: {integrity: sha512-a1SdwZE1vdzkWjmULD9kt16nUHgg6Iz2WtHD8XZYw8nW4IKweIX0IgvO+Ie8JvGOfKrdZjTBpcwWgNTkA1aG9Q==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       aws-cdk-lib: ^2.104.0
       constructs: ^10.0.0
     dependencies:
-      aws-cdk-lib: 2.144.0(constructs@10.3.0)
+      aws-cdk-lib: 2.145.0(constructs@10.3.0)
       constructs: 10.3.0
     dev: true
 
-  /@aws-cdk/aws-cognito-identitypool-alpha@2.144.0-alpha.0(aws-cdk-lib@2.144.0)(constructs@10.3.0):
-    resolution: {integrity: sha512-J8QvVgd1Xd76xiD1NezA24AVnJaK/ylYIRF/LszS/gLaxARe1evb0kq5nzkEWTszWWV4N+IsSG4tKPLekEBbAA==}
+  /@aws-cdk/aws-cognito-identitypool-alpha@2.145.0-alpha.0(aws-cdk-lib@2.145.0)(constructs@10.3.0):
+    resolution: {integrity: sha512-CnzGgi3QzWTAwIZTlnp1zJi8FVWsspHU+IvhuQupDcpEjZUibnLaCbV6vJEc7uCT1GUBVkeYnhdbbBD0Cj0HgA==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
-      aws-cdk-lib: ^2.144.0
+      aws-cdk-lib: ^2.145.0
       constructs: ^10.0.0
     dependencies:
-      aws-cdk-lib: 2.144.0(constructs@10.3.0)
+      aws-cdk-lib: 2.145.0(constructs@10.3.0)
       constructs: 10.3.0
 
   /@aws-crypto/ie11-detection@3.0.0:
@@ -1328,7 +1328,7 @@ packages:
       - ts-node
       - word-wrap
 
-  /@aws/pdk@0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.138.0)(cdk-nag@2.28.135)(constructs@10.3.0)(projen@0.79.27):
+  /@aws/pdk@0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.138.0)(cdk-nag@2.28.136)(constructs@10.3.0)(projen@0.79.27):
     resolution: {integrity: sha512-ROQ6FfsCr/Ylr2l+IDm8fLehC3DBRyIOPoCyxnHsGAatqG7r8mVxdkeLVu/sfcXSYlsXd7MWvA3iJIKMu8kfZA==}
     hasBin: true
     peerDependencies:
@@ -1340,7 +1340,7 @@ packages:
     dependencies:
       '@aws-cdk/aws-cognito-identitypool-alpha': 2.104.0-alpha.0(aws-cdk-lib@2.138.0)(constructs@10.3.0)
       aws-cdk-lib: 2.138.0(constructs@10.3.0)
-      cdk-nag: 2.28.135(aws-cdk-lib@2.138.0)(constructs@10.3.0)
+      cdk-nag: 2.28.136(aws-cdk-lib@2.138.0)(constructs@10.3.0)
       constructs: 10.3.0
       projen: 0.79.27(constructs@10.3.0)
     dev: true
@@ -1375,7 +1375,7 @@ packages:
       - ts-node
       - word-wrap
 
-  /@aws/pdk@0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.144.0)(cdk-nag@2.28.135)(constructs@10.3.0)(projen@0.79.27):
+  /@aws/pdk@0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.136)(constructs@10.3.0)(projen@0.79.27):
     resolution: {integrity: sha512-ROQ6FfsCr/Ylr2l+IDm8fLehC3DBRyIOPoCyxnHsGAatqG7r8mVxdkeLVu/sfcXSYlsXd7MWvA3iJIKMu8kfZA==}
     hasBin: true
     peerDependencies:
@@ -1385,9 +1385,9 @@ packages:
       constructs: ^10.3.0
       projen: ^0.79.24
     dependencies:
-      '@aws-cdk/aws-cognito-identitypool-alpha': 2.104.0-alpha.0(aws-cdk-lib@2.144.0)(constructs@10.3.0)
-      aws-cdk-lib: 2.144.0(constructs@10.3.0)
-      cdk-nag: 2.28.135(aws-cdk-lib@2.144.0)(constructs@10.3.0)
+      '@aws-cdk/aws-cognito-identitypool-alpha': 2.104.0-alpha.0(aws-cdk-lib@2.145.0)(constructs@10.3.0)
+      aws-cdk-lib: 2.145.0(constructs@10.3.0)
+      cdk-nag: 2.28.136(aws-cdk-lib@2.145.0)(constructs@10.3.0)
       constructs: 10.3.0
       projen: 0.79.27(constructs@10.3.0)
     dev: true
@@ -1422,7 +1422,7 @@ packages:
       - ts-node
       - word-wrap
 
-  /@aws/pdk@0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.144.0-alpha.0)(aws-cdk-lib@2.144.0)(cdk-nag@2.28.135)(constructs@10.3.0)(projen@0.79.27):
+  /@aws/pdk@0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.145.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.136)(constructs@10.3.0)(projen@0.79.27):
     resolution: {integrity: sha512-ROQ6FfsCr/Ylr2l+IDm8fLehC3DBRyIOPoCyxnHsGAatqG7r8mVxdkeLVu/sfcXSYlsXd7MWvA3iJIKMu8kfZA==}
     hasBin: true
     peerDependencies:
@@ -1432,9 +1432,9 @@ packages:
       constructs: ^10.3.0
       projen: ^0.79.24
     dependencies:
-      '@aws-cdk/aws-cognito-identitypool-alpha': 2.144.0-alpha.0(aws-cdk-lib@2.144.0)(constructs@10.3.0)
-      aws-cdk-lib: 2.144.0(constructs@10.3.0)
-      cdk-nag: 2.28.135(aws-cdk-lib@2.144.0)(constructs@10.3.0)
+      '@aws-cdk/aws-cognito-identitypool-alpha': 2.145.0-alpha.0(aws-cdk-lib@2.145.0)(constructs@10.3.0)
+      aws-cdk-lib: 2.145.0(constructs@10.3.0)
+      cdk-nag: 2.28.136(aws-cdk-lib@2.145.0)(constructs@10.3.0)
       constructs: 10.3.0
       projen: 0.79.27(constructs@10.3.0)
     dev: true
@@ -3816,8 +3816,8 @@ packages:
       - yaml
       - mime-types
 
-  /aws-cdk-lib@2.144.0(constructs@10.3.0):
-    resolution: {integrity: sha512-DpyIyTs8NHX6WgAyYM2mGorirIk+eTjWzXGQRfzAe40qkwcqsb5Ax4JEl5gz1OEo9QIJIgWDtmImgWN0tUbILA==}
+  /aws-cdk-lib@2.145.0(constructs@10.3.0):
+    resolution: {integrity: sha512-0RCKdojCtF74rI2gGi9KUFVUKykTIMEs3ANjruIjxEz6d2cAsy9c2k+nCCSMdqhKZ9aPJgmBFewiw03Z8NtPig==}
     engines: {node: '>= 14.15.0'}
     peerDependencies:
       constructs: ^10.0.0
@@ -4184,8 +4184,8 @@ packages:
     resolution: {integrity: sha512-WcvhVRjXLKFB/kmOFVwELtMxyhq3iM/MvmXcyCe2PNf166c39mptscOc/45TTS96n2gpNV2z7+NakArTWZCQ3w==}
     dev: true
 
-  /cdk-nag@2.28.135(aws-cdk-lib@2.138.0)(constructs@10.3.0):
-    resolution: {integrity: sha512-MWOxJiWBpOIfM1cVspmjHKQ0OZIdEfw2qg1vlDsZLM+fgiIrC5jjcehpeaNZO1rGfbh3y+jgP2WcoALE6nsu7A==}
+  /cdk-nag@2.28.136(aws-cdk-lib@2.138.0)(constructs@10.3.0):
+    resolution: {integrity: sha512-VC7QtHzpuvZL851ReWpjL3/8BL7YOMi3fjlNhc1Z0aLtefQKSObdUcERFH/gcyDrUNjvT/Xt+17a8Gw+T1iWKA==}
     peerDependencies:
       aws-cdk-lib: ^2.116.0
       constructs: ^10.0.5
@@ -4194,13 +4194,13 @@ packages:
       constructs: 10.3.0
     dev: true
 
-  /cdk-nag@2.28.135(aws-cdk-lib@2.144.0)(constructs@10.3.0):
-    resolution: {integrity: sha512-MWOxJiWBpOIfM1cVspmjHKQ0OZIdEfw2qg1vlDsZLM+fgiIrC5jjcehpeaNZO1rGfbh3y+jgP2WcoALE6nsu7A==}
+  /cdk-nag@2.28.136(aws-cdk-lib@2.145.0)(constructs@10.3.0):
+    resolution: {integrity: sha512-VC7QtHzpuvZL851ReWpjL3/8BL7YOMi3fjlNhc1Z0aLtefQKSObdUcERFH/gcyDrUNjvT/Xt+17a8Gw+T1iWKA==}
     peerDependencies:
       aws-cdk-lib: ^2.116.0
       constructs: ^10.0.5
     dependencies:
-      aws-cdk-lib: 2.144.0(constructs@10.3.0)
+      aws-cdk-lib: 2.145.0(constructs@10.3.0)
       constructs: 10.3.0
 
   /cdk-nag@2.28.93(aws-cdk-lib@2.138.0)(constructs@10.3.0):
@@ -5748,7 +5748,7 @@ packages:
     dependencies:
       '@tootallnate/once': 2.0.0
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -5766,7 +5766,7 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.3.5
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8232,7 +8232,7 @@ packages:
     engines: {node: '>= 10'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.3.5
       socks: 2.8.3
     transitivePeerDependencies:
       - supports-color
