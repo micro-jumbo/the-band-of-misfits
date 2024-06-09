@@ -20,12 +20,12 @@ importers:
         specifier: 2.145.0
         version: 2.145.0(constructs@10.3.0)
       cdk-nag:
-        specifier: 2.28.136
-        version: 2.28.136(aws-cdk-lib@2.145.0)(constructs@10.3.0)
+        specifier: 2.28.137
+        version: 2.28.137(aws-cdk-lib@2.145.0)(constructs@10.3.0)
     devDependencies:
       '@aws/pdk':
         specifier: 0.23.38
-        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.145.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.136)(constructs@10.3.0)(projen@0.79.27)
+        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.145.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.137)(constructs@10.3.0)(projen@0.79.27)
       '@types/jest':
         specifier: ^29.5.12
         version: 29.5.12
@@ -197,7 +197,7 @@ importers:
     devDependencies:
       '@aws/pdk':
         specifier: 0.23.38
-        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.136)(constructs@10.3.0)(projen@0.79.27)
+        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.137)(constructs@10.3.0)(projen@0.79.27)
       '@types/jest':
         specifier: 29.5.12
         version: 29.5.12
@@ -218,7 +218,7 @@ importers:
         version: 0.79.27(constructs@10.3.0)
       ts-jest:
         specifier: 29.1.2
-        version: 29.1.2(@babel/core@7.24.4)(jest@29.7.0)(typescript@5.4.5)
+        version: 29.1.2(@babel/core@7.24.7)(esbuild@0.20.2)(jest@29.7.0)(typescript@5.4.5)
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -335,7 +335,7 @@ importers:
         version: 0.79.27(constructs@10.3.0)
       ts-jest:
         specifier: 29.1.2
-        version: 29.1.2(@babel/core@7.24.7)(esbuild@0.20.2)(jest@29.7.0)(typescript@5.4.5)
+        version: 29.1.2(@babel/core@7.24.4)(esbuild@0.20.2)(jest@29.7.0)(typescript@5.4.5)
       typescript:
         specifier: 5.4.5
         version: 5.4.5
@@ -360,7 +360,7 @@ importers:
     devDependencies:
       '@aws/pdk':
         specifier: 0.23.38
-        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.138.0)(cdk-nag@2.28.136)(constructs@10.3.0)(projen@0.79.27)
+        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.138.0)(cdk-nag@2.28.137)(constructs@10.3.0)(projen@0.79.27)
       '@types/jest':
         specifier: 29.5.12
         version: 29.5.12
@@ -512,7 +512,7 @@ importers:
     devDependencies:
       '@aws/pdk':
         specifier: 0.23.38
-        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.136)(constructs@10.3.0)(projen@0.79.27)
+        version: 0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.137)(constructs@10.3.0)(projen@0.79.27)
       '@types/jest':
         specifier: 29.5.12
         version: 29.5.12
@@ -1328,7 +1328,7 @@ packages:
       - ts-node
       - word-wrap
 
-  /@aws/pdk@0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.138.0)(cdk-nag@2.28.136)(constructs@10.3.0)(projen@0.79.27):
+  /@aws/pdk@0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.138.0)(cdk-nag@2.28.137)(constructs@10.3.0)(projen@0.79.27):
     resolution: {integrity: sha512-ROQ6FfsCr/Ylr2l+IDm8fLehC3DBRyIOPoCyxnHsGAatqG7r8mVxdkeLVu/sfcXSYlsXd7MWvA3iJIKMu8kfZA==}
     hasBin: true
     peerDependencies:
@@ -1340,7 +1340,7 @@ packages:
     dependencies:
       '@aws-cdk/aws-cognito-identitypool-alpha': 2.104.0-alpha.0(aws-cdk-lib@2.138.0)(constructs@10.3.0)
       aws-cdk-lib: 2.138.0(constructs@10.3.0)
-      cdk-nag: 2.28.136(aws-cdk-lib@2.138.0)(constructs@10.3.0)
+      cdk-nag: 2.28.137(aws-cdk-lib@2.138.0)(constructs@10.3.0)
       constructs: 10.3.0
       projen: 0.79.27(constructs@10.3.0)
     dev: true
@@ -1375,7 +1375,7 @@ packages:
       - ts-node
       - word-wrap
 
-  /@aws/pdk@0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.136)(constructs@10.3.0)(projen@0.79.27):
+  /@aws/pdk@0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.104.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.137)(constructs@10.3.0)(projen@0.79.27):
     resolution: {integrity: sha512-ROQ6FfsCr/Ylr2l+IDm8fLehC3DBRyIOPoCyxnHsGAatqG7r8mVxdkeLVu/sfcXSYlsXd7MWvA3iJIKMu8kfZA==}
     hasBin: true
     peerDependencies:
@@ -1387,7 +1387,7 @@ packages:
     dependencies:
       '@aws-cdk/aws-cognito-identitypool-alpha': 2.104.0-alpha.0(aws-cdk-lib@2.145.0)(constructs@10.3.0)
       aws-cdk-lib: 2.145.0(constructs@10.3.0)
-      cdk-nag: 2.28.136(aws-cdk-lib@2.145.0)(constructs@10.3.0)
+      cdk-nag: 2.28.137(aws-cdk-lib@2.145.0)(constructs@10.3.0)
       constructs: 10.3.0
       projen: 0.79.27(constructs@10.3.0)
     dev: true
@@ -1422,7 +1422,7 @@ packages:
       - ts-node
       - word-wrap
 
-  /@aws/pdk@0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.145.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.136)(constructs@10.3.0)(projen@0.79.27):
+  /@aws/pdk@0.23.38(@aws-cdk/aws-cognito-identitypool-alpha@2.145.0-alpha.0)(aws-cdk-lib@2.145.0)(cdk-nag@2.28.137)(constructs@10.3.0)(projen@0.79.27):
     resolution: {integrity: sha512-ROQ6FfsCr/Ylr2l+IDm8fLehC3DBRyIOPoCyxnHsGAatqG7r8mVxdkeLVu/sfcXSYlsXd7MWvA3iJIKMu8kfZA==}
     hasBin: true
     peerDependencies:
@@ -1434,7 +1434,7 @@ packages:
     dependencies:
       '@aws-cdk/aws-cognito-identitypool-alpha': 2.145.0-alpha.0(aws-cdk-lib@2.145.0)(constructs@10.3.0)
       aws-cdk-lib: 2.145.0(constructs@10.3.0)
-      cdk-nag: 2.28.136(aws-cdk-lib@2.145.0)(constructs@10.3.0)
+      cdk-nag: 2.28.137(aws-cdk-lib@2.145.0)(constructs@10.3.0)
       constructs: 10.3.0
       projen: 0.79.27(constructs@10.3.0)
     dev: true
@@ -1578,7 +1578,7 @@ packages:
     dependencies:
       '@babel/compat-data': 7.24.7
       '@babel/helper-validator-option': 7.24.7
-      browserslist: 4.23.0
+      browserslist: 4.23.1
       lru-cache: 5.1.1
       semver: 6.3.1
     dev: true
@@ -4050,6 +4050,17 @@ packages:
       update-browserslist-db: 1.0.13(browserslist@4.23.0)
     dev: true
 
+  /browserslist@4.23.1:
+    resolution: {integrity: sha512-TUfofFo/KsK/bWZ9TWQ5O26tsWW4Uhmt8IYklbnUa70udB6P2wA7w7o4PY4muaEPBQaAX+CEnmmIA41NVHtPVw==}
+    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
+    hasBin: true
+    dependencies:
+      caniuse-lite: 1.0.30001629
+      electron-to-chromium: 1.4.796
+      node-releases: 2.0.14
+      update-browserslist-db: 1.0.16(browserslist@4.23.1)
+    dev: true
+
   /bs-logger@0.2.6:
     resolution: {integrity: sha512-pd8DCoxmbgc7hyPKOvxtqNcjYoOsABPQdcCUjGp3d42VR2CX1ORhk2A87oqqu5R1kk+76nsxZupkmyd+MVtCog==}
     engines: {node: '>= 6'}
@@ -4184,8 +4195,12 @@ packages:
     resolution: {integrity: sha512-WcvhVRjXLKFB/kmOFVwELtMxyhq3iM/MvmXcyCe2PNf166c39mptscOc/45TTS96n2gpNV2z7+NakArTWZCQ3w==}
     dev: true
 
-  /cdk-nag@2.28.136(aws-cdk-lib@2.138.0)(constructs@10.3.0):
-    resolution: {integrity: sha512-VC7QtHzpuvZL851ReWpjL3/8BL7YOMi3fjlNhc1Z0aLtefQKSObdUcERFH/gcyDrUNjvT/Xt+17a8Gw+T1iWKA==}
+  /caniuse-lite@1.0.30001629:
+    resolution: {integrity: sha512-c3dl911slnQhmxUIT4HhYzT7wnBK/XYpGnYLOj4nJBaRiw52Ibe7YxlDaAeRECvA786zCuExhxIUJ2K7nHMrBw==}
+    dev: true
+
+  /cdk-nag@2.28.137(aws-cdk-lib@2.138.0)(constructs@10.3.0):
+    resolution: {integrity: sha512-jdvcN5D04r3b96uwzqDH2E7fAT6BASmfop3oStmp3Dq39DcbrsRNLOGs7P/ZGy33l4KSE0+QsAsyZCigb/g1Vw==}
     peerDependencies:
       aws-cdk-lib: ^2.116.0
       constructs: ^10.0.5
@@ -4194,8 +4209,8 @@ packages:
       constructs: 10.3.0
     dev: true
 
-  /cdk-nag@2.28.136(aws-cdk-lib@2.145.0)(constructs@10.3.0):
-    resolution: {integrity: sha512-VC7QtHzpuvZL851ReWpjL3/8BL7YOMi3fjlNhc1Z0aLtefQKSObdUcERFH/gcyDrUNjvT/Xt+17a8Gw+T1iWKA==}
+  /cdk-nag@2.28.137(aws-cdk-lib@2.145.0)(constructs@10.3.0):
+    resolution: {integrity: sha512-jdvcN5D04r3b96uwzqDH2E7fAT6BASmfop3oStmp3Dq39DcbrsRNLOGs7P/ZGy33l4KSE0+QsAsyZCigb/g1Vw==}
     peerDependencies:
       aws-cdk-lib: ^2.116.0
       constructs: ^10.0.5
@@ -4701,6 +4716,10 @@ packages:
 
   /electron-to-chromium@1.4.730:
     resolution: {integrity: sha512-oJRPo82XEqtQAobHpJIR3zW5YO3sSRRkPz2an4yxi1UvqhsGm54vR/wzTFV74a3soDOJ8CKW7ajOOX5ESzddwg==}
+    dev: true
+
+  /electron-to-chromium@1.4.796:
+    resolution: {integrity: sha512-NglN/xprcM+SHD2XCli4oC6bWe6kHoytcyLKCWXmRL854F0qhPhaYgUswUsglnPxYaNQIg2uMY4BvaomIf3kLA==}
     dev: true
 
   /emitter-listener@1.1.2:
@@ -8611,7 +8630,7 @@ packages:
       typescript: 5.4.5
     dev: true
 
-  /ts-jest@29.1.2(@babel/core@7.24.4)(jest@29.7.0)(typescript@5.4.5):
+  /ts-jest@29.1.2(@babel/core@7.24.4)(esbuild@0.20.2)(jest@29.7.0)(typescript@5.4.5):
     resolution: {integrity: sha512-br6GJoH/WUX4pu7FbZXuWGKGNDuU7b8Uj77g/Sp7puZV6EXzuByl6JrECvm0MzVzSTkSHWTihsXt+5XYER5b+g==}
     engines: {node: ^16.10.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -8634,6 +8653,7 @@ packages:
     dependencies:
       '@babel/core': 7.24.4
       bs-logger: 0.2.6
+      esbuild: 0.20.2
       fast-json-stable-stringify: 2.1.0
       jest: 29.7.0(@types/node@18.19.31)(ts-node@10.9.2)
       jest-util: 29.7.0
@@ -8941,6 +8961,17 @@ packages:
       browserslist: 4.23.0
       escalade: 3.1.2
       picocolors: 1.0.0
+    dev: true
+
+  /update-browserslist-db@1.0.16(browserslist@4.23.1):
+    resolution: {integrity: sha512-KVbTxlBYlckhF5wgfyZXTWnMn7MMZjMu9XG8bPlliUOP9ThaF4QnhP8qrjrH7DRzHfSk0oQv1wToW+iA5GajEQ==}
+    hasBin: true
+    peerDependencies:
+      browserslist: '>= 4.21.0'
+    dependencies:
+      browserslist: 4.23.1
+      escalade: 3.1.2
+      picocolors: 1.0.1
     dev: true
 
   /update-notifier@6.0.2:
