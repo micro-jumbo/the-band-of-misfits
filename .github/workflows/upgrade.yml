@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Set up safe directory for container execution
+        run: git config --global --add safe.directory /__w/
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
@@ -40,6 +42,8 @@ jobs:
           name: .repo.patch
           path: .repo.patch
           overwrite: true
+    container:
+      image: timbru31/java-node:17-20
   pr:
     name: Create Pull Request
     needs: upgrade
