@@ -185,7 +185,7 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@aws/pdk,@types/jest,change-case-all,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,jest,npm-check-updates,prettier,ts-node,typescript,@aws-cdk/aws-cognito-identitypool-alpha,aws-cdk-lib,cdk-nag"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,change-case-all,eslint-config-prettier,eslint-import-resolver-typescript,eslint-plugin-import,eslint-plugin-prettier,jest,npm-check-updates,prettier,ts-node,typescript,aws-cdk-lib,cdk-nag"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"

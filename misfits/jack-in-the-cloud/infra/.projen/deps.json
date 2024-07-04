@@ -1,11 +1,6 @@
 {
   "dependencies": [
     {
-      "name": "@aws/pdk",
-      "version": "0.23.38",
-      "type": "build"
-    },
-    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -16,17 +11,17 @@
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
-      "version": "^6",
+      "version": "^7",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/parser",
-      "version": "^6",
+      "version": "^7",
       "type": "build"
     },
     {
       "name": "aws-cdk",
-      "version": "^2.137.0",
+      "version": "^2.1.0",
       "type": "build"
     },
     {
@@ -68,11 +63,6 @@
       "type": "build"
     },
     {
-      "name": "projen",
-      "version": "^0.79.24",
-      "type": "build"
-    },
-    {
       "name": "ts-jest",
       "type": "build"
     },
@@ -86,7 +76,7 @@
     },
     {
       "name": "@aws-sdk/client-sfn",
-      "version": "3.556.0",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
@@ -108,7 +98,7 @@
     },
     {
       "name": "aws-cdk-lib",
-      "version": "^2.137.0",
+      "version": "^2.1.0",
       "type": "runtime"
     },
     {

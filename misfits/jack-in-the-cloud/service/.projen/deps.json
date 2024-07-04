@@ -1,11 +1,6 @@
 {
   "dependencies": [
     {
-      "name": "@aws/pdk",
-      "version": "0.23.38",
-      "type": "build"
-    },
-    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -16,12 +11,12 @@
     },
     {
       "name": "@typescript-eslint/eslint-plugin",
-      "version": "^6",
+      "version": "^7",
       "type": "build"
     },
     {
       "name": "@typescript-eslint/parser",
-      "version": "^6",
+      "version": "^7",
       "type": "build"
     },
     {
@@ -30,11 +25,6 @@
     },
     {
       "name": "aws-sdk-client-mock-jest",
-      "type": "build"
-    },
-    {
-      "name": "constructs",
-      "version": "^10.0.0",
       "type": "build"
     },
     {
@@ -60,11 +50,6 @@
       "type": "build"
     },
     {
-      "name": "projen",
-      "version": "^0.79.24",
-      "type": "build"
-    },
-    {
       "name": "ts-jest",
       "type": "build"
     },
@@ -74,17 +59,17 @@
     },
     {
       "name": "@aws-sdk/client-dynamodb",
-      "version": "3.556.0",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/client-sfn",
-      "version": "3.556.0",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/lib-dynamodb",
-      "version": "3.556.0",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {

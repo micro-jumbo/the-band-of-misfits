@@ -4,21 +4,11 @@ import { pascalCase } from "change-case-all";
 import { awscdk, typescript } from "projen";
 
 export interface DepsProperties {
-  cdkVersion: string;
-  pdkVersion: string;
   sdkVersion: string;
 }
 
-export function getDep(
-  versions: DepsProperties,
-  type: "CDK" | "PDK" | "SDK",
-  subtype?: string,
-) {
+export function getDep(versions: DepsProperties, type: "SDK", subtype: string) {
   switch (type) {
-    case "CDK":
-      return `aws-cdk-lib@${versions.cdkVersion}`;
-    case "PDK":
-      return `@aws/pdk@${versions.pdkVersion}`;
     case "SDK":
       return `@aws-sdk/${subtype}@${versions.sdkVersion}`;
   }
@@ -80,6 +70,7 @@ function createSmithyClientProject(
   monorepoProject: monorepo.MonorepoTsProject,
   apiProject: type_safe_api.TypeSafeApiProject,
   clientDefaults: typescript.TypeScriptProjectOptions,
+  depsVersions: DepsProperties,
 ): typescript.TypeScriptProject {
   const outdir = path.join("generated", "client", "typescript");
 
@@ -91,21 +82,22 @@ function createSmithyClientProject(
     sampleCode: false,
     eslint: false,
     deps: [
-      "tslib",
       "@aws-crypto/sha256-browser",
       "@aws-crypto/sha256-js",
-      "@aws-sdk/client-sts",
-      "@aws-sdk/core",
-      "@aws-sdk/credential-provider-node",
-      "@aws-sdk/middleware-host-header",
-      "@aws-sdk/middleware-logger",
-      "@aws-sdk/middleware-recursion-detection",
-      "@aws-sdk/middleware-signing",
-      "@aws-sdk/middleware-user-agent",
-      "@aws-sdk/region-config-resolver",
-      "@aws-sdk/types",
-      "@aws-sdk/util-user-agent-browser",
-      "@aws-sdk/util-user-agent-node",
+      getDep(depsVersions, "SDK", "client-sts"),
+      getDep(depsVersions, "SDK", "core"),
+      getDep(depsVersions, "SDK", "credential-provider-node"),
+      getDep(depsVersions, "SDK", "middleware-host-header"),
+      getDep(depsVersions, "SDK", "middleware-logger"),
+      getDep(depsVersions, "SDK", "middleware-recursion-detection"),
+      getDep(depsVersions, "SDK", "middleware-signing"),
+      getDep(depsVersions, "SDK", "middleware-user-agent"),
+      getDep(depsVersions, "SDK", "region-config-resolver"),
+      getDep(depsVersions, "SDK", "types"),
+      getDep(depsVersions, "SDK", "util-user-agent-browser"),
+      getDep(depsVersions, "SDK", "util-user-agent-node"),
+      getDep(depsVersions, "SDK", "util-user-agent-browser"),
+      getDep(depsVersions, "SDK", "util-user-agent-node"),
       "@smithy/config-resolver",
       "@smithy/fetch-http-handler",
       "@smithy/hash-node",
@@ -172,10 +164,14 @@ export function allProjects(misfit: Misfit): typescript.TypeScriptProject[] {
 
 export function createTheMisfit(
   root: monorepo.MonorepoTsProject,
-  depVersions: DepsProperties,
   misfitName: string,
   service: typescript.TypeScriptProject,
-  dependencies?: { example?: string[]; handlers?: string[]; infra?: string[] },
+  dependencies: {
+    depVersions: DepsProperties;
+    example?: string[];
+    handlers?: string[];
+    infra?: string[];
+  },
 ): Misfit {
   const apiDefaults = projectDefaults(root, misfitName, "api");
   const clientDefaults = projectDefaults(root, misfitName, "api-client");
@@ -210,18 +206,22 @@ export function createTheMisfit(
     },
   });
 
-  const smithyClient = createSmithyClientProject(root, api, clientDefaults);
+  const smithyClient = createSmithyClientProject(
+    root,
+    api,
+    clientDefaults,
+    dependencies?.depVersions,
+  );
   const infra = new infrastructure.InfrastructureTsProject({
     ...projectDefaults(root, misfitName, "infra"),
     deps: [service.name, ...(dependencies?.infra ?? [])],
     stackName: misfitName,
     typeSafeApis: [api],
-    cdkVersion: depVersions.cdkVersion,
   });
 
   const example = new awscdk.AwsCdkTypeScriptApp({
     ...projectDefaults(root, misfitName, "examples"),
-    cdkVersion: depVersions.cdkVersion,
+    cdkVersion: "2.1.0",
     deps: [infra.name, smithyClient.name, ...(dependencies?.example ?? [])],
     tsconfig: {
       compilerOptions: {

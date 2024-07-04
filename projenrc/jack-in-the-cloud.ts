@@ -27,7 +27,8 @@ export function jackInTheCloud(
     devDeps: ["aws-sdk-client-mock", "aws-sdk-client-mock-jest"],
   });
 
-  return createTheMisfit(root, depVersions, jackName, service, {
+  return createTheMisfit(root, jackName, service, {
+    depVersions: depVersions,
     example: [jimmy.name],
     handlers: [jimmy.name],
     infra: [
