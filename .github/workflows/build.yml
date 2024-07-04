@@ -19,6 +19,8 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.ref }}
           repository: ${{ github.event.pull_request.head.repo.full_name }}
+      - name: Set ownership
+        run: chown -R $(id -u):$(id -g) $PWD
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
         with:
@@ -27,11 +29,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20.0.0
-      - name: setup java
-        uses: actions/setup-java@v4
-        with:
-          distribution: corretto
-          java-version: "17"
       - name: Install dependencies
         run: pnpm i --no-frozen-lockfile
       - name: build
@@ -55,6 +52,8 @@ jobs:
           echo "::error::Files were changed during build (see build log). If this was triggered from a fork, you will need to update your branch."
           cat .repo.patch
           exit 1
+    container:
+      image: timbru31/java-node:17-20
   self-mutation:
     needs: build
     runs-on: ubuntu-latest
