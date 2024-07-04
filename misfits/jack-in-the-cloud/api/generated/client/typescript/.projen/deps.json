@@ -1,11 +1,6 @@
 {
   "dependencies": [
     {
-      "name": "@aws/pdk",
-      "version": "0.23.38",
-      "type": "build"
-    },
-    {
       "name": "@types/jest",
       "type": "build"
     },
@@ -15,21 +10,12 @@
       "type": "build"
     },
     {
-      "name": "constructs",
-      "version": "^10.0.0",
-      "type": "build"
-    },
-    {
       "name": "jest",
       "type": "build"
     },
     {
       "name": "jest-junit",
       "version": "^15",
-      "type": "build"
-    },
-    {
-      "name": "projen",
       "type": "build"
     },
     {
@@ -50,50 +36,62 @@
     },
     {
       "name": "@aws-sdk/client-sts",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/core",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/credential-provider-node",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/middleware-host-header",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/middleware-logger",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/middleware-recursion-detection",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/middleware-signing",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/middleware-user-agent",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/region-config-resolver",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/types",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/util-user-agent-browser",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/util-user-agent-node",
+      "version": "3.609.0",
       "type": "runtime"
     },
     {
@@ -178,10 +176,6 @@
     },
     {
       "name": "@smithy/util-utf8",
-      "type": "runtime"
-    },
-    {
-      "name": "tslib",
       "type": "runtime"
     },
     {

@@ -44,7 +44,8 @@ jspm_packages/
 /lib
 /dist/
 !/.eslintrc.json
-.nx/cache
+.nx/*
+!.nx/plugins
 !/nx.json
 !/.nxignore
 !/misfits/jack-in-the-cloud/api/generated/runtime/README.md
@@ -54,3 +55,4 @@ jspm_packages/
 !/.syncpackrc.json
 !/.projenrc.ts
 !/LICENSE
+.idea
