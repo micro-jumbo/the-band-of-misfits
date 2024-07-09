@@ -460,13 +460,15 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "78736020a3b1079918bb6fb2b08e3a91d5e85a7c83cfd28ade425efdd45ef5d1.zip",
+          "S3Key": "08d37063eea1d749ed2b66526992798659cb15c0c35dae31193f0b3a0469678d.zip",
         },
         "Environment": {
           "Variables": {
             "MACHINE_ARN": {
               "Ref": "JackOfTheCloudMachineStateMachineC6DCCDE1",
             },
+            "POWERTOOLS_METRICS_NAMESPACE": "the-band-of-misfits",
+            "POWERTOOLS_SERVICE_NAME": "jack-in-the-cloud",
             "TABLE_NAME": {
               "Ref": "JackOfTheCloudTableE206ED70",
             },
@@ -529,6 +531,30 @@ exports[`Snapshot 1`] = `
               ],
               "Effect": "Allow",
               "Resource": "*",
+            },
+            {
+              "Action": [
+                "dynamodb:BatchGetItem",
+                "dynamodb:GetRecords",
+                "dynamodb:GetShardIterator",
+                "dynamodb:Query",
+                "dynamodb:GetItem",
+                "dynamodb:Scan",
+                "dynamodb:ConditionCheckItem",
+                "dynamodb:DescribeTable",
+              ],
+              "Effect": "Allow",
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "JackOfTheCloudTableE206ED70",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Ref": "AWS::NoValue",
+                },
+              ],
             },
             {
               "Action": [
@@ -726,13 +752,15 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "b212446e40408f938ad41701c7280138beec28ff45f53b641ef5015f78b81598.zip",
+          "S3Key": "0dd7dd5fa72c1a86829f55f8a670b30079644c6dc150c1a19412f3306fdf7ce6.zip",
         },
         "Environment": {
           "Variables": {
             "MACHINE_ARN": {
               "Ref": "JackOfTheCloudMachineStateMachineC6DCCDE1",
             },
+            "POWERTOOLS_METRICS_NAMESPACE": "the-band-of-misfits",
+            "POWERTOOLS_SERVICE_NAME": "jack-in-the-cloud",
             "TABLE_NAME": {
               "Ref": "JackOfTheCloudTableE206ED70",
             },
@@ -836,7 +864,7 @@ exports[`Snapshot 1`] = `
       },
       "Type": "AWS::IAM::Policy",
     },
-    "JackOfTheCloudApiDeploymentA136B1033655c5f8482c30686a24b3720415d6d4": {
+    "JackOfTheCloudApiDeploymentA136B10376f459681a8c096fbca74ea77fe412eb": {
       "DependsOn": [
         "JackOfTheCloudApiPrepareSpecCustomResource8345BEC3",
       ],
@@ -928,7 +956,7 @@ exports[`Snapshot 1`] = `
           "Format": "$context.identity.sourceIp $context.identity.caller $context.identity.user [$context.requestTime] "$context.httpMethod $context.resourcePath $context.protocol" $context.status $context.responseLength $context.requestId",
         },
         "DeploymentId": {
-          "Ref": "JackOfTheCloudApiDeploymentA136B1033655c5f8482c30686a24b3720415d6d4",
+          "Ref": "JackOfTheCloudApiDeploymentA136B10376f459681a8c096fbca74ea77fe412eb",
         },
         "MethodSettings": [
           {
@@ -1224,7 +1252,7 @@ exports[`Snapshot 1`] = `
           "bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "key": "9739e1961270260ce066bc5075416835209d80554348e46b42f0483956209e8d.json",
+          "key": "a1ad443f7e1d7afb707353f1b24ea632ad0b3666980eebf4015d2f660e02e909.json",
         },
         "integrations": {
           "cancelTimer": {
@@ -1345,7 +1373,7 @@ exports[`Snapshot 1`] = `
           "bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "key": "9739e1961270260ce066bc5075416835209d80554348e46b42f0483956209e8d.json-prepared",
+          "key": "a1ad443f7e1d7afb707353f1b24ea632ad0b3666980eebf4015d2f660e02e909.json-prepared",
         },
         "securitySchemes": {
           "aws.auth.sigv4": {
@@ -1706,7 +1734,7 @@ exports[`Snapshot 1`] = `
             {
               "applies_to": [
                 {
-                  "regex": "/^Resource::arn:<AWS::Partition>:s3:.*/9739e1961270260ce066bc5075416835209d80554348e46b42f0483956209e8d.json-prepared/*/g",
+                  "regex": "/^Resource::arn:<AWS::Partition>:s3:.*/a1ad443f7e1d7afb707353f1b24ea632ad0b3666980eebf4015d2f660e02e909.json-prepared/*/g",
                 },
               ],
               "id": "AwsSolutions-IAM5",
@@ -1724,7 +1752,7 @@ exports[`Snapshot 1`] = `
             {
               "applies_to": [
                 {
-                  "regex": "/^Resource::arn:<AWS::Partition>:s3:.*/9739e1961270260ce066bc5075416835209d80554348e46b42f0483956209e8d.json-prepared/*/g",
+                  "regex": "/^Resource::arn:<AWS::Partition>:s3:.*/a1ad443f7e1d7afb707353f1b24ea632ad0b3666980eebf4015d2f660e02e909.json-prepared/*/g",
                 },
               ],
               "id": "AwsPrototyping-IAMNoWildcardPermissions",
@@ -1841,7 +1869,7 @@ exports[`Snapshot 1`] = `
                         {
                           "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
                         },
-                        "/9739e1961270260ce066bc5075416835209d80554348e46b42f0483956209e8d.json",
+                        "/a1ad443f7e1d7afb707353f1b24ea632ad0b3666980eebf4015d2f660e02e909.json",
                       ],
                     ],
                   },
@@ -1861,7 +1889,7 @@ exports[`Snapshot 1`] = `
                         {
                           "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
                         },
-                        "/9739e1961270260ce066bc5075416835209d80554348e46b42f0483956209e8d.json-prepared/*",
+                        "/a1ad443f7e1d7afb707353f1b24ea632ad0b3666980eebf4015d2f660e02e909.json-prepared/*",
                       ],
                     ],
                   },
@@ -1888,13 +1916,15 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "aaad1f813d80061405ddd64961b225971cabe1fefbe2bf9c8feedd51542302b3.zip",
+          "S3Key": "294703734a30b42f8651fb9a93d39f2f7a73a1fd1e4bb250a2be11332aaa84de.zip",
         },
         "Environment": {
           "Variables": {
             "MACHINE_ARN": {
               "Ref": "JackOfTheCloudMachineStateMachineC6DCCDE1",
             },
+            "POWERTOOLS_METRICS_NAMESPACE": "the-band-of-misfits",
+            "POWERTOOLS_SERVICE_NAME": "jack-in-the-cloud",
             "TABLE_NAME": {
               "Ref": "JackOfTheCloudTableE206ED70",
             },

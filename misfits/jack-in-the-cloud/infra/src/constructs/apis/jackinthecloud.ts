@@ -1,8 +1,9 @@
-import { UserIdentity } from "@aws/pdk/identity";
-import { Authorizers } from "@aws/pdk/type-safe-api";
+import { Authorizers, Integrations } from "@aws/pdk/type-safe-api";
 import {
   Api,
-  MockIntegrations,
+  CancelTimerFunction,
+  CreateTimerFunction,
+  UpdateTimerFunction,
 } from "@the-band-of-misfits/jack-in-the-cloud-api-typescript-infra";
 import { Stack } from "aws-cdk-lib";
 import { Cors } from "aws-cdk-lib/aws-apigateway";
@@ -13,16 +14,17 @@ import {
   PolicyDocument,
   PolicyStatement,
 } from "aws-cdk-lib/aws-iam";
+import { Architecture, FunctionProps, Runtime } from "aws-cdk-lib/aws-lambda";
 import { Construct } from "constructs";
+import { DynamoTable } from "../dynamo-table";
+import { RunTimerStateMachine } from "../state-machine";
 
 /**
  * Api construct props.
  */
 export interface JackInTheCloudProps {
-  /**
-   * Instance of the UserIdentity.
-   */
-  readonly userIdentity: UserIdentity;
+  readonly stateMachine: RunTimerStateMachine;
+  readonly dynamoTable: DynamoTable;
 }
 
 /**
@@ -34,16 +36,67 @@ export class JackInTheCloud extends Construct {
    */
   public readonly api: Api;
 
-  constructor(scope: Construct, id: string, props?: JackInTheCloudProps) {
+  constructor(scope: Construct, id: string, props: JackInTheCloudProps) {
     super(scope, id);
 
+    const lambdaProps: Partial<FunctionProps> = {
+      architecture: Architecture.ARM_64,
+      environment: {
+        MACHINE_ARN: props.stateMachine.stateMachineArn,
+        TABLE_NAME: props.dynamoTable.tableName,
+        POWERTOOLS_SERVICE_NAME: "jack-in-the-cloud",
+        POWERTOOLS_METRICS_NAMESPACE: "the-band-of-misfits",
+      },
+      runtime: Runtime.NODEJS_20_X,
+    };
+
+    const createTimerFunction = new CreateTimerFunction(
+      this,
+      "CreateTimer",
+      lambdaProps,
+    );
+    props.dynamoTable.grantWriteData(createTimerFunction);
+    props.stateMachine.grantStartExecution(createTimerFunction);
+
+    const cancelTimerFunction = new CancelTimerFunction(
+      this,
+      "CancelTimer",
+      lambdaProps,
+    );
+    props.dynamoTable.grantReadData(cancelTimerFunction);
+    props.dynamoTable.grantWriteData(cancelTimerFunction);
+    props.stateMachine.grantStopExecution(cancelTimerFunction);
+
+    const updateTimerFunction = new UpdateTimerFunction(
+      this,
+      "UpdateTimer",
+      lambdaProps,
+    );
+    props.dynamoTable.grantReadData(updateTimerFunction);
+    props.dynamoTable.grantWriteData(updateTimerFunction);
+    props.stateMachine.grantStartExecution(updateTimerFunction);
+    props.stateMachine.grantStopExecution(updateTimerFunction);
+
     this.api = new Api(this, id, {
+      webAclOptions: {
+        disable: true,
+      },
       defaultAuthorizer: Authorizers.iam(),
       corsOptions: {
         allowOrigins: Cors.ALL_ORIGINS,
         allowMethods: Cors.ALL_METHODS,
       },
-      integrations: MockIntegrations.mockAll(),
+      integrations: {
+        createTimer: {
+          integration: Integrations.lambda(createTimerFunction),
+        },
+        cancelTimer: {
+          integration: Integrations.lambda(cancelTimerFunction),
+        },
+        updateTimer: {
+          integration: Integrations.lambda(updateTimerFunction),
+        },
+      },
       policy: new PolicyDocument({
         statements: [
           // Here we grant any AWS credentials from the account that the prototype is deployed in to call the api.
@@ -67,14 +120,5 @@ export class JackInTheCloud extends Construct {
         ],
       }),
     });
-
-    // Grant authenticated users access to invoke the api
-    props?.userIdentity.identityPool.authenticatedRole.addToPrincipalPolicy(
-      new PolicyStatement({
-        effect: Effect.ALLOW,
-        actions: ["execute-api:Invoke"],
-        resources: [this.api.api.arnForExecuteApi("*", "/*", "*")],
-      }),
-    );
   }
 }

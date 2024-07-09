@@ -1,7 +1,7 @@
 $version: "2"
 namespace eu.micro_jumbo.the_band_of_misfits
 
-structure UpdateTimerInputPayload {
+structure UpdateTimerInput {
     @required
     id: String
     @required
@@ -9,11 +9,6 @@ structure UpdateTimerInputPayload {
     @required
     payload: String
     type: String
-}
-
-structure UpdateTimerInput {
-    @httpPayload
-    payload: UpdateTimerInputPayload
 }
 
 structure UpdateTimerOutput {
