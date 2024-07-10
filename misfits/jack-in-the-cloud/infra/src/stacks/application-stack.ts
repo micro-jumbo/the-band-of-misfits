@@ -8,7 +8,7 @@ import {
   StackProps,
 } from "aws-cdk-lib";
 import { Construct } from "constructs";
-import { ApiConstruct } from "../constructs/api";
+import { JackInTheCloud } from "../constructs/apis/jackinthecloud";
 import { DynamoTable } from "../constructs/dynamo-table";
 import { RunTimerStateMachine } from "../constructs/state-machine";
 
@@ -41,7 +41,10 @@ export class ApplicationStack extends Stack {
 
     const dynamoTable = new DynamoTable(this, "JackOfTheCloudTable");
 
-    new ApiConstruct(this, "JackOfTheCloudApi", { stateMachine, dynamoTable });
+    new JackInTheCloud(this, "JackOfTheCloudApi", {
+      stateMachine,
+      dynamoTable,
+    });
 
     this.exportValue(this.topic.topicArn, {
       name: `${this.stackName}-topic-arn`,

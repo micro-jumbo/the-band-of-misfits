@@ -1,18 +1,13 @@
 $version: "2"
 namespace eu.micro_jumbo.the_band_of_misfits
 
-structure CreateTimerInputPayload {
+structure CreateTimerInput {
     id: String
     @required
     fireAt: DateTime
     @required
     payload: String
     type: String
-}
-
-structure CreateTimerInput {
-    @httpPayload
-    payload: CreateTimerInputPayload
 }
 
 structure CreateTimerOutput {

@@ -1,4 +1,5 @@
 import {
+  CancelTimerCommand,
   CreateTimerCommand,
   JackInTheCloudClient,
   UpdateTimerCommand,
@@ -11,27 +12,23 @@ async function createTimer() {
   });
   const createResult = await client.send(
     new CreateTimerCommand({
-      payload: {
-        fireAt: ISO8601.toDate(ISO8601.add(ISO8601.now(), 60, 'seconds')),
-        payload: 'blablaba',
-        type: 'normalka',
-      },
+      fireAt: ISO8601.toDate(ISO8601.add(ISO8601.now(), 60, 'seconds')),
+      payload: 'blablaba',
+      type: 'normalka',
     }),
   );
   console.log(`Created timer with id [${createResult.id}]`);
   const updateResult = await client.send(
     new UpdateTimerCommand({
-      payload: {
-        id: createResult.id,
-        fireAt: ISO8601.toDate(ISO8601.add(ISO8601.now(), 120, 'seconds')),
-        payload: 'updated',
-        type: 'normalka',
-      },
+      id: createResult.id,
+      fireAt: ISO8601.toDate(ISO8601.add(ISO8601.now(), 120, 'seconds')),
+      payload: 'updated',
+      type: 'normalka',
     }),
   );
   console.log(`Updated timer with id [${updateResult.id}]`);
-  // await client.send(new CancelTimerCommand({ id: createResult.id }));
-  // console.log(`Cancelled timer with id [${createResult.id}]`);
+  await client.send(new CancelTimerCommand({ id: createResult.id }));
+  console.log(`Cancelled timer with id [${createResult.id}]`);
 }
 
 createTimer().catch((err) => {

@@ -36,19 +36,19 @@
     "jest": "29.7.0",
     "jest-junit": "^15",
     "prettier": "3.3.2",
-    "ts-jest": "29.1.5",
+    "ts-jest": "29.2.0",
     "ts-node": "10.9.2",
     "typescript": "5.5.3"
   },
   "dependencies": {
     "@aws-sdk/client-sfn": "3.609.0",
-    "@aws/pdk": "0.23.45",
+    "@aws/pdk": "0.23.46",
     "@the-band-of-misfits/jack-in-the-cloud-api-typescript-infra": "0.0.0",
     "@the-band-of-misfits/jack-in-the-cloud-service": "0.0.0",
-    "@types/aws-lambda": "8.10.140",
+    "@types/aws-lambda": "8.10.141",
     "aws-cdk-lib": "^2.1.0",
     "aws-lambda": "1.0.7",
-    "cdk-nag": "2.28.156",
+    "cdk-nag": "2.28.158",
     "constructs": "^10.0.5"
   },
   "main": "src/index",
@@ -57,8 +57,8 @@
   "jest": {
     "coverageProvider": "v8",
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-      "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)"
+      "<rootDir>/@(src|test)/**/?(*.)+(spec|test).ts?(x)",
+      "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)"
     ],
     "clearMocks": true,
     "collectCoverage": true,
