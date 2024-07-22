@@ -1,3 +1,4 @@
+import { randomUUID } from 'crypto';
 import {
   CreateTimerChainedHandlerFunction,
   CreateTimerChainedRequestInput,
@@ -36,11 +37,14 @@ export const createTimer: CreateTimerChainedHandlerFunction = async (
   } = request;
 
   const createTimerInput: CreateTimerInput = {
-    id: body.id,
+    id: body.id ?? randomUUID(),
     type: body.type || 'DEFAULT',
     fireAt: ISO8601.fromDate(body.fireAt),
     payload: body.payload,
   };
+  PowerTools.logger().addPersistentLogAttributes({
+    timerId: createTimerInput.id,
+  });
 
   const result = await timerService.createTimer(createTimerInput);
   return { statusCode: 200, body: result };

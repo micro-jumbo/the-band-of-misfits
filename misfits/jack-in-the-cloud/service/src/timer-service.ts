@@ -13,10 +13,11 @@ import {
 import {
   ISO8601,
   PartialBy,
+  PowerTools,
 } from '@the-band-of-misfits/jimmy-the-deckhand-utils';
 import { DbTimerProps, TimerProps } from './types';
 
-export type CreateTimerInput = PartialBy<TimerProps, 'id'>;
+export type CreateTimerInput = TimerProps;
 export type CreateTimerOutput = DbTimerProps;
 export type CancelTimerInput = Pick<TimerProps, 'id'>;
 export type UpdateTimerInput = TimerProps;
@@ -33,16 +34,16 @@ export class TimerService {
   constructor(private readonly props: TimerServiceProps) {}
 
   async createTimer(input: CreateTimerInput): Promise<CreateTimerOutput> {
-    console.log('Creating timer', input);
+    PowerTools.logger().info('Creating timer', JSON.stringify(input));
+    PowerTools.metrics().addDimension('timerType', input.type);
     this.validate(input);
 
     const timer: DbTimerProps = {
       ...input,
-      id: input.id ?? randomUUID(),
+      id: input.id,
       executionId: randomUUID(),
       ttl: ISO8601.toDate(ISO8601.fromString(input.fireAt)).getTime(),
     };
-    console.info(`Creating timer ${timer.id}`, input);
     await this.props.stepFunctionsClient().send(
       new StartExecutionCommand({
         stateMachineArn: this.props.machineArn,
@@ -62,7 +63,7 @@ export class TimerService {
   }
 
   async cancelTimer(input: CancelTimerInput): Promise<void> {
-    console.info(`Cancelling timer ${input.id}`);
+    PowerTools.logger().info(`Cancelling timer ${input.id}`);
     const result = await this.props.dynamoDbClient().send(
       new GetCommand({
         TableName: this.props.tableName,
@@ -70,8 +71,10 @@ export class TimerService {
       }),
     );
     const timer: DbTimerProps = result.Item as DbTimerProps;
+    PowerTools.metrics().addDimension('timerType', timer.type);
+
     const executionArn = `${this.props.machineArn.replace(':stateMachine:', ':execution:')}:${timer.executionId}`;
-    console.info(`Execution ARN: ${executionArn}`);
+    PowerTools.logger().info(`Execution ARN: ${executionArn}`);
     await this.props.stepFunctionsClient().send(
       new StopExecutionCommand({
         executionArn,
@@ -88,7 +91,10 @@ export class TimerService {
 
   async updateTimer(input: TimerProps): Promise<UpdateTimerOutput> {
     this.validate(input);
-    console.info(`Updating timer ${input.id}`, input);
+    PowerTools.logger().info(
+      `Updating timer ${input.id}`,
+      JSON.stringify(input),
+    );
 
     await this.cancelTimer({ id: input.id });
     return this.createTimer(input);

@@ -2,7 +2,7 @@
 
 ![jack-in-the-cloud](../../assets/jack-in-the-cloud.jpg)
 
-Jack in the Cloud is a service that delivers scheduled notifications. It exposes three operations: `CreateTimer` `UpdateTimer` and `CancelTimer`. 
+Jack in the Cloud is a service that delivers scheduled notifications. It exposes three operations: `CreateTimer`, `UpdateTimer` and `CancelTimer`. 
 Each `Timer` has a `type`, `payload` and `fireAt` timestamp. Whenever Timer fires (at `fireAt`), `payload` is delivered to target specified during deployment for give `type`.
 
 ## Deployment

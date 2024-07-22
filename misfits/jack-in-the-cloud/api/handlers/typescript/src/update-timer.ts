@@ -41,6 +41,9 @@ export const updateTimer: UpdateTimerChainedHandlerFunction = async (
     fireAt: ISO8601.fromDate(body.fireAt),
     payload: body.payload,
   };
+  PowerTools.logger().addPersistentLogAttributes({
+    timerId: updateTimerInput.id,
+  });
 
   const result = await timerService.updateTimer(updateTimerInput);
   return { statusCode: 200, body: result };
