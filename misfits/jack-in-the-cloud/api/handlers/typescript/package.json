@@ -32,6 +32,9 @@
     "typescript": "5.5.3"
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "3.609.0",
+    "@aws-sdk/client-sfn": "3.609.0",
+    "@aws-sdk/lib-dynamodb": "3.609.0",
     "@the-band-of-misfits/jack-in-the-cloud-api-typescript-runtime": "0.0.0",
     "@the-band-of-misfits/jack-in-the-cloud-service": "0.0.0",
     "@the-band-of-misfits/jimmy-the-deckhand-utils": "0.0.0"

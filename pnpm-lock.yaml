@@ -263,6 +263,15 @@ importers:
 
   misfits/jack-in-the-cloud/api/handlers/typescript:
     dependencies:
+      '@aws-sdk/client-dynamodb':
+        specifier: 3.609.0
+        version: 3.609.0
+      '@aws-sdk/client-sfn':
+        specifier: 3.609.0
+        version: 3.609.0
+      '@aws-sdk/lib-dynamodb':
+        specifier: 3.609.0
+        version: 3.609.0(@aws-sdk/client-dynamodb@3.609.0)
       '@the-band-of-misfits/jack-in-the-cloud-api-typescript-runtime':
         specifier: 0.0.0
         version: link:../../generated/runtime/typescript
@@ -516,6 +525,15 @@ importers:
 
   misfits/jimmy-the-deckhand/utils:
     dependencies:
+      '@aws-lambda-powertools/logger':
+        specifier: ^1.18.1
+        version: 1.18.1
+      '@aws-lambda-powertools/metrics':
+        specifier: ^1.18.1
+        version: 1.18.1
+      '@aws-lambda-powertools/tracer':
+        specifier: ^1.18.1
+        version: 1.18.1
       iso-datestring-validator:
         specifier: 2.2.2
         version: 2.2.2
@@ -693,7 +711,7 @@ packages:
       '@aws-sdk/util-user-agent-browser': 3.609.0
       '@aws-sdk/util-user-agent-node': 3.609.0
       '@smithy/config-resolver': 3.0.5
-      '@smithy/core': 2.2.6
+      '@smithy/core': 2.2.8
       '@smithy/fetch-http-handler': 3.2.1
       '@smithy/hash-node': 3.0.3
       '@smithy/invalid-dependency': 3.0.3
@@ -744,7 +762,7 @@ packages:
       '@aws-sdk/util-user-agent-browser': 3.609.0
       '@aws-sdk/util-user-agent-node': 3.609.0
       '@smithy/config-resolver': 3.0.5
-      '@smithy/core': 2.2.6
+      '@smithy/core': 2.2.8
       '@smithy/fetch-http-handler': 3.2.1
       '@smithy/hash-node': 3.0.3
       '@smithy/invalid-dependency': 3.0.3
@@ -985,7 +1003,7 @@ packages:
       '@aws-sdk/util-user-agent-browser': 3.609.0
       '@aws-sdk/util-user-agent-node': 3.609.0
       '@smithy/config-resolver': 3.0.5
-      '@smithy/core': 2.2.6
+      '@smithy/core': 2.2.8
       '@smithy/fetch-http-handler': 3.2.1
       '@smithy/hash-node': 3.0.3
       '@smithy/invalid-dependency': 3.0.3

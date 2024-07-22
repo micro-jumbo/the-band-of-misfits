@@ -11,6 +11,11 @@ export function jimmyTheDeckhand(
 ) {
   return new typescript.TypeScriptProject({
     ...projectDefaults(root, jimmyName, "utils"),
-    deps: ["iso-datestring-validator"],
+    deps: [
+      "iso-datestring-validator",
+      "@aws-lambda-powertools/metrics",
+      "@aws-lambda-powertools/logger",
+      "@aws-lambda-powertools/tracer",
+    ],
   });
 }

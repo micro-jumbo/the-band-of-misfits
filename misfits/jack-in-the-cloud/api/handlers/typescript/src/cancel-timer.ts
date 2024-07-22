@@ -2,17 +2,23 @@ import {
   CancelTimerChainedHandlerFunction,
   cancelTimerHandler,
   INTERCEPTORS,
-  LoggingInterceptor,
 } from '@the-band-of-misfits/jack-in-the-cloud-api-typescript-runtime';
 import {
   CancelTimerInput,
   TimerService,
 } from '@the-band-of-misfits/jack-in-the-cloud-service';
+import {
+  MonitoringInterceptor,
+  PowerTools,
+} from '@the-band-of-misfits/jimmy-the-deckhand-utils';
+import { dynamoDbClient, stepFunctionsClient } from './aws-clients';
 
-const timerService = new TimerService(
-  process.env.MACHINE_ARN!,
-  process.env.TABLE_NAME!,
-);
+const timerService = new TimerService({
+  machineArn: process.env.MACHINE_ARN!,
+  tableName: process.env.TABLE_NAME!,
+  dynamoDbClient: dynamoDbClient,
+  stepFunctionsClient: stepFunctionsClient,
+});
 
 /**
  * Type-safe handler for the CancelTimer operation
@@ -20,7 +26,7 @@ const timerService = new TimerService(
 export const cancelTimer: CancelTimerChainedHandlerFunction = async (
   request,
 ) => {
-  LoggingInterceptor.getLogger(request).info('Start CancelTimer Operation');
+  PowerTools.logger().info('Start CancelTimer Operation');
 
   const {
     input: { body },
@@ -38,4 +44,8 @@ export const cancelTimer: CancelTimerChainedHandlerFunction = async (
  * Entry point for the AWS Lambda handler for the CancelTimer operation.
  * The cancelTimerHandler method wraps the type-safe handler and manages marshalling inputs and outputs
  */
-export const handler = cancelTimerHandler(...INTERCEPTORS, cancelTimer);
+export const handler = cancelTimerHandler(
+  ...INTERCEPTORS,
+  MonitoringInterceptor.intercept,
+  cancelTimer,
+);
