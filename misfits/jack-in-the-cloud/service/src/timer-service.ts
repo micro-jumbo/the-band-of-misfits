@@ -1,48 +1,50 @@
-import { randomUUID } from 'crypto';
+import { randomUUID } from "crypto";
 import {
   SFNClient,
   StartExecutionCommand,
   StopExecutionCommand,
-} from '@aws-sdk/client-sfn';
+} from "@aws-sdk/client-sfn";
 import {
   DeleteCommand,
   DynamoDBDocumentClient,
   GetCommand,
   PutCommand,
-} from '@aws-sdk/lib-dynamodb';
+} from "@aws-sdk/lib-dynamodb";
 import {
   ISO8601,
-  PartialBy,
-} from '@the-band-of-misfits/jimmy-the-deckhand-utils';
-import { DbTimerProps, TimerProps } from './types';
+  PowerTools,
+} from "@the-band-of-misfits/jimmy-the-deckhand-utils";
+import { DbTimerProps, TimerProps } from "./types";
 
-export type CreateTimerInput = PartialBy<TimerProps, 'id'>;
+export type CreateTimerInput = TimerProps;
 export type CreateTimerOutput = DbTimerProps;
-export type CancelTimerInput = Pick<TimerProps, 'id'>;
+export type CancelTimerInput = Pick<TimerProps, "id">;
 export type UpdateTimerInput = TimerProps;
 export type UpdateTimerOutput = DbTimerProps;
 
 export interface TimerServiceProps {
   machineArn: string;
   tableName: string;
+  topicArn: string;
   dynamoDbClient: () => DynamoDBDocumentClient;
   stepFunctionsClient: () => SFNClient;
+  snsClient: () => SnsClient;
 }
 
 export class TimerService {
   constructor(private readonly props: TimerServiceProps) {}
 
   async createTimer(input: CreateTimerInput): Promise<CreateTimerOutput> {
-    console.log('Creating timer', input);
+    PowerTools.logger().info("Creating timer", JSON.stringify(input));
+    PowerTools.metrics().addDimension("timerType", input.type);
     this.validate(input);
 
     const timer: DbTimerProps = {
       ...input,
-      id: input.id ?? randomUUID(),
+      id: input.id,
       executionId: randomUUID(),
       ttl: ISO8601.toDate(ISO8601.fromString(input.fireAt)).getTime(),
     };
-    console.info(`Creating timer ${timer.id}`, input);
     await this.props.stepFunctionsClient().send(
       new StartExecutionCommand({
         stateMachineArn: this.props.machineArn,
@@ -54,7 +56,7 @@ export class TimerService {
       new PutCommand({
         TableName: this.props.tableName,
         Item: timer,
-        ConditionExpression: 'attribute_not_exists(id)',
+        ConditionExpression: "attribute_not_exists(id)",
       }),
     );
 
@@ -62,7 +64,7 @@ export class TimerService {
   }
 
   async cancelTimer(input: CancelTimerInput): Promise<void> {
-    console.info(`Cancelling timer ${input.id}`);
+    PowerTools.logger().info(`Cancelling timer ${input.id}`);
     const result = await this.props.dynamoDbClient().send(
       new GetCommand({
         TableName: this.props.tableName,
@@ -70,12 +72,14 @@ export class TimerService {
       }),
     );
     const timer: DbTimerProps = result.Item as DbTimerProps;
-    const executionArn = `${this.props.machineArn.replace(':stateMachine:', ':execution:')}:${timer.executionId}`;
-    console.info(`Execution ARN: ${executionArn}`);
+    PowerTools.metrics().addDimension("timerType", timer.type);
+
+    const executionArn = `${this.props.machineArn.replace(":stateMachine:", ":execution:")}:${timer.executionId}`;
+    PowerTools.logger().info(`Execution ARN: ${executionArn}`);
     await this.props.stepFunctionsClient().send(
       new StopExecutionCommand({
         executionArn,
-        cause: 'Cancelled by API',
+        cause: "Cancelled by API",
       }),
     );
     await this.props.dynamoDbClient().send(
@@ -88,20 +92,37 @@ export class TimerService {
 
   async updateTimer(input: TimerProps): Promise<UpdateTimerOutput> {
     this.validate(input);
-    console.info(`Updating timer ${input.id}`, input);
+    PowerTools.logger().info(
+      `Updating timer ${input.id}`,
+      JSON.stringify(input),
+    );
 
     await this.cancelTimer({ id: input.id });
     return this.createTimer(input);
   }
 
-  validate(timer: PartialBy<TimerProps, 'id'>) {
+  async fireTimer(input: TimerProps): Promise<void> {
+    PowerTools.logger().info(`Firing timer ${input.id}`, JSON.stringify(input));
+    if (ISO8601.isBefore(input.fireAt, ISO8601.now())) {
+      throw new Error("Timer not ready to be fired");
+    }
+    this.props.snsClient().send(
+      new PublishCommand({
+        topic: this.props.topicArn,
+        body: input.payload,
+        attributes: [{ type: input.type }],
+      }),
+    );
+  }
+
+  validate(timer: TimerProps) {
     if (ISO8601.isBefore(timer.fireAt, ISO8601.now())) {
-      throw new Error('fireAt must be in the future');
+      throw new Error("fireAt must be in the future");
     }
     if (
-      ISO8601.isAfter(timer.fireAt, ISO8601.add(ISO8601.now(), 365, 'days'))
+      ISO8601.isAfter(timer.fireAt, ISO8601.add(ISO8601.now(), 365, "days"))
     ) {
-      throw new Error('fireAt must be within 1 year');
+      throw new Error("fireAt must be within 1 year");
     }
   }
 }

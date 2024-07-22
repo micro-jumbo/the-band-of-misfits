@@ -123,6 +123,10 @@
       "type": "test"
     },
     {
+      "name": "ts-auto-mock",
+      "type": "test"
+    },
+    {
       "name": "ts-jest",
       "type": "test"
     }

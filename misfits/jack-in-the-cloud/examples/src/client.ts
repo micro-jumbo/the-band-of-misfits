@@ -7,6 +7,7 @@ import {
 import { ISO8601 } from '@the-band-of-misfits/jimmy-the-deckhand-utils';
 
 async function createTimer() {
+  const type = 'pop-up';
   const client = new JackInTheCloudClient({
     endpoint: `https://${process.env.API_ID}.execute-api.${process.env.CDK_DEFAULT_REGION}.amazonaws.com/prod/`,
   });
@@ -14,7 +15,7 @@ async function createTimer() {
     new CreateTimerCommand({
       fireAt: ISO8601.toDate(ISO8601.add(ISO8601.now(), 60, 'seconds')),
       payload: 'blablaba',
-      type: 'normalka',
+      type,
     }),
   );
   console.log(`Created timer with id [${createResult.id}]`);
@@ -23,7 +24,7 @@ async function createTimer() {
       id: createResult.id,
       fireAt: ISO8601.toDate(ISO8601.add(ISO8601.now(), 120, 'seconds')),
       payload: 'updated',
-      type: 'normalka',
+      type,
     }),
   );
   console.log(`Updated timer with id [${updateResult.id}]`);

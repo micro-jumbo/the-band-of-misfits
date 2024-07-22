@@ -2,21 +2,23 @@ import {
   CancelTimerChainedHandlerFunction,
   cancelTimerHandler,
   INTERCEPTORS,
-} from '@the-band-of-misfits/jack-in-the-cloud-api-typescript-runtime';
+} from "@the-band-of-misfits/jack-in-the-cloud-api-typescript-runtime";
 import {
   CancelTimerInput,
   TimerService,
-} from '@the-band-of-misfits/jack-in-the-cloud-service';
+} from "@the-band-of-misfits/jack-in-the-cloud-service";
 import {
   MonitoringInterceptor,
   PowerTools,
-} from '@the-band-of-misfits/jimmy-the-deckhand-utils';
-import { dynamoDbClient, stepFunctionsClient } from './aws-clients';
+} from "@the-band-of-misfits/jimmy-the-deckhand-utils";
+import { dynamoDbClient, snsClient, stepFunctionsClient } from "./aws-clients";
 
 const timerService = new TimerService({
   machineArn: process.env.MACHINE_ARN!,
   tableName: process.env.TABLE_NAME!,
+  topicArn: process.env.TOPICS_ARN!,
   dynamoDbClient: dynamoDbClient,
+  snsClient: snsClient,
   stepFunctionsClient: stepFunctionsClient,
 });
 
@@ -26,7 +28,7 @@ const timerService = new TimerService({
 export const cancelTimer: CancelTimerChainedHandlerFunction = async (
   request,
 ) => {
-  PowerTools.logger().info('Start CancelTimer Operation');
+  PowerTools.logger().info("Start CancelTimer Operation");
 
   const {
     input: { body },
@@ -37,7 +39,7 @@ export const cancelTimer: CancelTimerChainedHandlerFunction = async (
   };
 
   await timerService.cancelTimer(createTimerInput);
-  return { statusCode: 200, body: { result: 'CANCELLED' } };
+  return { statusCode: 200, body: { result: "CANCELLED" } };
 };
 
 /**

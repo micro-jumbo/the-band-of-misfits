@@ -26,9 +26,9 @@ const timerService = new TimerService({
 });
 
 /**
- * Type-safe handler for the UpdateTimer operation
+ * Type-safe handler for the FireTimer operation
  */
-export const updateTimer: UpdateTimerChainedHandlerFunction = async (
+export const fireTimer: UpdateTimerChainedHandlerFunction = async (
   request: UpdateTimerChainedRequestInput,
 ): Promise<UpdateTimerOperationResponses> => {
   PowerTools.logger().info("Start UpdateTimer Operation");
@@ -58,5 +58,5 @@ export const updateTimer: UpdateTimerChainedHandlerFunction = async (
 export const handler = updateTimerHandler(
   ...INTERCEPTORS,
   MonitoringInterceptor.intercept,
-  updateTimer,
+  fireTimer,
 );
