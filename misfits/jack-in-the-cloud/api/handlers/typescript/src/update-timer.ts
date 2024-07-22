@@ -1,6 +1,5 @@
 import {
   INTERCEPTORS,
-  LoggingInterceptor,
   UpdateTimerChainedHandlerFunction,
   UpdateTimerChainedRequestInput,
   updateTimerHandler,
@@ -10,12 +9,19 @@ import {
   TimerService,
   UpdateTimerInput,
 } from '@the-band-of-misfits/jack-in-the-cloud-service';
-import { ISO8601 } from '@the-band-of-misfits/jimmy-the-deckhand-utils';
+import {
+  ISO8601,
+  MonitoringInterceptor,
+  PowerTools,
+} from '@the-band-of-misfits/jimmy-the-deckhand-utils';
+import { dynamoDbClient, stepFunctionsClient } from './aws-clients';
 
-const timerService = new TimerService(
-  process.env.MACHINE_ARN!,
-  process.env.TABLE_NAME!,
-);
+const timerService = new TimerService({
+  machineArn: process.env.MACHINE_ARN!,
+  tableName: process.env.TABLE_NAME!,
+  dynamoDbClient: dynamoDbClient,
+  stepFunctionsClient: stepFunctionsClient,
+});
 
 /**
  * Type-safe handler for the UpdateTimer operation
@@ -23,7 +29,7 @@ const timerService = new TimerService(
 export const updateTimer: UpdateTimerChainedHandlerFunction = async (
   request: UpdateTimerChainedRequestInput,
 ): Promise<UpdateTimerOperationResponses> => {
-  LoggingInterceptor.getLogger(request).info('Start UpdateTimer Operation');
+  PowerTools.logger().info('Start UpdateTimer Operation');
 
   const {
     input: { body },
@@ -44,4 +50,8 @@ export const updateTimer: UpdateTimerChainedHandlerFunction = async (
  * Entry point for the AWS Lambda handler for the UpdateTimer operation.
  * The updateTimerHandler method wraps the type-safe handler and manages marshalling inputs and outputs
  */
-export const handler = updateTimerHandler(...INTERCEPTORS, updateTimer);
+export const handler = updateTimerHandler(
+  ...INTERCEPTORS,
+  MonitoringInterceptor.intercept,
+  updateTimer,
+);

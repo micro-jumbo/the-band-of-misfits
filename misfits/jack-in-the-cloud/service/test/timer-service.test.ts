@@ -18,6 +18,7 @@ import {
   CreateTimerInput,
   DbTimerProps,
   TimerService,
+  TimerServiceProps,
   UpdateTimerInput,
 } from '../src';
 
@@ -27,9 +28,15 @@ describe('TimerService', () => {
   const tableName = 'test-table';
   const stepFunctionsMock = mockClient(SFNClient);
   const dynamoDbMock = mockClient(DynamoDBDocumentClient);
+  const props: TimerServiceProps = {
+    machineArn,
+    tableName,
+    dynamoDbClient: () => dynamoDbMock as unknown as DynamoDBDocumentClient,
+    stepFunctionsClient: () => stepFunctionsMock as unknown as SFNClient,
+  };
 
   beforeEach(() => {
-    timerService = new TimerService(machineArn, tableName);
+    timerService = new TimerService(props);
   });
 
   afterEach(() => {

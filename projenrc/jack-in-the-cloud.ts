@@ -30,7 +30,12 @@ export function jackInTheCloud(
   return createTheMisfit(root, jackName, service, {
     depVersions: depVersions,
     example: [jimmy.name],
-    handlers: [jimmy.name],
+    handlers: [
+      jimmy.name,
+      getDep(depVersions, "SDK", "client-dynamodb"),
+      getDep(depVersions, "SDK", "client-sfn"),
+      getDep(depVersions, "SDK", "lib-dynamodb"),
+    ],
     infra: [
       "aws-lambda",
       "@types/aws-lambda",
