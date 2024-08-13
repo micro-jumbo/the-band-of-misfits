@@ -26,15 +26,15 @@
     "eslint-plugin-import": "2.29.1",
     "jest": "29.7.0",
     "jest-junit": "^15",
-    "ts-jest": "29.2.0",
-    "typescript": "5.5.3"
+    "ts-jest": "29.2.4",
+    "typescript": "5.5.4"
   },
   "dependencies": {
     "@aws-sdk/client-dynamodb": "3.609.0",
     "@aws-sdk/client-sfn": "3.609.0",
     "@aws-sdk/lib-dynamodb": "3.609.0",
     "@the-band-of-misfits/jimmy-the-deckhand-utils": "0.0.0",
-    "fast-xml-parser": "4.4.0"
+    "fast-xml-parser": "4.4.1"
   },
   "main": "src/index",
   "license": "Apache-2.0",
@@ -42,8 +42,8 @@
   "jest": {
     "coverageProvider": "v8",
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.ts?(x)",
-      "<rootDir>/@(test|src)/**/*(*.)@(spec|test).ts?(x)"
+      "<rootDir>/@(src|test)/**/*(*.)@(spec|test).ts?(x)",
+      "<rootDir>/@(src|test)/**/__tests__/**/*.ts?(x)"
     ],
     "clearMocks": true,
     "collectCoverage": true,

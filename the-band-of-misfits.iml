@@ -6,6 +6,8 @@
       <excludeFolder url="file://$MODULE_DIR$/misfits/jack-in-the-cloud/examples/cdk.out" />
       <excludeFolder url="file://$MODULE_DIR$/misfits/jack-in-the-cloud/infra/cdk.out" />
       <excludeFolder url="file://$MODULE_DIR$/node_modules" />
+      <excludePattern pattern="cdk.out" />
+      <excludePattern pattern=".nx" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
