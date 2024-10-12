@@ -138,7 +138,7 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/aws-lambda,@types/jest,@types/node,esbuild,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest,typescript,@the-band-of-misfits/jack-in-the-cloud-service,@the-band-of-misfits/jimmy-the-deckhand-utils"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/aws-lambda,@types/jest,esbuild,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest,typescript,@the-band-of-misfits/jack-in-the-cloud-service,@the-band-of-misfits/jimmy-the-deckhand-utils"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"

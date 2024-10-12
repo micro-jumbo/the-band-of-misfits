@@ -101,7 +101,7 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/node,typescript,@aws-lambda-powertools/logger,@aws-lambda-powertools/metrics,@aws-lambda-powertools/tracer,@types/aws-lambda"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=typescript,@aws-lambda-powertools/logger,@aws-lambda-powertools/metrics,@aws-lambda-powertools/tracer,@types/aws-lambda"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"

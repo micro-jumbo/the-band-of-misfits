@@ -123,7 +123,7 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/node,jest,ts-jest,typescript,@aws-crypto/sha256-browser,@aws-crypto/sha256-js,@smithy/config-resolver,@smithy/fetch-http-handler,@smithy/hash-node,@smithy/invalid-dependency,@smithy/middleware-content-length,@smithy/middleware-retry,@smithy/middleware-serde,@smithy/middleware-stack,@smithy/node-config-provider,@smithy/node-http-handler,@smithy/protocol-http,@smithy/smithy-client,@smithy/types,@smithy/url-parser,@smithy/util-base64,@smithy/util-body-length-browser,@smithy/util-body-length-node,@smithy/util-defaults-mode-browser,@smithy/util-defaults-mode-node,@smithy/util-retry,@smithy/util-utf8"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,jest,ts-jest,typescript,@aws-crypto/sha256-browser,@aws-crypto/sha256-js,@smithy/config-resolver,@smithy/fetch-http-handler,@smithy/hash-node,@smithy/invalid-dependency,@smithy/middleware-content-length,@smithy/middleware-retry,@smithy/middleware-serde,@smithy/middleware-stack,@smithy/node-config-provider,@smithy/node-http-handler,@smithy/protocol-http,@smithy/smithy-client,@smithy/types,@smithy/url-parser,@smithy/util-base64,@smithy/util-body-length-browser,@smithy/util-body-length-node,@smithy/util-defaults-mode-browser,@smithy/util-defaults-mode-node,@smithy/util-retry,@smithy/util-utf8"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"

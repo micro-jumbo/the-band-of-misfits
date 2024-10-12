@@ -110,7 +110,7 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/aws-lambda,@types/node,aws-cdk-lib,cdk-nag,constructs,typescript,@aws/pdk"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/aws-lambda,aws-cdk-lib,cdk-nag,constructs,typescript,@aws/pdk"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
