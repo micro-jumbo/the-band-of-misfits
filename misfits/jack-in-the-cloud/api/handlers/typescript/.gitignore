@@ -39,10 +39,7 @@ junit.xml
 /dist/
 !/.eslintrc.json
 !/.npmignore
-!/.openapi-generator-ignore
-!/.openapi-generator-ignore-handlebars
-!/.pdk/dynamic-files/openapitools.json
-/openapitools.json
 .openapi-generator
+.tsapi-metadata
 !/project.json
 !/LICENSE

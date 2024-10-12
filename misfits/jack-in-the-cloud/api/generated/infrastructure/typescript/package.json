@@ -3,7 +3,6 @@
   "scripts": {
     "build": "npx projen build",
     "compile": "npx projen compile",
-    "create-openapitools.json": "npx projen create-openapitools.json",
     "default": "npx projen default",
     "generate": "npx projen generate",
     "package": "npx projen package",
@@ -15,19 +14,19 @@
     "watch": "npx projen watch"
   },
   "devDependencies": {
-    "@aws/pdk": "0.23.48",
-    "@types/aws-lambda": "8.10.143",
+    "@aws/pdk": "0.23.64",
+    "@types/aws-lambda": "8.10.145",
     "@types/node": "^18",
-    "aws-cdk-lib": "2.151.0",
-    "cdk-nag": "2.28.178",
-    "constructs": "10.3.0",
-    "typescript": "5.5.4"
+    "aws-cdk-lib": "2.162.1",
+    "cdk-nag": "2.29.4",
+    "constructs": "10.4.1",
+    "typescript": "5.6.3"
   },
   "peerDependencies": {
-    "@aws/pdk": "0.23.48",
-    "aws-cdk-lib": "2.151.0",
-    "cdk-nag": "2.28.178",
-    "constructs": "10.3.0"
+    "@aws/pdk": "0.23.64",
+    "aws-cdk-lib": "2.162.1",
+    "cdk-nag": "2.29.4",
+    "constructs": "10.4.1"
   },
   "dependencies": {
     "@the-band-of-misfits/jack-in-the-cloud-api-typescript-runtime": "0.0.0"
