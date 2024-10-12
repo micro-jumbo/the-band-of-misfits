@@ -86,13 +86,6 @@
         "cwd": "misfits/jack-in-the-cloud/api/handlers/typescript"
       }
     },
-    "create-openapitools.json": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "pnpm exec projen create-openapitools.json",
-        "cwd": "misfits/jack-in-the-cloud/api/handlers/typescript"
-      }
-    },
     "generate": {
       "executor": "nx:run-commands",
       "options": {

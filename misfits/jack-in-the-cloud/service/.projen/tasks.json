@@ -116,7 +116,7 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,aws-sdk-client-mock,aws-sdk-client-mock-jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest,typescript,@the-band-of-misfits/jimmy-the-deckhand-utils,fast-xml-parser"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/node,aws-sdk-client-mock,aws-sdk-client-mock-jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest,typescript,@the-band-of-misfits/jimmy-the-deckhand-utils,fast-xml-parser"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"

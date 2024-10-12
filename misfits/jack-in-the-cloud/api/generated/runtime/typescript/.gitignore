@@ -35,12 +35,10 @@ jspm_packages/
 /lib
 /dist/
 !/.npmignore
-!/.openapi-generator-ignore
-!/.pdk/dynamic-files/openapitools.json
-/openapitools.json
 src
 .npmignore
 README.md
 .openapi-generator
+.tsapi-manifest
 !/project.json
 !/LICENSE

@@ -368,7 +368,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "cd5e444248e6abcf0673c2edb6dccaf97ad17887cea27929038861220ebe78dd.zip",
+          "S3Key": "6e82fc65f3dc1edce2f7e3a66a62c0cc912f6606d629e8593227f4604410fd5e.zip",
         },
         "Environment": {
           "Variables": {
@@ -660,7 +660,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "0b4501a24652fe0a6080a761a6a51be85095c29989fd20ccc5c6f7c7b626daca.zip",
+          "S3Key": "1660c7239a932ebcabcac009aa6a8ffbadddd8344cc9d4e8d0dc894c667187a5.zip",
         },
         "Environment": {
           "Variables": {
@@ -1592,7 +1592,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "d9861ea7a45affd23e47a614acb2fddc6e45c20a891284c958187dafbf9ee36b.zip",
+          "S3Key": "4dc48ffba382f93077a1e6824599bbd4ceb6f91eb3d9442eca3b85bdb1a20b1e.zip",
         },
         "Description": "AWS CDK resource provider framework - onEvent (test/JackOfTheCloudApi/JackOfTheCloudApi/PrepareSpecProvider)",
         "Environment": {
@@ -1824,7 +1824,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "06a047485aa5ad5223ff290a88649d7e1bd88226ef63c7ddbeb5077b78c0b838.zip",
+          "S3Key": "84b215e54a6c2af7ac16baab39e8d727437e9f321a6bb8a35659b962949db536.zip",
         },
         "Environment": {
           "Variables": {

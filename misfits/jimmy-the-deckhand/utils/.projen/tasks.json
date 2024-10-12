@@ -116,7 +116,7 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest,typescript,@aws-lambda-powertools/logger,@aws-lambda-powertools/metrics,@aws-lambda-powertools/tracer,iso-datestring-validator"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,@types/node,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest,typescript,@aws-lambda-powertools/logger,@aws-lambda-powertools/metrics,@aws-lambda-powertools/tracer,iso-datestring-validator"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"

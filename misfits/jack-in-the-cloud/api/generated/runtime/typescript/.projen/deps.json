@@ -1,8 +1,12 @@
 {
   "dependencies": [
     {
+      "name": "@aws/pdk",
+      "version": "^0",
+      "type": "build"
+    },
+    {
       "name": "@types/node",
-      "version": "^18",
       "type": "build"
     },
     {
