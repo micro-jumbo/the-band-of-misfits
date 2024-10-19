@@ -42,13 +42,13 @@
   },
   "dependencies": {
     "@aws-sdk/client-sfn": "3.609.0",
-    "@aws/pdk": "0.23.64",
+    "@aws/pdk": "0.23.69",
     "@the-band-of-misfits/jack-in-the-cloud-api-typescript-infra": "0.0.0",
     "@the-band-of-misfits/jack-in-the-cloud-service": "0.0.0",
     "@types/aws-lambda": "8.10.145",
     "aws-cdk-lib": "^2.1.0",
     "aws-lambda": "1.0.7",
-    "cdk-nag": "2.29.4",
+    "cdk-nag": "2.29.11",
     "constructs": "^10.0.5"
   },
   "main": "src/index",
