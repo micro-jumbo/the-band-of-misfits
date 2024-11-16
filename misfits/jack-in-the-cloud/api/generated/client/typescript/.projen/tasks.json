@@ -89,7 +89,7 @@
           "exec": "mkdir -p src && touch src/.gitkeep"
         },
         {
-          "exec": "cp -r ../../../model/build/smithyprojections/@the-band-of-misfits-jack-in-the-cloud-api-model/ts-client/typescript-codegen/src/* src/"
+          "exec": "cp -r ../../../model/build/smithyprojections/@the-band-of-misfits-jack-in-the-cloud-api/ts-client/typescript-codegen/src/* src/"
         },
         {
           "exec": "pdk install @smithy/types"
