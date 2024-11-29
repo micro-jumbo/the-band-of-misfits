@@ -35,7 +35,6 @@ jspm_packages/
 /lib
 /dist/
 !/.npmignore
-src
 .npmignore
 README.md
 .openapi-generator
