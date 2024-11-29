@@ -2,8 +2,10 @@
 
 ![jack-in-the-cloud](../../assets/jack-in-the-cloud.jpg)
 
-Jack in the Cloud is a service that delivers scheduled notifications. It exposes three operations: `CreateTimer` `UpdateTimer` and `CancelTimer`. 
-Each `Timer` has a `type`, `payload` and `fireAt` timestamp. Whenever Timer fires (at `fireAt`), `payload` is delivered to target specified during deployment for give `type`.
+Jack in the Cloud is a service that delivers scheduled notifications. It offers three operations: `CreateTimer`,
+`UpdateTimer`, and `CancelTimer`. Each `Timer` comes with a `type`, `payload`, and `fireAt` timestamp. Whenever a
+`Timer` is set to fire (at `fireAt`), the `payload` is delivered to the target specified during deployment for the given
+`type`. Target can be anything that can subscribe to SNS topic, so: SQS, Lambda, HTTP endpoint, etc.
 
 ## Deployment
 

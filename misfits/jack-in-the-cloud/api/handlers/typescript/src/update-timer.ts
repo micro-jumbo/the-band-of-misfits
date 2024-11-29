@@ -14,12 +14,14 @@ import {
   MonitoringInterceptor,
   PowerTools,
 } from '@the-band-of-misfits/jimmy-the-deckhand-utils';
-import { dynamoDbClient, stepFunctionsClient } from './aws-clients';
+import { dynamoDbClient, snsClient, stepFunctionsClient } from './aws-clients';
 
 const timerService = new TimerService({
   machineArn: process.env.MACHINE_ARN!,
   tableName: process.env.TABLE_NAME!,
+  topicArn: process.env.TOPICS_ARN!,
   dynamoDbClient: dynamoDbClient,
+  snsClient: snsClient,
   stepFunctionsClient: stepFunctionsClient,
 });
 
@@ -41,6 +43,9 @@ export const updateTimer: UpdateTimerChainedHandlerFunction = async (
     fireAt: ISO8601.fromDate(body.fireAt),
     payload: body.payload,
   };
+  PowerTools.logger().addPersistentLogAttributes({
+    timerId: updateTimerInput.id,
+  });
 
   const result = await timerService.updateTimer(updateTimerInput);
   return { statusCode: 200, body: result };

@@ -11,12 +11,14 @@ import {
   MonitoringInterceptor,
   PowerTools,
 } from '@the-band-of-misfits/jimmy-the-deckhand-utils';
-import { dynamoDbClient, stepFunctionsClient } from './aws-clients';
+import { dynamoDbClient, snsClient, stepFunctionsClient } from './aws-clients';
 
 const timerService = new TimerService({
   machineArn: process.env.MACHINE_ARN!,
   tableName: process.env.TABLE_NAME!,
+  topicArn: process.env.TOPICS_ARN!,
   dynamoDbClient: dynamoDbClient,
+  snsClient: snsClient,
   stepFunctionsClient: stepFunctionsClient,
 });
 

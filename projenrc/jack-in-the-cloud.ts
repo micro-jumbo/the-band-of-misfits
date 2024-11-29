@@ -21,6 +21,7 @@ export function jackInTheCloud(
       jimmy.name,
       getDep(depVersions, "SDK", "client-dynamodb"),
       getDep(depVersions, "SDK", "client-sfn"),
+      getDep(depVersions, "SDK", "client-sns"),
       getDep(depVersions, "SDK", "lib-dynamodb"),
       "fast-xml-parser",
     ],
@@ -34,6 +35,7 @@ export function jackInTheCloud(
       jimmy.name,
       getDep(depVersions, "SDK", "client-dynamodb"),
       getDep(depVersions, "SDK", "client-sfn"),
+      getDep(depVersions, "SDK", "client-sns"),
       getDep(depVersions, "SDK", "lib-dynamodb"),
     ],
     infra: [

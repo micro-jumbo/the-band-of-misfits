@@ -62,6 +62,10 @@
       "type": "runtime"
     },
     {
+      "name": "@types/aws-lambda",
+      "type": "runtime"
+    },
+    {
       "name": "iso-datestring-validator",
       "type": "runtime"
     }
