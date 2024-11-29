@@ -30,9 +30,10 @@
     "typescript": "5.6.3"
   },
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "3.609.0",
-    "@aws-sdk/client-sfn": "3.609.0",
-    "@aws-sdk/lib-dynamodb": "3.609.0",
+    "@aws-sdk/client-dynamodb": "3.679.0",
+    "@aws-sdk/client-sfn": "3.679.0",
+    "@aws-sdk/client-sns": "3.679.0",
+    "@aws-sdk/lib-dynamodb": "3.679.0",
     "@the-band-of-misfits/jimmy-the-deckhand-utils": "0.0.0",
     "fast-xml-parser": "4.5.0"
   },

@@ -368,7 +368,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "1a6aa247fd5191940dacd85d35ea5e074e4e75fcb430adcca70d1e4977e2b830.zip",
+          "S3Key": "e784574aa102a53c39a4c5253050810fb5b04b6760912ad831ae149001d2dd1a.zip",
         },
         "Environment": {
           "Variables": {
@@ -660,7 +660,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "8d812db1ba6046bde37e0845aec71f5570ea1a5b1833bde134768465c7cebe63.zip",
+          "S3Key": "09943a9f76f8dc3640f1fdedc823bf7ab8efa715a8945790765be756172bc44b.zip",
         },
         "Environment": {
           "Variables": {
@@ -1824,7 +1824,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "f9eff564a3069628d146f7b7d185a698180921c94dd7100e9753e9b19962be2b.zip",
+          "S3Key": "04ff29748b9bdc8f9cb94d94ae3eb7c7b7f677d29d0a6f0b5192fad4bee38ed9.zip",
         },
         "Environment": {
           "Variables": {
@@ -2042,6 +2042,107 @@ exports[`Snapshot 1`] = `
       },
       "Type": "AWS::IAM::Policy",
     },
+    "JackOfTheCloudMachineFireLambdaECA3232A": {
+      "DependsOn": [
+        "JackOfTheCloudMachineFireLambdaServiceRoleDefaultPolicy6483C667",
+        "JackOfTheCloudMachineFireLambdaServiceRole3CE86E69",
+      ],
+      "Properties": {
+        "Architectures": [
+          "arm64",
+        ],
+        "Code": {
+          "S3Bucket": {
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+          },
+          "S3Key": "d606b3c4f4b3ca368718fc41794809aab3164dc051ce762886b3c61ebef67b67.zip",
+        },
+        "Environment": {
+          "Variables": {
+            "POWERTOOLS_METRICS_NAMESPACE": "the-band-of-misfits",
+            "POWERTOOLS_SERVICE_NAME": "jack-in-the-cloud",
+            "TOPIC_ARN": {
+              "Ref": "TopicBFC7AF6E",
+            },
+          },
+        },
+        "Handler": "index.handler",
+        "Role": {
+          "Fn::GetAtt": [
+            "JackOfTheCloudMachineFireLambdaServiceRole3CE86E69",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs20.x",
+        "Timeout": 30,
+        "TracingConfig": {
+          "Mode": "Active",
+        },
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "JackOfTheCloudMachineFireLambdaServiceRole3CE86E69": {
+      "Properties": {
+        "AssumeRolePolicyDocument": {
+          "Statement": [
+            {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": [
+          {
+            "Fn::Join": [
+              "",
+              [
+                "arn:",
+                {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+    "JackOfTheCloudMachineFireLambdaServiceRoleDefaultPolicy6483C667": {
+      "Properties": {
+        "PolicyDocument": {
+          "Statement": [
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
+            },
+            {
+              "Action": "sns:Publish",
+              "Effect": "Allow",
+              "Resource": {
+                "Ref": "TopicBFC7AF6E",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "PolicyName": "JackOfTheCloudMachineFireLambdaServiceRoleDefaultPolicy6483C667",
+        "Roles": [
+          {
+            "Ref": "JackOfTheCloudMachineFireLambdaServiceRole3CE86E69",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Policy",
+    },
     "JackOfTheCloudMachineStateMachineC6DCCDE1": {
       "DeletionPolicy": "Delete",
       "DependsOn": [
@@ -2053,15 +2154,18 @@ exports[`Snapshot 1`] = `
           "Fn::Join": [
             "",
             [
-              "{"StartAt":"Wait","States":{"Wait":{"Type":"Wait","TimestampPath":"$.fireAt","Next":"SnsPublish"},"SnsPublish":{"End":true,"Type":"Task","Resource":"arn:",
+              "{"StartAt":"Wait","States":{"Wait":{"Type":"Wait","TimestampPath":"$.fireAt","Next":"FireState"},"FireState":{"End":true,"Retry":[{"ErrorEquals":["Lambda.ClientExecutionTimeoutException","Lambda.ServiceException","Lambda.AWSLambdaException","Lambda.SdkClientException"],"IntervalSeconds":2,"MaxAttempts":6,"BackoffRate":2}],"Type":"Task","Resource":"arn:",
               {
                 "Ref": "AWS::Partition",
               },
-              ":states:::sns:publish","Parameters":{"TopicArn":"",
+              ":states:::lambda:invoke","Parameters":{"FunctionName":"",
               {
-                "Ref": "TopicBFC7AF6E",
+                "Fn::GetAtt": [
+                  "JackOfTheCloudMachineFireLambdaECA3232A",
+                  "Arn",
+                ],
               },
-              "","Message.$":"$.payload","MessageAttributes":{"type":{"DataType":"String","StringValue.$":"$.type"}}}}}}",
+              "","Payload.$":"$"}}}}",
             ],
           ],
         },
@@ -2070,6 +2174,9 @@ exports[`Snapshot 1`] = `
             "JackOfTheCloudMachineStateMachineRoleF9FFBEB4",
             "Arn",
           ],
+        },
+        "TracingConfiguration": {
+          "Enabled": true,
         },
       },
       "Type": "AWS::StepFunctions::StateMachine",
@@ -2080,11 +2187,40 @@ exports[`Snapshot 1`] = `
         "PolicyDocument": {
           "Statement": [
             {
-              "Action": "sns:Publish",
+              "Action": "lambda:InvokeFunction",
               "Effect": "Allow",
-              "Resource": {
-                "Ref": "TopicBFC7AF6E",
-              },
+              "Resource": [
+                {
+                  "Fn::GetAtt": [
+                    "JackOfTheCloudMachineFireLambdaECA3232A",
+                    "Arn",
+                  ],
+                },
+                {
+                  "Fn::Join": [
+                    "",
+                    [
+                      {
+                        "Fn::GetAtt": [
+                          "JackOfTheCloudMachineFireLambdaECA3232A",
+                          "Arn",
+                        ],
+                      },
+                      ":*",
+                    ],
+                  ],
+                },
+              ],
+            },
+            {
+              "Action": [
+                "xray:PutTraceSegments",
+                "xray:PutTelemetryRecords",
+                "xray:GetSamplingRules",
+                "xray:GetSamplingTargets",
+              ],
+              "Effect": "Allow",
+              "Resource": "*",
             },
           ],
           "Version": "2012-10-17",

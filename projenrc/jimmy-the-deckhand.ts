@@ -16,6 +16,7 @@ export function jimmyTheDeckhand(
       "@aws-lambda-powertools/metrics",
       "@aws-lambda-powertools/logger",
       "@aws-lambda-powertools/tracer",
+      "@types/aws-lambda",
     ],
   });
 }

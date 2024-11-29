@@ -116,13 +116,13 @@
       },
       "steps": [
         {
-          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,aws-sdk-client-mock,aws-sdk-client-mock-jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest,typescript,@the-band-of-misfits/jimmy-the-deckhand-utils,fast-xml-parser,ts-auto-mock"
+          "exec": "pnpm dlx npm-check-updates@16 --upgrade --target=minor --peer --dep=dev,peer,prod,optional --filter=@types/jest,aws-sdk-client-mock,aws-sdk-client-mock-jest,eslint-import-resolver-typescript,eslint-plugin-import,jest,ts-jest,typescript,@the-band-of-misfits/jimmy-the-deckhand-utils,fast-xml-parser"
         },
         {
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-client-mock aws-sdk-client-mock-jest eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit ts-jest typescript @aws-sdk/client-dynamodb @aws-sdk/client-sfn @aws-sdk/lib-dynamodb @the-band-of-misfits/jimmy-the-deckhand-utils fast-xml-parser ts-auto-mock"
+          "exec": "pnpm update @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser aws-sdk-client-mock aws-sdk-client-mock-jest eslint-import-resolver-typescript eslint-plugin-import eslint jest jest-junit ts-jest typescript @aws-sdk/client-dynamodb @aws-sdk/client-sfn @aws-sdk/client-sns @aws-sdk/lib-dynamodb @the-band-of-misfits/jimmy-the-deckhand-utils fast-xml-parser"
         },
         {
           "exec": "npx projen"

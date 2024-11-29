@@ -4,17 +4,17 @@ import {
   UpdateTimerChainedRequestInput,
   updateTimerHandler,
   UpdateTimerOperationResponses,
-} from "@the-band-of-misfits/jack-in-the-cloud-api-typescript-runtime";
+} from '@the-band-of-misfits/jack-in-the-cloud-api-typescript-runtime';
 import {
   TimerService,
   UpdateTimerInput,
-} from "@the-band-of-misfits/jack-in-the-cloud-service";
+} from '@the-band-of-misfits/jack-in-the-cloud-service';
 import {
   ISO8601,
   MonitoringInterceptor,
   PowerTools,
-} from "@the-band-of-misfits/jimmy-the-deckhand-utils";
-import { dynamoDbClient, snsClient, stepFunctionsClient } from "./aws-clients";
+} from '@the-band-of-misfits/jimmy-the-deckhand-utils';
+import { dynamoDbClient, snsClient, stepFunctionsClient } from './aws-clients';
 
 const timerService = new TimerService({
   machineArn: process.env.MACHINE_ARN!,
@@ -31,7 +31,7 @@ const timerService = new TimerService({
 export const updateTimer: UpdateTimerChainedHandlerFunction = async (
   request: UpdateTimerChainedRequestInput,
 ): Promise<UpdateTimerOperationResponses> => {
-  PowerTools.logger().info("Start UpdateTimer Operation");
+  PowerTools.logger().info('Start UpdateTimer Operation');
 
   const {
     input: { body },
@@ -39,7 +39,7 @@ export const updateTimer: UpdateTimerChainedHandlerFunction = async (
 
   const updateTimerInput: UpdateTimerInput = {
     id: body.id,
-    type: body.type || "DEFAULT",
+    type: body.type || 'DEFAULT',
     fireAt: ISO8601.fromDate(body.fireAt),
     payload: body.payload,
   };

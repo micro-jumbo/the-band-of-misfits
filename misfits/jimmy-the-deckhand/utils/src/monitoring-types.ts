@@ -65,12 +65,16 @@ export class MonitoringInterceptor {
     request: Req,
   ): Promise<Resp> => {
     try {
-      PowerTools.init(request.interceptorContext as PowerToolsProps);
+      const logger = request.interceptorContext?.logger ?? new Logger();
+      const metrics = request.interceptorContext?.metrics ?? new Metrics();
+      const tracer = request.interceptorContext?.tracer ?? new Tracer();
+      PowerTools.init({ logger, metrics, tracer });
       const result = await request.chain.next(request);
       PowerTools.instance().success();
       return result;
     } catch (error) {
-      PowerTools.instance().failure();
+      console.error(error);
+      // PowerTools.instance().failure();
       throw error;
     }
   };

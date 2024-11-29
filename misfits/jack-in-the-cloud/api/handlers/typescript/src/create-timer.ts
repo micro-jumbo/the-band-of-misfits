@@ -1,21 +1,21 @@
-import { randomUUID } from "crypto";
+import { randomUUID } from 'crypto';
 import {
   CreateTimerChainedHandlerFunction,
   CreateTimerChainedRequestInput,
   createTimerHandler,
   CreateTimerOperationResponses,
   INTERCEPTORS,
-} from "@the-band-of-misfits/jack-in-the-cloud-api-typescript-runtime";
+} from '@the-band-of-misfits/jack-in-the-cloud-api-typescript-runtime';
 import {
   CreateTimerInput,
   TimerService,
-} from "@the-band-of-misfits/jack-in-the-cloud-service";
+} from '@the-band-of-misfits/jack-in-the-cloud-service';
 import {
   ISO8601,
   MonitoringInterceptor,
   PowerTools,
-} from "@the-band-of-misfits/jimmy-the-deckhand-utils";
-import { dynamoDbClient, snsClient, stepFunctionsClient } from "./aws-clients";
+} from '@the-band-of-misfits/jimmy-the-deckhand-utils';
+import { dynamoDbClient, snsClient, stepFunctionsClient } from './aws-clients';
 
 const timerService = new TimerService({
   machineArn: process.env.MACHINE_ARN!,
@@ -32,7 +32,7 @@ const timerService = new TimerService({
 export const createTimer: CreateTimerChainedHandlerFunction = async (
   request: CreateTimerChainedRequestInput,
 ): Promise<CreateTimerOperationResponses> => {
-  PowerTools.logger().info("Start CreateTimer Operation");
+  PowerTools.logger().info('Start CreateTimer Operation');
 
   const {
     input: { body },
@@ -40,7 +40,7 @@ export const createTimer: CreateTimerChainedHandlerFunction = async (
 
   const createTimerInput: CreateTimerInput = {
     id: body.id ?? randomUUID(),
-    type: body.type || "DEFAULT",
+    type: body.type || 'DEFAULT',
     fireAt: ISO8601.fromDate(body.fireAt),
     payload: body.payload,
   };

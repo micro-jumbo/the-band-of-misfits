@@ -5,6 +5,7 @@ import {
 } from '@aws-sdk/client-sfn';
 import 'aws-sdk-client-mock-jest';
 import 'jest';
+import { SNSClient } from '@aws-sdk/client-sns';
 import {
   DeleteCommand,
   DynamoDBDocumentClient,
@@ -26,13 +27,17 @@ describe.skip('TimerService', () => {
   let timerService: TimerService;
   const machineArn = 'test-arn';
   const tableName = 'test-table';
+  const topicArn = 'test-topic';
   const stepFunctionsMock = mockClient(SFNClient);
+  const snsMock = mockClient(SNSClient);
   const dynamoDbMock = mockClient(DynamoDBDocumentClient);
   const props: TimerServiceProps = {
     machineArn,
     tableName,
+    topicArn,
     dynamoDbClient: () => dynamoDbMock as unknown as DynamoDBDocumentClient,
     stepFunctionsClient: () => stepFunctionsMock as unknown as SFNClient,
+    snsClient: () => snsMock as unknown as SNSClient,
   };
 
   beforeEach(() => {
@@ -119,6 +124,7 @@ describe.skip('TimerService', () => {
       Key: { id: input.id },
     });
   });
+
   it('should update a timer', async () => {
     const input: UpdateTimerInput = {
       id: 'test-id',

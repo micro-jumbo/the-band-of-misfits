@@ -36,62 +36,62 @@
     },
     {
       "name": "@aws-sdk/client-sts",
-      "version": "3.609.0",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/core",
-      "version": "3.609.0",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/credential-provider-node",
-      "version": "3.609.0",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/middleware-host-header",
-      "version": "3.609.0",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/middleware-logger",
-      "version": "3.609.0",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/middleware-recursion-detection",
-      "version": "3.609.0",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/middleware-signing",
-      "version": "3.609.0",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/middleware-user-agent",
-      "version": "3.609.0",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/region-config-resolver",
-      "version": "3.609.0",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/types",
-      "version": "3.609.0",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/util-user-agent-browser",
-      "version": "3.609.0",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/util-user-agent-node",
-      "version": "3.609.0",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
@@ -184,10 +184,6 @@
     },
     {
       "name": "jest",
-      "type": "test"
-    },
-    {
-      "name": "ts-auto-mock",
       "type": "test"
     },
     {

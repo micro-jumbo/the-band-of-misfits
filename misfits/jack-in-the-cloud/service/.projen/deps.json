@@ -59,17 +59,22 @@
     },
     {
       "name": "@aws-sdk/client-dynamodb",
-      "version": "3.609.0",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/client-sfn",
-      "version": "3.609.0",
+      "version": "3.679.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-sdk/client-sns",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/lib-dynamodb",
-      "version": "3.609.0",
+      "version": "3.679.0",
       "type": "runtime"
     },
     {
@@ -86,10 +91,6 @@
     },
     {
       "name": "jest",
-      "type": "test"
-    },
-    {
-      "name": "ts-auto-mock",
       "type": "test"
     },
     {

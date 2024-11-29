@@ -5,7 +5,7 @@ import { jackInTheCloud } from "./projenrc/jack-in-the-cloud";
 import { jimmyTheDeckhand } from "./projenrc/jimmy-the-deckhand";
 
 const depVersions: DepsProperties = {
-  sdkVersion: "3.609.0",
+  sdkVersion: "3.679.0",
 };
 
 const root = new monorepo.MonorepoTsProject({
