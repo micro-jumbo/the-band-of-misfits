@@ -35,20 +35,20 @@
     "eslint-plugin-prettier": "5.2.1",
     "jest": "29.7.0",
     "jest-junit": "^15",
-    "prettier": "3.3.3",
+    "prettier": "3.4.1",
     "ts-jest": "29.2.5",
     "ts-node": "10.9.2",
-    "typescript": "5.6.3"
+    "typescript": "5.7.2"
   },
   "dependencies": {
     "@aws-sdk/client-sfn": "3.679.0",
-    "@aws/pdk": "0.25.0",
+    "@aws/pdk": "0.25.11",
     "@the-band-of-misfits/jack-in-the-cloud-api-typescript-infra": "0.0.0",
     "@the-band-of-misfits/jack-in-the-cloud-service": "0.0.0",
-    "@types/aws-lambda": "8.10.145",
+    "@types/aws-lambda": "8.10.146",
     "aws-cdk-lib": "^2.1.0",
     "aws-lambda": "1.0.7",
-    "cdk-nag": "2.29.19",
+    "cdk-nag": "2.34.10",
     "constructs": "^10.0.5"
   },
   "main": "src/index",

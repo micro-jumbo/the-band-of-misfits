@@ -34,7 +34,7 @@
     "jest-junit": "^15",
     "ts-jest": "29.2.5",
     "ts-node": "10.9.2",
-    "typescript": "5.6.3"
+    "typescript": "5.7.2"
   },
   "dependencies": {
     "@the-band-of-misfits/jack-in-the-cloud-api-client": "0.0.0",

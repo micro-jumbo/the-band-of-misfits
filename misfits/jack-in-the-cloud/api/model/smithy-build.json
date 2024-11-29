@@ -10,15 +10,6 @@
           "version": "3.0.2"
         }
       }
-    },
-    "ts-client": {
-      "plugins": {
-        "typescript-codegen": {
-          "package": "@the-band-of-misfits/jack-in-the-cloud-api-client",
-          "packageVersion": "0.0.1",
-          "packageManager": "npm"
-        }
-      }
     }
   },
   "maven": {
