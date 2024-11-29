@@ -38,6 +38,7 @@ export class TimerService {
   async createTimer(input: CreateTimerInput): Promise<CreateTimerOutput> {
     PowerTools.logger().info('Creating timer', JSON.stringify(input));
     PowerTools.metrics().addDimension('timerType', input.type);
+    PowerTools.tracer().putAnnotation('timerType', input.type);
     this.validate(input);
 
     const timer: DbTimerProps = {

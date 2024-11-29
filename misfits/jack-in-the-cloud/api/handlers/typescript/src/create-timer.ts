@@ -32,11 +32,11 @@ const timerService = new TimerService({
 export const createTimer: CreateTimerChainedHandlerFunction = async (
   request: CreateTimerChainedRequestInput,
 ): Promise<CreateTimerOperationResponses> => {
-  PowerTools.logger().info('Start CreateTimer Operation');
-
   const {
     input: { body },
   } = request;
+
+  PowerTools.logger().info('Start CreateTimer Operation', { ...body });
 
   const createTimerInput: CreateTimerInput = {
     id: body.id ?? randomUUID(),
