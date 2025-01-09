@@ -130,7 +130,10 @@ function createSmithyClientProject(
     },
   });
   // Make sure smithy client builds after model
-  monorepoProject.addImplicitDependency(smithyClient, apiProject.model);
+  monorepoProject.addImplicitDependency(
+    smithyClient,
+    apiProject.model.smithy!.name,
+  );
   monorepoProject.addWorkspacePackages(
     path.relative(monorepoProject.outdir, smithyClient.outdir),
   );
@@ -139,7 +142,7 @@ function createSmithyClientProject(
     path.relative(smithyClient.outdir, apiProject.model.outdir),
     "build",
     "smithyprojections",
-    apiProject.model.name.replace("/", "-"),
+    apiProject.model.smithy!.name.replace("/", "-"),
     "ts-client",
     "typescript-codegen",
   );
