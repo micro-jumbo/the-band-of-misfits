@@ -5,7 +5,7 @@ import { projectDefaults } from "./common";
 const jimmyName = "jimmy-the-deckhand";
 
 export function jimmyTheDeckhand(
-  root: monorepo.MonorepoTsProject
+  root: monorepo.MonorepoTsProject,
   // @ts-ignore
 ) {
   return new typescript.TypeScriptProject({
@@ -15,7 +15,7 @@ export function jimmyTheDeckhand(
       "@aws-lambda-powertools/logger",
       "@aws-lambda-powertools/tracer",
       "@types/aws-lambda",
-      "iso-datestring-validator"
-    ]
+      "iso-datestring-validator",
+    ],
   });
 }
