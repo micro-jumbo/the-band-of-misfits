@@ -1,3 +1,4 @@
+import { randomUUID } from 'crypto';
 import {
   CreateTimerChainedHandlerFunction,
   CreateTimerChainedRequestInput,
@@ -14,12 +15,14 @@ import {
   MonitoringInterceptor,
   PowerTools,
 } from '@the-band-of-misfits/jimmy-the-deckhand-utils';
-import { dynamoDbClient, stepFunctionsClient } from './aws-clients';
+import { dynamoDbClient, snsClient, stepFunctionsClient } from './aws-clients';
 
 const timerService = new TimerService({
   machineArn: process.env.MACHINE_ARN!,
   tableName: process.env.TABLE_NAME!,
+  topicArn: process.env.TOPICS_ARN!,
   dynamoDbClient: dynamoDbClient,
+  snsClient: snsClient,
   stepFunctionsClient: stepFunctionsClient,
 });
 
@@ -29,14 +32,14 @@ const timerService = new TimerService({
 export const createTimer: CreateTimerChainedHandlerFunction = async (
   request: CreateTimerChainedRequestInput,
 ): Promise<CreateTimerOperationResponses> => {
-  PowerTools.logger().info('Start CreateTimer Operation');
-
   const {
     input: { body },
   } = request;
 
+  PowerTools.logger().info('Start CreateTimer Operation', { ...body });
+
   const createTimerInput: CreateTimerInput = {
-    id: body.id,
+    id: body.id ?? randomUUID(),
     type: body.type || 'DEFAULT',
     fireAt: ISO8601.fromDate(body.fireAt),
     payload: body.payload,

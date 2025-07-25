@@ -50,28 +50,25 @@ export class JackInTheCloud extends Construct {
       runtime: Runtime.NODEJS_20_X,
     };
 
-    const createTimerFunction = new CreateTimerFunction(
-      this,
-      "CreateTimer",
-      lambdaProps,
-    );
+    const createTimerFunction = new CreateTimerFunction(this, "CreateTimer", {
+      ...lambdaProps,
+      functionName: "CreateTimer",
+    });
     props.dynamoTable.grantWriteData(createTimerFunction);
     props.stateMachine.grantStartExecution(createTimerFunction);
 
-    const cancelTimerFunction = new CancelTimerFunction(
-      this,
-      "CancelTimer",
-      lambdaProps,
-    );
+    const cancelTimerFunction = new CancelTimerFunction(this, "CancelTimer", {
+      ...lambdaProps,
+      functionName: "CancelTimer",
+    });
     props.dynamoTable.grantReadData(cancelTimerFunction);
     props.dynamoTable.grantWriteData(cancelTimerFunction);
     props.stateMachine.grantStopExecution(cancelTimerFunction);
 
-    const updateTimerFunction = new UpdateTimerFunction(
-      this,
-      "UpdateTimer",
-      lambdaProps,
-    );
+    const updateTimerFunction = new UpdateTimerFunction(this, "UpdateTimer", {
+      ...lambdaProps,
+      functionName: "UpdateTimer",
+    });
     props.dynamoTable.grantReadData(updateTimerFunction);
     props.dynamoTable.grantWriteData(updateTimerFunction);
     props.stateMachine.grantStartExecution(updateTimerFunction);
