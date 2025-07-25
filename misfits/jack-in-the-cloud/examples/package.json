@@ -21,23 +21,23 @@
     "watch": "npx projen watch"
   },
   "devDependencies": {
-    "@types/jest": "29.5.13",
+    "@types/jest": "30",
     "@types/node": "^18",
     "@typescript-eslint/eslint-plugin": "^7",
     "@typescript-eslint/parser": "^7",
     "aws-cdk": "^2.1.0",
-    "esbuild": "0.24.0",
+    "esbuild": "0.25.8",
     "eslint": "^8",
-    "eslint-import-resolver-typescript": "3.6.3",
-    "eslint-plugin-import": "2.31.0",
-    "jest": "29.7.0",
+    "eslint-import-resolver-typescript": "4",
+    "eslint-plugin-import": "2.32.0",
+    "jest": "30",
     "jest-junit": "^15",
-    "ts-jest": "29.2.5",
+    "ts-jest": "29.4.0",
     "ts-node": "10.9.2",
-    "typescript": "5.6.3"
+    "typescript": "5.8.3"
   },
   "dependencies": {
-    "@the-band-of-misfits/jack-in-the-cloud-api-client": "0.0.0",
+    "@the-band-of-misfits/jack-in-the-cloud-api-client": "^0.0.0",
     "@the-band-of-misfits/jack-in-the-cloud-infra": "0.0.0",
     "@the-band-of-misfits/jimmy-the-deckhand-utils": "0.0.0",
     "aws-cdk-lib": "^2.1.0",

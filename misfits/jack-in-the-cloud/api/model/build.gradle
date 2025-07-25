@@ -19,11 +19,11 @@ repositories {
 
 // Dependencies can be added by configuring smithyBuildOptions in your .projenrc file
 dependencies {
-    implementation "software.amazon.smithy:smithy-validation-model:1.43.0"
-    implementation "software.amazon.smithy:smithy-openapi:1.43.0"
-    implementation "software.amazon.smithy:smithy-aws-traits:1.43.0"
-    implementation "software.amazon.smithy.typescript:smithy-typescript-codegen:0.19.0"
-    implementation "software.amazon.smithy.typescript:smithy-aws-typescript-codegen:0.19.0"
-    implementation "software.amazon.smithy:smithy-model:1.43.0"
-    implementation "software.amazon.smithy:smithy-cli:1.43.0"
+    implementation "software.amazon.smithy:smithy-validation-model:1.60.3"
+    implementation "software.amazon.smithy:smithy-openapi:1.60.3"
+    implementation "software.amazon.smithy:smithy-aws-traits:1.60.3"
+    implementation "software.amazon.smithy.typescript:smithy-typescript-codegen:0.26.0"
+    implementation "software.amazon.smithy.typescript:smithy-aws-typescript-codegen:0.26.0"
+    implementation "software.amazon.smithy:smithy-model:1.60.3"
+    implementation "software.amazon.smithy:smithy-cli:1.60.3"
 }
