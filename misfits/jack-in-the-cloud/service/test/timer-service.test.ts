@@ -177,7 +177,7 @@ describe('TimerService', () => {
       fireAt: ISO8601.add(ISO8601.now(), -5, 'minutes'),
       payload: JSON.stringify({ test: 'payload' }),
     };
-    await expect(() => timerService.createTimer(input)).rejects.toThrowError(
+    await expect(() => timerService.createTimer(input)).rejects.toThrow(
       'fireAt must be in the future',
     );
   });
@@ -190,6 +190,6 @@ describe('TimerService', () => {
     };
     await expect(async () =>
       timerService.createTimer(input),
-    ).rejects.toThrowError('fireAt must be within 1 year');
+    ).rejects.toThrow('fireAt must be within 1 year');
   });
 });

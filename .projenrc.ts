@@ -5,17 +5,18 @@ import { jackInTheCloud } from "./projenrc/jack-in-the-cloud";
 import { jimmyTheDeckhand } from "./projenrc/jimmy-the-deckhand";
 
 const depVersions: DepsProperties = {
-  sdkVersion: "3.609.0",
+  sdkVersion: "3.840.0",
+  smithyVersion: "1.60.3",
 };
 
 const root = new monorepo.MonorepoTsProject({
   name: "the-band-of-misfits",
   projenrcTs: true,
   packageManager: javascript.NodePackageManager.PNPM,
-  devDeps: ["change-case-all", "jest", "@types/jest"],
+  devDeps: ["change-case-all", "jest", "@types/jest", `@aws-sdk/core@${depVersions.sdkVersion}`],
   github: true,
   publishDryRun: true,
-  pnpmVersion: "8",
+  pnpmVersion: "10",
   minNodeVersion: "20.0.0",
   workflowContainerImage: "timbru31/java-node:17-20",
   workflowBootstrapSteps: [

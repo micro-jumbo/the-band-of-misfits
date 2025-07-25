@@ -10,7 +10,7 @@ describe('ISO8601', () => {
 
     it('should throw error when invalid ISO string is provided', () => {
       const invalidIsoString = 'invalid-date';
-      expect(() => ISO8601.fromString(invalidIsoString)).toThrowError();
+      expect(() => ISO8601.fromString(invalidIsoString)).toThrow();
     });
   });
 
@@ -59,7 +59,7 @@ describe('ISO8601', () => {
       const isoDateTime = ISO8601.fromString('2022-01-01T00:00:00Z');
       expect(() =>
         ISO8601.add(isoDateTime, 1, 'unsupported' as any),
-      ).toThrowError();
+      ).toThrow();
     });
   });
 

@@ -6,21 +6,27 @@
         "openapi": {
           "service": "eu.micro_jumbo.the_band_of_misfits#JackInTheCloud",
           "tags": true,
-          "useIntegerType": true,
-          "version": "3.0.2"
+          "useIntegerType": true
         }
       }
     }
   },
+  "plugins": {
+    "typescript-client-codegen": {
+      "package": "@the-band-of-misfits/jack-in-the-cloud-api-client",
+      "packageVersion": "0.0.1",
+      "packageManager": "npm"
+    }
+  },
   "maven": {
     "dependencies": [
-      "software.amazon.smithy:smithy-validation-model:1.43.0",
-      "software.amazon.smithy:smithy-openapi:1.43.0",
-      "software.amazon.smithy:smithy-aws-traits:1.43.0",
-      "software.amazon.smithy.typescript:smithy-typescript-codegen:0.19.0",
-      "software.amazon.smithy.typescript:smithy-aws-typescript-codegen:0.19.0",
-      "software.amazon.smithy:smithy-model:1.43.0",
-      "software.amazon.smithy:smithy-cli:1.43.0"
+      "software.amazon.smithy:smithy-validation-model:1.60.3",
+      "software.amazon.smithy:smithy-openapi:1.60.3",
+      "software.amazon.smithy:smithy-aws-traits:1.60.3",
+      "software.amazon.smithy.typescript:smithy-typescript-codegen:0.26.0",
+      "software.amazon.smithy.typescript:smithy-aws-typescript-codegen:0.26.0",
+      "software.amazon.smithy:smithy-model:1.60.3",
+      "software.amazon.smithy:smithy-cli:1.60.3"
     ],
     "repositories": [
       {

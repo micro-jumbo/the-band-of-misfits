@@ -64,17 +64,17 @@
     },
     {
       "name": "@aws-sdk/client-dynamodb",
-      "version": "3.609.0",
+      "version": "3.840.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/client-sfn",
-      "version": "3.609.0",
+      "version": "3.840.0",
       "type": "runtime"
     },
     {
       "name": "@aws-sdk/lib-dynamodb",
-      "version": "3.609.0",
+      "version": "3.840.0",
       "type": "runtime"
     },
     {

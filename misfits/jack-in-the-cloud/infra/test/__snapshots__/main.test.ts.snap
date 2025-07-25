@@ -1,113 +1,119 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`Snapshot 1`] = `
 {
   "Mappings": {
     "LatestNodeRuntimeMap": {
       "af-south-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "ap-east-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
+      },
+      "ap-east-2": {
+        "value": "nodejs22.x",
       },
       "ap-northeast-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "ap-northeast-2": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "ap-northeast-3": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "ap-south-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "ap-south-2": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "ap-southeast-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "ap-southeast-2": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "ap-southeast-3": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "ap-southeast-4": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "ap-southeast-5": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "ap-southeast-7": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "ca-central-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "ca-west-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "cn-north-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "cn-northwest-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "eu-central-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "eu-central-2": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "eu-isoe-west-1": {
         "value": "nodejs18.x",
       },
       "eu-north-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "eu-south-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "eu-south-2": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "eu-west-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "eu-west-2": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "eu-west-3": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
+      },
+      "eusc-de-east-1": {
+        "value": "nodejs22.x",
       },
       "il-central-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "me-central-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "me-south-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "mx-central-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "sa-east-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "us-east-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "us-east-2": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "us-gov-east-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "us-gov-west-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "us-iso-east-1": {
         "value": "nodejs18.x",
@@ -118,11 +124,14 @@ exports[`Snapshot 1`] = `
       "us-isob-east-1": {
         "value": "nodejs18.x",
       },
+      "us-isob-west-1": {
+        "value": "nodejs18.x",
+      },
       "us-west-1": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
       "us-west-2": {
-        "value": "nodejs20.x",
+        "value": "nodejs22.x",
       },
     },
   },
@@ -368,7 +377,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "b05720791b18736cfa0731c3786acf7aa39006b51a0cd15d27b57683c4d82940.zip",
+          "S3Key": "4d73a34eb78ea1c9658579bc1b4065289bf8452035414cef01ccd23c6e276fa0.zip",
         },
         "Environment": {
           "Variables": {
@@ -660,7 +669,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "da230a5c0403e72ea789c505db2f033ebc2cb5218af9071d6837c52b04d1529a.zip",
+          "S3Key": "022e9141d7bcc96c5331a5761114e238ab9e06ef5539634e6da30178ad62a77f.zip",
         },
         "Environment": {
           "Variables": {
@@ -777,6 +786,7 @@ exports[`Snapshot 1`] = `
         "JackOfTheCloudApiPrepareSpecCustomResource8345BEC3",
       ],
       "Metadata": {
+        "aws:cdk:do-not-refactor": true,
         "cdk_nag": {
           "rules_to_suppress": [
             {
@@ -1129,166 +1139,168 @@ exports[`Snapshot 1`] = `
             "Arn",
           ],
         },
-        "corsOptions": {
-          "allowHeaders": [
-            "Content-Type",
-            "X-Amz-Date",
-            "Authorization",
-            "X-Api-Key",
-            "X-Amz-Security-Token",
-            "X-Amz-User-Agent",
-            "x-amz-content-sha256",
-          ],
-          "allowMethods": [
-            "OPTIONS",
-            "GET",
-            "PUT",
-            "POST",
-            "DELETE",
-            "PATCH",
-            "HEAD",
-          ],
-          "allowOrigins": [
-            "*",
-          ],
-          "statusCode": 204,
-        },
-        "defaultAuthorizerReference": {
-          "authorizerId": "aws.auth.sigv4",
-        },
-        "inputSpecLocation": {
-          "bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+        "options": {
+          "corsOptions": {
+            "allowHeaders": [
+              "Content-Type",
+              "X-Amz-Date",
+              "Authorization",
+              "X-Api-Key",
+              "X-Amz-Security-Token",
+              "X-Amz-User-Agent",
+              "x-amz-content-sha256",
+            ],
+            "allowMethods": [
+              "OPTIONS",
+              "GET",
+              "PUT",
+              "POST",
+              "DELETE",
+              "PATCH",
+              "HEAD",
+            ],
+            "allowOrigins": [
+              "*",
+            ],
+            "statusCode": 204,
           },
-          "key": "a1ad443f7e1d7afb707353f1b24ea632ad0b3666980eebf4015d2f660e02e909.json",
-        },
-        "integrations": {
-          "cancelTimer": {
-            "integration": {
-              "httpMethod": "POST",
-              "passthroughBehavior": "WHEN_NO_MATCH",
-              "type": "AWS_PROXY",
-              "uri": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition",
-                    },
-                    ":apigateway:",
-                    {
-                      "Ref": "AWS::Region",
-                    },
-                    ":lambda:path/2015-03-31/functions/",
-                    {
-                      "Fn::GetAtt": [
-                        "JackOfTheCloudApiCancelTimerA411A5BD",
-                        "Arn",
-                      ],
-                    },
-                    "/invocations",
+          "defaultAuthorizerReference": {
+            "authorizerId": "aws.auth.sigv4",
+          },
+          "inputSpecLocation": {
+            "bucket": {
+              "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
+            },
+            "key": "a1ad443f7e1d7afb707353f1b24ea632ad0b3666980eebf4015d2f660e02e909.json",
+          },
+          "integrations": {
+            "cancelTimer": {
+              "integration": {
+                "httpMethod": "POST",
+                "passthroughBehavior": "WHEN_NO_MATCH",
+                "type": "AWS_PROXY",
+                "uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region",
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "JackOfTheCloudApiCancelTimerA411A5BD",
+                          "Arn",
+                        ],
+                      },
+                      "/invocations",
+                    ],
                   ],
-                ],
+                },
+              },
+            },
+            "createTimer": {
+              "integration": {
+                "httpMethod": "POST",
+                "passthroughBehavior": "WHEN_NO_MATCH",
+                "type": "AWS_PROXY",
+                "uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region",
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "JackOfTheCloudApiCreateTimer986B2E32",
+                          "Arn",
+                        ],
+                      },
+                      "/invocations",
+                    ],
+                  ],
+                },
+              },
+            },
+            "updateTimer": {
+              "integration": {
+                "httpMethod": "POST",
+                "passthroughBehavior": "WHEN_NO_MATCH",
+                "type": "AWS_PROXY",
+                "uri": {
+                  "Fn::Join": [
+                    "",
+                    [
+                      "arn:",
+                      {
+                        "Ref": "AWS::Partition",
+                      },
+                      ":apigateway:",
+                      {
+                        "Ref": "AWS::Region",
+                      },
+                      ":lambda:path/2015-03-31/functions/",
+                      {
+                        "Fn::GetAtt": [
+                          "JackOfTheCloudApiUpdateTimer1056CC44",
+                          "Arn",
+                        ],
+                      },
+                      "/invocations",
+                    ],
+                  ],
+                },
               },
             },
           },
-          "createTimer": {
-            "integration": {
-              "httpMethod": "POST",
-              "passthroughBehavior": "WHEN_NO_MATCH",
-              "type": "AWS_PROXY",
-              "uri": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition",
-                    },
-                    ":apigateway:",
-                    {
-                      "Ref": "AWS::Region",
-                    },
-                    ":lambda:path/2015-03-31/functions/",
-                    {
-                      "Fn::GetAtt": [
-                        "JackOfTheCloudApiCreateTimer986B2E32",
-                        "Arn",
-                      ],
-                    },
-                    "/invocations",
-                  ],
-                ],
-              },
+          "operationLookup": {
+            "cancelTimer": {
+              "contentTypes": [
+                "application/json",
+              ],
+              "method": "POST",
+              "path": "/cancel-timer",
+            },
+            "createTimer": {
+              "contentTypes": [
+                "application/json",
+              ],
+              "method": "POST",
+              "path": "/create-timer",
+            },
+            "updateTimer": {
+              "contentTypes": [
+                "application/json",
+              ],
+              "method": "POST",
+              "path": "/update-timer",
             },
           },
-          "updateTimer": {
-            "integration": {
-              "httpMethod": "POST",
-              "passthroughBehavior": "WHEN_NO_MATCH",
-              "type": "AWS_PROXY",
-              "uri": {
-                "Fn::Join": [
-                  "",
-                  [
-                    "arn:",
-                    {
-                      "Ref": "AWS::Partition",
-                    },
-                    ":apigateway:",
-                    {
-                      "Ref": "AWS::Region",
-                    },
-                    ":lambda:path/2015-03-31/functions/",
-                    {
-                      "Fn::GetAtt": [
-                        "JackOfTheCloudApiUpdateTimer1056CC44",
-                        "Arn",
-                      ],
-                    },
-                    "/invocations",
-                  ],
-                ],
-              },
+          "outputSpecLocation": {
+            "bucket": {
+              "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
             },
+            "key": "a1ad443f7e1d7afb707353f1b24ea632ad0b3666980eebf4015d2f660e02e909.json-prepared",
           },
-        },
-        "operationLookup": {
-          "cancelTimer": {
-            "contentTypes": [
-              "application/json",
-            ],
-            "method": "POST",
-            "path": "/cancel-timer",
-          },
-          "createTimer": {
-            "contentTypes": [
-              "application/json",
-            ],
-            "method": "POST",
-            "path": "/create-timer",
-          },
-          "updateTimer": {
-            "contentTypes": [
-              "application/json",
-            ],
-            "method": "POST",
-            "path": "/update-timer",
-          },
-        },
-        "outputSpecLocation": {
-          "bucket": {
-            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
-          },
-          "key": "a1ad443f7e1d7afb707353f1b24ea632ad0b3666980eebf4015d2f660e02e909.json-prepared",
-        },
-        "securitySchemes": {
-          "aws.auth.sigv4": {
-            "in": "header",
-            "name": "Authorization",
-            "type": "apiKey",
-            "x-amazon-apigateway-authtype": "awsSigv4",
+          "securitySchemes": {
+            "aws.auth.sigv4": {
+              "in": "header",
+              "name": "Authorization",
+              "type": "apiKey",
+              "x-amazon-apigateway-authtype": "awsSigv4",
+            },
           },
         },
       },
@@ -1336,7 +1348,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "a4762dfb73356a8294f8d9e699f2b25a6c7d32cba5cfe53775ce405ee32429d8.zip",
+          "S3Key": "83ecffda7a935dfaf5da97390f2695c8fbaf5681f13bda2e631f97ef1cb6e3cc.zip",
         },
         "FunctionName": "test-787DB00DPrepSpec",
         "Handler": "index.handler",
@@ -1617,6 +1629,10 @@ exports[`Snapshot 1`] = `
         },
         "FunctionName": "test-787DB00DPrepSpecProvider",
         "Handler": "framework.onEvent",
+        "LoggingConfig": {
+          "ApplicationLogLevel": "FATAL",
+          "LogFormat": "JSON",
+        },
         "Role": {
           "Fn::GetAtt": [
             "JackOfTheCloudApiPrepareSpecProviderRole11B271FA",
@@ -1834,7 +1850,7 @@ exports[`Snapshot 1`] = `
           "S3Bucket": {
             "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": "2751b60a4eb2594618e53e7fc3272fbf433bc43961cb01df1d4e41e5e00ca5ba.zip",
+          "S3Key": "7d0a514cf2cc1276332173fd1d64fc35b75a7692751361b6cb485c6257618ddb.zip",
         },
         "Environment": {
           "Variables": {

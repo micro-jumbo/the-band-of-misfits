@@ -191,7 +191,7 @@
           "exec": "pnpm i --no-frozen-lockfile"
         },
         {
-          "exec": "pnpm update @aws/pdk @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser change-case-all constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest npm-check-updates nx prettier projen syncpack ts-node typescript @aws-cdk/aws-cognito-identitypool-alpha aws-cdk-lib cdk-nag"
+          "exec": "pnpm update @aws-sdk/core @aws/pdk @types/jest @types/node @typescript-eslint/eslint-plugin @typescript-eslint/parser change-case-all constructs eslint-config-prettier eslint-import-resolver-typescript eslint-plugin-import eslint-plugin-prettier eslint jest npm-check-updates nx prettier projen syncpack ts-node typescript @aws-cdk/aws-cognito-identitypool-alpha aws-cdk-lib cdk-nag"
         },
         {
           "exec": "pnpm exec projen"
