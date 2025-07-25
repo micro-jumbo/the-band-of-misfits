@@ -31,7 +31,7 @@ root.addTask("clean", {
   exec: "git clean -X -d -f",
 });
 
-const jimmy = jimmyTheDeckhand(root, depVersions);
+const jimmy = jimmyTheDeckhand(root);
 
 const theMisfits = [jackInTheCloud(root, depVersions, jimmy)];
 

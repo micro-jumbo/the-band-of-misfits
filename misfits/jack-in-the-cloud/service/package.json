@@ -32,6 +32,7 @@
   "dependencies": {
     "@aws-sdk/client-dynamodb": "3.840.0",
     "@aws-sdk/client-sfn": "3.840.0",
+    "@aws-sdk/client-sns": "3.840.0",
     "@aws-sdk/lib-dynamodb": "3.840.0",
     "@the-band-of-misfits/jimmy-the-deckhand-utils": "0.0.0",
     "fast-xml-parser": "4.5.3"
