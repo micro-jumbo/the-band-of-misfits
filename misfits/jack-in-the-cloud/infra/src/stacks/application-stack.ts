@@ -9,6 +9,7 @@ import {
 } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import { JackInTheCloud } from "../constructs/apis/jackinthecloud";
+import { JackInTheCloudDashboard } from "../constructs/dashboard";
 import { DynamoTable } from "../constructs/dynamo-table";
 import { RunTimerStateMachine } from "../constructs/state-machine";
 
@@ -18,7 +19,7 @@ export class ApplicationStack extends Stack {
   private readonly topic: aws_sns.ITopic;
 
   constructor(scope: Construct, id: string, props?: StackProps) {
-    super(scope, id, props);
+    super(scope, id, { stackName: "JackInTheCloud", ...props });
 
     const masterKey = aws_kms.Alias.fromAliasName(
       this,
@@ -41,9 +42,21 @@ export class ApplicationStack extends Stack {
 
     const dynamoTable = new DynamoTable(this, "JackOfTheCloudTable");
 
-    new JackInTheCloud(this, "JackOfTheCloudApi", {
+    const jackInTheCloud = new JackInTheCloud(this, "JackOfTheCloudApi", {
       stateMachine,
       dynamoTable,
+    });
+
+    // Create CloudWatch Dashboard
+    new JackInTheCloudDashboard(this, "JackInTheCloudDashboard", {
+      api: jackInTheCloud.api,
+      dynamoTable: dynamoTable.table,
+      topic: this.topic,
+      stateMachine: stateMachine.stateMachine,
+      createTimerFunction: jackInTheCloud.createTimerFunction,
+      fireTimerFunction: stateMachine.fireTimerFunction,
+      cancelTimerFunction: jackInTheCloud.cancelTimerFunction,
+      updateTimerFunction: jackInTheCloud.updateTimerFunction,
     });
 
     this.exportValue(this.topic.topicArn, {

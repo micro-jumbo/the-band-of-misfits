@@ -3,6 +3,7 @@ import {
   Arn,
   ArnFormat,
   aws_iam,
+  aws_lambda,
   aws_lambda_nodejs,
   aws_sns,
   aws_stepfunctions,
@@ -17,7 +18,8 @@ export interface RunTimerStateMachineProps {
 }
 
 export class RunTimerStateMachine extends Construct {
-  private readonly stateMachine: aws_stepfunctions.StateMachine;
+  public readonly stateMachine: aws_stepfunctions.StateMachine;
+  public readonly fireTimerFunction: aws_lambda.Function;
 
   constructor(scope: Construct, id: string, props: RunTimerStateMachineProps) {
     super(scope, id);
@@ -26,12 +28,12 @@ export class RunTimerStateMachine extends Construct {
       time: aws_stepfunctions.WaitTime.timestampPath("$.fireAt"),
     });
 
-    const fireLambda = new aws_lambda_nodejs.NodejsFunction(
+    this.fireTimerFunction = new aws_lambda_nodejs.NodejsFunction(
       this,
       "FireLambda",
       {
         runtime: Runtime.NODEJS_20_X,
-        functionName: "FireTimer",
+        functionName: "fireTimer",
         handler: "index.handler",
         code: Code.fromAsset(
           path.resolve(
@@ -51,13 +53,13 @@ export class RunTimerStateMachine extends Construct {
       },
     );
 
-    props.topic.grantPublish(fireLambda);
+    props.topic.grantPublish(this.fireTimerFunction);
 
     const fireState = new aws_stepfunctions_tasks.LambdaInvoke(
       this,
       "FireState",
       {
-        lambdaFunction: fireLambda,
+        lambdaFunction: this.fireTimerFunction,
         payload: aws_stepfunctions.TaskInput.fromJsonPathAt("$"),
       },
     );

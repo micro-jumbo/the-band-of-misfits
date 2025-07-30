@@ -14,6 +14,7 @@ Jack in the Cloud is a managed AWS-compatible service that delivers scheduled no
 - **Full Control**: Create, update, and cancel timers as needed
 - **AWS Integration**: Built on AWS services with CDK deployment
 - **TypeScript SDK**: Easy-to-use client for interacting with the service
+- **CloudWatch Dashboard**: Comprehensive monitoring of all service components and metrics
 
 ## Architecture
 
@@ -22,7 +23,7 @@ Jack in the Cloud is built on several AWS services working together:
 1. **API Gateway**: Exposes REST endpoints for timer management
 2. **Lambda Functions**: Process API requests and manage timer state
 3. **DynamoDB**: Stores timer configurations and state
-4. **EventBridge**: Orchestrates the timer execution
+4. **Step Functions**: Orchestrates the timer execution workflow
 5. **SNS**: Delivers notifications to subscribers when timers fire
 
 The service exposes three main operations:
@@ -136,6 +137,19 @@ async function manageTimers() {
 ### Handling Timer Events
 
 Timer events will be delivered to the SQS queues or other SNS subscribers you configured during deployment. You can process these events using standard AWS patterns for consuming from your target service.
+
+### Monitoring with CloudWatch Dashboard
+
+Jack in the Cloud comes with a comprehensive CloudWatch dashboard that provides visibility into all components of the service. The dashboard includes:
+
+- API Gateway metrics (requests, latency, errors)
+- Lambda function metrics (invocations, errors, duration)
+- DynamoDB metrics (read/write capacity, throttled requests)
+- SNS metrics (message publishing and delivery)
+- Step Functions metrics (executions and their status)
+- Custom timer operation metrics
+
+The dashboard is automatically created as part of the deployment and can be accessed from the CloudWatch console under Dashboards with the name `JackInTheCloud-Dashboard`.
 
 ## Use Cases
 

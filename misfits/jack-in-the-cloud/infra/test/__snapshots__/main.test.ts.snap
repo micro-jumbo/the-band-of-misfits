@@ -187,6 +187,197 @@ exports[`Snapshot 1`] = `
     },
   },
   "Resources": {
+    "JackInTheCloudDashboard695A97BE": {
+      "Properties": {
+        "DashboardBody": {
+          "Fn::Join": [
+            "",
+            [
+              "{"widgets":[{"type":"metric","width":24,"height":6,"x":0,"y":0,"properties":{"view":"timeSeries","title":"API Gateway","region":"",
+              {
+                "Ref": "AWS::Region",
+              },
+              "","metrics":[["AWS/ApiGateway","Count","ApiName","",
+              {
+                "Ref": "JackOfTheCloudApi14367AC9",
+              },
+              "",{"label":"Request Count","period":60,"stat":"Sum"}],["AWS/ApiGateway","Latency","ApiName","",
+              {
+                "Ref": "JackOfTheCloudApi14367AC9",
+              },
+              "",{"label":"Latency","period":60}],["AWS/ApiGateway","4XXError","ApiName","",
+              {
+                "Ref": "JackOfTheCloudApi14367AC9",
+              },
+              "",{"label":"4XX Errors","period":60,"stat":"Sum"}],["AWS/ApiGateway","5XXError","ApiName","",
+              {
+                "Ref": "JackOfTheCloudApi14367AC9",
+              },
+              "",{"label":"5XX Errors","period":60,"stat":"Sum"}]],"yAxis":{}}},{"type":"metric","width":12,"height":6,"x":0,"y":6,"properties":{"view":"timeSeries","title":"Lambda Invocations","region":"",
+              {
+                "Ref": "AWS::Region",
+              },
+              "","metrics":[["AWS/Lambda","Invocations","FunctionName","",
+              {
+                "Ref": "JackOfTheCloudApiCreateTimer986B2E32",
+              },
+              "",{"label":"CreateTimer","period":60,"stat":"Sum"}],["AWS/Lambda","Invocations","FunctionName","",
+              {
+                "Ref": "JackOfTheCloudApiUpdateTimer1056CC44",
+              },
+              "",{"label":"UpdateTimer","period":60,"stat":"Sum"}],["AWS/Lambda","Invocations","FunctionName","",
+              {
+                "Ref": "JackOfTheCloudApiCancelTimerA411A5BD",
+              },
+              "",{"label":"CancelTimer","period":60,"stat":"Sum"}]],"yAxis":{}}},{"type":"metric","width":12,"height":6,"x":12,"y":6,"properties":{"view":"timeSeries","title":"Lambda Errors","region":"",
+              {
+                "Ref": "AWS::Region",
+              },
+              "","metrics":[["AWS/Lambda","Errors","FunctionName","",
+              {
+                "Ref": "JackOfTheCloudApiCreateTimer986B2E32",
+              },
+              "",{"label":"CreateTimer","period":60,"stat":"Sum"}],["AWS/Lambda","Errors","FunctionName","",
+              {
+                "Ref": "JackOfTheCloudApiUpdateTimer1056CC44",
+              },
+              "",{"label":"UpdateTimer","period":60,"stat":"Sum"}],["AWS/Lambda","Errors","FunctionName","",
+              {
+                "Ref": "JackOfTheCloudApiCancelTimerA411A5BD",
+              },
+              "",{"label":"CancelTimer","period":60,"stat":"Sum"}]],"yAxis":{}}},{"type":"metric","width":12,"height":6,"x":0,"y":12,"properties":{"view":"timeSeries","title":"Lambda Duration","region":"",
+              {
+                "Ref": "AWS::Region",
+              },
+              "","metrics":[["AWS/Lambda","Duration","FunctionName","",
+              {
+                "Ref": "JackOfTheCloudApiCreateTimer986B2E32",
+              },
+              "",{"label":"CreateTimer","period":60}],["AWS/Lambda","Duration","FunctionName","",
+              {
+                "Ref": "JackOfTheCloudApiUpdateTimer1056CC44",
+              },
+              "",{"label":"UpdateTimer","period":60}],["AWS/Lambda","Duration","FunctionName","",
+              {
+                "Ref": "JackOfTheCloudApiCancelTimerA411A5BD",
+              },
+              "",{"label":"CancelTimer","period":60}]],"yAxis":{}}},{"type":"metric","width":12,"height":6,"x":12,"y":12,"properties":{"view":"timeSeries","title":"DynamoDB","region":"",
+              {
+                "Ref": "AWS::Region",
+              },
+              "","metrics":[["AWS/DynamoDB","ConsumedReadCapacityUnits","TableName","",
+              {
+                "Ref": "JackOfTheCloudTableE206ED70",
+              },
+              "",{"label":"Read Capacity","stat":"Sum"}],["AWS/DynamoDB","ConsumedWriteCapacityUnits","TableName","",
+              {
+                "Ref": "JackOfTheCloudTableE206ED70",
+              },
+              "",{"label":"Write Capacity","stat":"Sum"}],["AWS/DynamoDB","ThrottledRequests","TableName","",
+              {
+                "Ref": "JackOfTheCloudTableE206ED70",
+              },
+              "",{"label":"Throttled Requests","stat":"Sum"}]],"yAxis":{}}},{"type":"metric","width":12,"height":6,"x":0,"y":18,"properties":{"view":"timeSeries","title":"SNS","region":"",
+              {
+                "Ref": "AWS::Region",
+              },
+              "","metrics":[["AWS/SNS","NumberOfMessagesPublished","TopicName","",
+              {
+                "Fn::GetAtt": [
+                  "TopicBFC7AF6E",
+                  "TopicName",
+                ],
+              },
+              "",{"label":"Messages Published","period":60,"stat":"Sum"}],["AWS/SNS","NumberOfNotificationsDelivered","TopicName","",
+              {
+                "Fn::GetAtt": [
+                  "TopicBFC7AF6E",
+                  "TopicName",
+                ],
+              },
+              "",{"label":"Notifications Delivered","period":60,"stat":"Sum"}],["AWS/SNS","NumberOfNotificationsFailed","TopicName","",
+              {
+                "Fn::GetAtt": [
+                  "TopicBFC7AF6E",
+                  "TopicName",
+                ],
+              },
+              "",{"label":"Notifications Failed","period":60,"stat":"Sum"}]],"yAxis":{}}},{"type":"metric","width":12,"height":6,"x":12,"y":18,"properties":{"view":"timeSeries","title":"Step Functions","region":"",
+              {
+                "Ref": "AWS::Region",
+              },
+              "","metrics":[["AWS/States","ExecutionsStarted","StateMachineArn","",
+              {
+                "Ref": "JackOfTheCloudMachineStateMachineC6DCCDE1",
+              },
+              "",{"label":"Executions Started","period":60,"stat":"Sum"}],["AWS/States","ExecutionsSucceeded","StateMachineArn","",
+              {
+                "Ref": "JackOfTheCloudMachineStateMachineC6DCCDE1",
+              },
+              "",{"label":"Executions Succeeded","period":60,"stat":"Sum"}],["AWS/States","ExecutionsFailed","StateMachineArn","",
+              {
+                "Ref": "JackOfTheCloudMachineStateMachineC6DCCDE1",
+              },
+              "",{"label":"Executions Failed","period":60,"stat":"Sum"}],["AWS/States","ExecutionsTimedOut","StateMachineArn","",
+              {
+                "Ref": "JackOfTheCloudMachineStateMachineC6DCCDE1",
+              },
+              "",{"label":"Executions Timed Out","period":60,"stat":"Sum"}]],"yAxis":{}}},{"type":"metric","width":12,"height":6,"x":0,"y":24,"properties":{"view":"timeSeries","title":"Timers Created by Timer Type","region":"",
+              {
+                "Ref": "AWS::Region",
+              },
+              "","metrics":[[{"label":"SELECT SUM(Success) FROM \\"the-band-of-misfits\\" WHERE service = 'jack-in-the-cloud' AND operationId = '",
+              {
+                "Ref": "JackOfTheCloudApiCreateTimer986B2E32",
+              },
+              "' GROUP BY timerType","expression":"SELECT SUM(Success) FROM \\"the-band-of-misfits\\" WHERE service = 'jack-in-the-cloud' AND operationId = '",
+              {
+                "Ref": "JackOfTheCloudApiCreateTimer986B2E32",
+              },
+              "' GROUP BY timerType","period":60}]],"yAxis":{}}},{"type":"metric","width":12,"height":6,"x":12,"y":24,"properties":{"view":"timeSeries","title":"Timers Fired by Timer Type","region":"",
+              {
+                "Ref": "AWS::Region",
+              },
+              "","metrics":[[{"label":"SELECT SUM(Success) FROM \\"the-band-of-misfits\\" WHERE service = 'jack-in-the-cloud' AND operationId = '",
+              {
+                "Ref": "JackOfTheCloudMachineFireLambdaECA3232A",
+              },
+              "' GROUP BY timerType","expression":"SELECT SUM(Success) FROM \\"the-band-of-misfits\\" WHERE service = 'jack-in-the-cloud' AND operationId = '",
+              {
+                "Ref": "JackOfTheCloudMachineFireLambdaECA3232A",
+              },
+              "' GROUP BY timerType","period":60}]],"yAxis":{}}},{"type":"metric","width":12,"height":6,"x":0,"y":30,"properties":{"view":"timeSeries","title":"Timers Updated by Timer Type","region":"",
+              {
+                "Ref": "AWS::Region",
+              },
+              "","metrics":[[{"label":"SELECT SUM(Success) FROM \\"the-band-of-misfits\\" WHERE service = 'jack-in-the-cloud' AND operationId = '",
+              {
+                "Ref": "JackOfTheCloudApiUpdateTimer1056CC44",
+              },
+              "' GROUP BY timerType","expression":"SELECT SUM(Success) FROM \\"the-band-of-misfits\\" WHERE service = 'jack-in-the-cloud' AND operationId = '",
+              {
+                "Ref": "JackOfTheCloudApiUpdateTimer1056CC44",
+              },
+              "' GROUP BY timerType","period":60}]],"yAxis":{}}},{"type":"metric","width":12,"height":6,"x":12,"y":30,"properties":{"view":"timeSeries","title":"Timers Cancelled by Timer Type","region":"",
+              {
+                "Ref": "AWS::Region",
+              },
+              "","metrics":[[{"label":"SELECT SUM(Success) FROM \\"the-band-of-misfits\\" WHERE service = 'jack-in-the-cloud' AND operationId = '",
+              {
+                "Ref": "JackOfTheCloudApiCancelTimerA411A5BD",
+              },
+              "' GROUP BY timerType","expression":"SELECT SUM(Success) FROM \\"the-band-of-misfits\\" WHERE service = 'jack-in-the-cloud' AND operationId = '",
+              {
+                "Ref": "JackOfTheCloudApiCancelTimerA411A5BD",
+              },
+              "' GROUP BY timerType","period":60}]],"yAxis":{}}}]}",
+            ],
+          ],
+        },
+        "DashboardName": "The-Band-of-Misfits----JackInTheCloud",
+      },
+      "Type": "AWS::CloudWatch::Dashboard",
+    },
     "JackOfTheCloudApi14367AC9": {
       "DependsOn": [
         "JackOfTheCloudApiPrepareSpecCustomResource8345BEC3",
@@ -391,7 +582,7 @@ exports[`Snapshot 1`] = `
             },
           },
         },
-        "FunctionName": "CancelTimer",
+        "FunctionName": "cancelTimer",
         "Handler": "index.handler",
         "Role": {
           "Fn::GetAtt": [
@@ -684,7 +875,7 @@ exports[`Snapshot 1`] = `
             },
           },
         },
-        "FunctionName": "CreateTimer",
+        "FunctionName": "createTimer",
         "Handler": "index.handler",
         "Role": {
           "Fn::GetAtt": [
@@ -1866,7 +2057,7 @@ exports[`Snapshot 1`] = `
             },
           },
         },
-        "FunctionName": "UpdateTimer",
+        "FunctionName": "updateTimer",
         "Handler": "index.handler",
         "Role": {
           "Fn::GetAtt": [
@@ -2095,7 +2286,7 @@ exports[`Snapshot 1`] = `
             },
           },
         },
-        "FunctionName": "FireTimer",
+        "FunctionName": "fireTimer",
         "Handler": "index.handler",
         "Role": {
           "Fn::GetAtt": [
