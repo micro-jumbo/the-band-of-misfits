@@ -13,12 +13,18 @@ const root = new monorepo.MonorepoTsProject({
   name: "the-band-of-misfits",
   projenrcTs: true,
   packageManager: javascript.NodePackageManager.PNPM,
-  devDeps: ["change-case-all", "jest", "@types/jest", `@aws-sdk/core@${depVersions.sdkVersion}`],
+  devDeps: [
+    "change-case-all",
+    "jest",
+    "@types/jest",
+    `@aws-sdk/core@${depVersions.sdkVersion}`,
+  ],
   github: true,
   publishDryRun: true,
   pnpmVersion: "10",
   minNodeVersion: "20.0.0",
   workflowContainerImage: "timbru31/java-node:17-20",
+  depsUpgrade: false,
   workflowBootstrapSteps: [
     {
       name: "Set ownership",
