@@ -19,7 +19,7 @@ export function getDep(versions: DepsProperties, type: "SDK", subtype: string) {
 export function projectDefaults(
   parent: monorepo.MonorepoTsProject,
   group: string,
-  name: string
+  name: string,
 ): typescript.TypeScriptProjectOptions {
   return {
     defaultReleaseBranch: "main",
@@ -28,21 +28,21 @@ export function projectDefaults(
     outdir: `misfits/${group}/${name}`,
     packageManager: parent.package.packageManager,
     parent,
-    projenrcTs: true
+    projenrcTs: true,
   };
 }
 
 function defaultSmithyBuildOptions(
   name: string,
-  depsVersions: DepsProperties
+  depsVersions: DepsProperties,
 ): type_safe_api.SmithyBuildOptions {
   return {
     plugins: {
       "typescript-client-codegen": {
         package: `${name}`,
         packageVersion: "0.0.1",
-        packageManager: "npm"
-      }
+        packageManager: "npm",
+      },
     },
     maven: {
       dependencies: [
@@ -52,9 +52,9 @@ function defaultSmithyBuildOptions(
         "software.amazon.smithy.typescript:smithy-typescript-codegen:0.26.0",
         "software.amazon.smithy.typescript:smithy-aws-typescript-codegen:0.26.0",
         `software.amazon.smithy:smithy-model:${depsVersions.smithyVersion}`,
-        `software.amazon.smithy:smithy-cli:${depsVersions.smithyVersion}`
-      ]
-    }
+        `software.amazon.smithy:smithy-cli:${depsVersions.smithyVersion}`,
+      ],
+    },
   };
 }
 
@@ -63,7 +63,7 @@ function createSmithyClientProject(
   monorepoProject: monorepo.MonorepoTsProject,
   apiProject: type_safe_api.TypeSafeApiProject,
   clientDefaults: typescript.TypeScriptProjectOptions,
-  depsVersions: DepsProperties
+  depsVersions: DepsProperties,
 ): Project {
   const outdir = path.join("generated", "client", "typescript");
 
@@ -113,7 +113,7 @@ function createSmithyClientProject(
       "@smithy/util-middleware@^4.0.1",
       "@smithy/util-retry@^4.0.1",
       "@smithy/util-utf8@^4.0.0",
-      "concurrently"
+      "concurrently",
     ],
     tsconfig: {
       compilerOptions: {
@@ -129,10 +129,10 @@ function createSmithyClientProject(
   // Make sure smithy client builds after model
   monorepoProject.addImplicitDependency(
     smithyClient,
-    apiProject.model.smithy!.name
+    apiProject.model.smithy!.name,
   );
   monorepoProject.addWorkspacePackages(
-    path.relative(monorepoProject.outdir, smithyClient.outdir)
+    path.relative(monorepoProject.outdir, smithyClient.outdir),
   );
   smithyClient.preCompileTask.exec("rm -rf src/*");
   // const generatedDir = path.relative(
@@ -144,7 +144,7 @@ function createSmithyClientProject(
     "smithyprojections",
     apiProject.model.smithy!.name.replace("/", "-"),
     "source",
-    "typescript-client-codegen"
+    "typescript-client-codegen",
   );
   smithyClient.preCompileTask.exec("mkdir -p src && touch src/.gitkeep");
   smithyClient.preCompileTask.exec(`cp -rf ${generatedDir}/src/* src/`);
@@ -174,7 +174,7 @@ export function createTheMisfit(
     example?: string[];
     handlers?: string[];
     infra?: string[];
-  }
+  },
 ): Misfit {
   const apiDefaults = projectDefaults(root, misfitName, "api");
   const clientDefaults = projectDefaults(root, misfitName, "api-client");
@@ -188,25 +188,25 @@ export function createTheMisfit(
         smithy: {
           serviceName: {
             namespace: "eu.micro_jumbo.the_band_of_misfits",
-            serviceName: pascalCase(misfitName)
+            serviceName: pascalCase(misfitName),
           },
-          smithyBuildOptions
-        }
-      }
+          smithyBuildOptions,
+        },
+      },
     },
     // CDK infrastructure in TypeScript
     infrastructure: {
-      language: type_safe_api.Language.TYPESCRIPT
+      language: type_safe_api.Language.TYPESCRIPT,
     },
     // Lambda handlers in TypeScript
     handlers: {
       languages: [type_safe_api.Language.TYPESCRIPT],
       options: {
         typescript: {
-          deps: [service.name, ...(dependencies?.handlers ?? [])]
-        }
-      }
-    }
+          deps: [service.name, ...(dependencies?.handlers ?? [])],
+        },
+      },
+    },
   });
 
   // @ts-ignore
@@ -214,7 +214,7 @@ export function createTheMisfit(
     root,
     api,
     clientDefaults,
-    dependencies?.depVersions
+    dependencies?.depVersions,
   );
   const infra = new infrastructure.InfrastructureTsProject({
     ...projectDefaults(root, misfitName, "infra"),
@@ -230,9 +230,9 @@ export function createTheMisfit(
     tsconfig: {
       compilerOptions: {
         skipLibCheck: true,
-        noUnusedLocals: false
-      }
-    }
+        noUnusedLocals: false,
+      },
+    },
   });
   return { service, infra, example };
 }

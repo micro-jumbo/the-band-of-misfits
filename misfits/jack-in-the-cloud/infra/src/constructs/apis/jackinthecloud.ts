@@ -36,6 +36,13 @@ export class JackInTheCloud extends Construct {
    */
   public readonly api: Api;
 
+  /**
+   * Lambda functions for timer operations
+   */
+  public readonly createTimerFunction: CreateTimerFunction;
+  public readonly cancelTimerFunction: CancelTimerFunction;
+  public readonly updateTimerFunction: UpdateTimerFunction;
+
   constructor(scope: Construct, id: string, props: JackInTheCloudProps) {
     super(scope, id);
 
@@ -50,29 +57,29 @@ export class JackInTheCloud extends Construct {
       runtime: Runtime.NODEJS_20_X,
     };
 
-    const createTimerFunction = new CreateTimerFunction(this, "CreateTimer", {
+    this.createTimerFunction = new CreateTimerFunction(this, "CreateTimer", {
       ...lambdaProps,
-      functionName: "CreateTimer",
+      functionName: "createTimer",
     });
-    props.dynamoTable.grantWriteData(createTimerFunction);
-    props.stateMachine.grantStartExecution(createTimerFunction);
+    props.dynamoTable.grantWriteData(this.createTimerFunction);
+    props.stateMachine.grantStartExecution(this.createTimerFunction);
 
-    const cancelTimerFunction = new CancelTimerFunction(this, "CancelTimer", {
+    this.cancelTimerFunction = new CancelTimerFunction(this, "CancelTimer", {
       ...lambdaProps,
-      functionName: "CancelTimer",
+      functionName: "cancelTimer",
     });
-    props.dynamoTable.grantReadData(cancelTimerFunction);
-    props.dynamoTable.grantWriteData(cancelTimerFunction);
-    props.stateMachine.grantStopExecution(cancelTimerFunction);
+    props.dynamoTable.grantReadData(this.cancelTimerFunction);
+    props.dynamoTable.grantWriteData(this.cancelTimerFunction);
+    props.stateMachine.grantStopExecution(this.cancelTimerFunction);
 
-    const updateTimerFunction = new UpdateTimerFunction(this, "UpdateTimer", {
+    this.updateTimerFunction = new UpdateTimerFunction(this, "UpdateTimer", {
       ...lambdaProps,
-      functionName: "UpdateTimer",
+      functionName: "updateTimer",
     });
-    props.dynamoTable.grantReadData(updateTimerFunction);
-    props.dynamoTable.grantWriteData(updateTimerFunction);
-    props.stateMachine.grantStartExecution(updateTimerFunction);
-    props.stateMachine.grantStopExecution(updateTimerFunction);
+    props.dynamoTable.grantReadData(this.updateTimerFunction);
+    props.dynamoTable.grantWriteData(this.updateTimerFunction);
+    props.stateMachine.grantStartExecution(this.updateTimerFunction);
+    props.stateMachine.grantStopExecution(this.updateTimerFunction);
 
     this.api = new Api(this, id, {
       webAclOptions: {
@@ -85,13 +92,13 @@ export class JackInTheCloud extends Construct {
       },
       integrations: {
         createTimer: {
-          integration: Integrations.lambda(createTimerFunction),
+          integration: Integrations.lambda(this.createTimerFunction),
         },
         cancelTimer: {
-          integration: Integrations.lambda(cancelTimerFunction),
+          integration: Integrations.lambda(this.cancelTimerFunction),
         },
         updateTimer: {
-          integration: Integrations.lambda(updateTimerFunction),
+          integration: Integrations.lambda(this.updateTimerFunction),
         },
       },
       policy: new PolicyDocument({
