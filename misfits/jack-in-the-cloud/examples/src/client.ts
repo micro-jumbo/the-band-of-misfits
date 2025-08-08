@@ -14,7 +14,7 @@ async function createTimer() {
     new CreateTimerCommand({
       fireAt: ISO8601.toDate(ISO8601.add(ISO8601.now(), 60, 'seconds')),
       payload: 'blablaba',
-      // type: 'hello',
+      type: 'hello',
     }),
   );
   console.log(`Created timer with id [${createResult.id}]`);
@@ -23,11 +23,11 @@ async function createTimer() {
       id: createResult.id,
       fireAt: ISO8601.toDate(ISO8601.add(ISO8601.now(), 120, 'seconds')),
       payload: 'updated',
-      // type: 'hello',
+      type: 'hello',
     }),
   );
   console.log(`Updated timer with id [${updateResult.id}]`);
-  // await client.send(new CancelTimerCommand({ id: createResult.id }));
+  await client.send(new CancelTimerCommand({ id: createResult.id }));
   console.log(`Cancelled timer with id [${createResult.id}]`);
 }
 

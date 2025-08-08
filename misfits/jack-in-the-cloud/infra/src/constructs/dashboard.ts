@@ -163,7 +163,7 @@ export class JackInTheCloudDashboard extends Construct {
           statistic: "Sum",
           label: "Write Capacity",
         }),
-        props.dynamoTable.metricThrottledRequests({
+        props.dynamoTable.metricThrottledRequestsForOperations({
           period: Duration.minutes(5),
           statistic: "Sum",
           label: "Throttled Requests",
